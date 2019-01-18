@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersCampus extends Migration
+class CreateUsersCampusTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class CreateUsersCampus extends Migration
     public function up()
     {
         Schema::connection('users_data')->create('campuses', function (Blueprint $table) {
-            $table->increments('id_campus');
+            $table->increments('id');
             $table->string('location');
         });
     }

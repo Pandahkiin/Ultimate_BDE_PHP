@@ -28,4 +28,12 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function campus() {
+        return $this->hasOne('App\Models\UserCampus', 'id');
+    }
+
+    public function role() {
+        return $this->hasOne('App\Models\UserRole', 'id');
+    }
 }

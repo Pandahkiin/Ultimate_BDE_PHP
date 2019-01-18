@@ -44,7 +44,7 @@
                             <div class="col-md-6">
                                 <select class="form-control" name="campus">
                                     @foreach (App\Models\UserCampus::all() as $campus)
-                                        <option value="{{ $campus->id_campus }}"> {{ $campus->location }} </option>
+                                        <option value="{{ $campus->id }}"> {{ $campus->location }} </option>
                                     @endforeach
                                 </select>
                             </div> 
@@ -54,8 +54,8 @@
                                 <label for="centre" class="col-md-4 col-form-label text-md-right">{{ __('Rôle') }}</label>
                                 <div class="col-md-6">
                                     <select class="form-control" name="role">
-                                        @foreach (App\Models\Role::all() as $role)
-                                            <option value="{{ $role->id_role }}"> {{ $role->name_role }} </option>
+                                        @foreach (App\Models\UserRole::all() as $role)
+                                            <option value="{{ $role->id }}"> {{ $role->name }} </option>
                                         @endforeach
                                     </select>
                                 </div> 

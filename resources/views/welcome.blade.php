@@ -81,7 +81,11 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    レロレロレロレロ
+                    @auth
+                        {{ Auth::user()->role->name }}
+                    @else
+                        レロレロレロレロ
+                    @endauth
                 </div>
 
                 <div class="links">
