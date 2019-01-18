@@ -31,6 +31,7 @@ return [
     |
     */
 
+    'default' => 'site_data',
     'connections' => [
 
         'sqlite' => [
@@ -40,7 +41,7 @@ return [
             'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
         ],
 
-        'mysql' => [
+        'site_data' => [
             'driver'    => env('DB_CONNECTION'),
             'host'      => env('DB_HOST'),
             'port'      => env('DB_PORT'),
@@ -49,7 +50,7 @@ return [
             'password'  => env('DB_PASSWORD'),
         ],
         
-        'site_data' => [
+        'users_data' => [
             'driver'    => env('DB_CONNECTION_SECOND'),
             'host'      => env('DB_HOST_SECOND'),
             'port'      => env('DB_PORT_SECOND'),

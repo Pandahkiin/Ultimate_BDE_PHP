@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -10,13 +10,14 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    protected $connection = 'users_data';
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'lastname' ,'firstname', 'email', 'password',
     ];
 
     /**
