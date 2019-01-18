@@ -22,12 +22,15 @@ class CreateUsersTable extends Migration
             $table->string('password');
 
             $table->integer('id_campus')->unsigned();
-            $table->foreign('id_campus')->references('id_campus')->on('campus');
             $table->integer('id_role')->unsigned();
-            $table->foreign('id_role')->references('id_role')->on('roles');
-
+        
             $table->rememberToken();
             $table->timestamps();
+        });
+
+        Schema::table('users', function($table) {
+            $table->foreign('id_campus')->references('id_campus')->on('campus');
+            $table->foreign('id_role')->references('id_role')->on('roles');
         });
     }
 

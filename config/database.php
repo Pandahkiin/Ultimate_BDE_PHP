@@ -48,6 +48,7 @@ return [
             'database'  => env('DB_DATABASE'),
             'username'  => env('DB_USERNAME'),
             'password'  => env('DB_PASSWORD'),
+            'engine' => 'InnoDB'
         ],
         
         'users_data' => [
@@ -57,6 +58,7 @@ return [
             'database'  => env('DB_DATABASE_SECOND'),
             'username'  => env('DB_USERNAME_SECOND'),
             'password'  => env('DB_PASSWORD_SECOND'),
+            'engine' => 'InnoDB'
         ],
 
         'pgsql' => [
