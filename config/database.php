@@ -48,6 +48,7 @@ return [
             'database'  => env('DB_DATABASE'),
             'username'  => env('DB_USERNAME'),
             'password'  => env('DB_PASSWORD'),
+            'charset' => 'utf8mb4',
             'engine' => 'InnoDB'
         ],
         
@@ -58,6 +59,7 @@ return [
             'database'  => env('DB_DATABASE_SECOND'),
             'username'  => env('DB_USERNAME_SECOND'),
             'password'  => env('DB_PASSWORD_SECOND'),
+            'charset' => 'utf8mb4',
             'engine' => 'InnoDB'
         ],
 

@@ -13,10 +13,9 @@ class CreateUsersCampus extends Migration
      */
     public function up()
     {
-        Schema::connection('users_data')->create('campus', function (Blueprint $table) {
+        Schema::connection('users_data')->create('campuses', function (Blueprint $table) {
             $table->increments('id_campus');
             $table->string('location');
-            $table->timestamps();
         });
     }
 
@@ -27,6 +26,6 @@ class CreateUsersCampus extends Migration
      */
     public function down()
     {
-        Schema::connection('users_data')->dropIfExists('campus');
+        Schema::connection('users_data')->dropIfExists('campuses');
     }
 }
