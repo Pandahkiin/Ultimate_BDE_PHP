@@ -30,10 +30,10 @@ class User extends Authenticatable
     ];
 
     public function campus() {
-        return $this->hasOne('App\Models\UserCampus', 'id');
+        return $this->hasOne('App\Models\UserCampus', 'id', 'id_campus');
     }
 
     public function role() {
-        return $this->hasOne('App\Models\UserRole', 'id');
+        return $this->hasOne('App\Models\UserRole', 'id', 'id_role');
     }
 }
