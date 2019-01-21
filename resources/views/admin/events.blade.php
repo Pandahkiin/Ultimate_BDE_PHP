@@ -5,25 +5,20 @@
 </p>
 <div class="collapse" id="add-event">
     <div class="card card-body">
-        <form>
+        {!! Form::open(array('url' => 'foo/bar')) !!}
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="Nom événement">
+                {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Nom événement']) !!}
             </div>
             <div class="form-group">
-                <label for="exampleFormControlTextarea1">Déscription (1500 caractères)</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" maxlength="1500"></textarea>
+                {!! Form::label('description', 'Description (1500 caractères)') !!}
+                {!! Form::textarea('description', null, ['class' => 'form-control', 'rows' => '3', 'maxlength'=>'1500']) !!}
             </div>
             <div class="form-group">
-                <label for="add-event-form-recurrence">Récurrence</label>
-                <select class="form-control" id="add-event-form-recurrence">
-                    <option>Auncune</option>
-                    <option>Semaine</option>
-                    <option>Mois</option>
-                    <option>Année</option>
-                </select>
+                {!! Form::label('recursivity', 'Description (1500 caractères)') !!}
+                {!! Form::select('recursivity', ['none' => 'Auncune', 'week' => 'semaine', 'month' => 'Mois', 'year' => 'Année'], null,['class' => 'form-control']); !!}
             </div>
-            <input type="text" class="form-control" placeholder="Participation €">
-            <button type="button" class="btn btn-primary mt-3">Créer !</button>
-        </form>
+            {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Participation €']) !!}
+            {!! Form::submit('Crée !', ['class' => 'btn btn-primary mt-3']) !!}
+        {!! Form::close() !!}
     </div>
 </div>
