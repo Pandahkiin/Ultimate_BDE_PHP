@@ -1,8 +1,8 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
     
     <a class="navbar-brand" href="{{ route('Acceuil') }}">
-        <img src="{{ asset('img/navlogo.png') }}" width="30" height="30" class="d-inline-block align-top" alt="">
-        ULTIMATE BDE ++ 360
+        <img src="{{ asset('img/navlogo.png') }}" width="50" height="50" class="d-inline-block align-top" alt="Logo BDE">
+        <h5 style="display : inline-block; margin-top : 14px;">ULTIMATE BDE ++ 360</h5>
       </a>
     
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
