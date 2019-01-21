@@ -29,7 +29,6 @@ class CreateUsersTable extends Migration
         });
 
         Schema::table('users', function($table) {
-            $table->foreign('id_campus')->references('id')->on('campuses');
             $table->foreign('id_role')->references('id')->on('roles');
         });
     }

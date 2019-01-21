@@ -1,6 +1,3 @@
-@extends('layouts.template')
-
-@section('content')
 <p>
     <a class="btn btn-dark" data-toggle="collapse" href="#add-event" role="button" aria-expanded="false" aria-controls="collapseExample">
         <i class="fas fa-plus mr-3"></i>Ajouter un événement !
@@ -30,6 +27,3 @@
         </form>
     </div>
 </div>
-
-
-@endsection

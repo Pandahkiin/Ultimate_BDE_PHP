@@ -4,7 +4,7 @@
 <div class="content">
     <div class="title m-b-md">
         @auth
-            {{ Auth::user()->role->name }}
+            {{ Auth::user()->campus->name }}
         @else
             レロレロレロレロ
         @endauth
