@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.template')
 
 @section('content')
 <div class="container">
@@ -49,17 +49,6 @@
                                 </select>
                             </div> 
                         </div>
-
-                        <div class="form-group row">
-                                <label for="centre" class="col-md-4 col-form-label text-md-right">{{ __('Rôle') }}</label>
-                                <div class="col-md-6">
-                                    <select class="form-control" name="role">
-                                        @foreach (App\Models\UserRole::all() as $role)
-                                            <option value="{{ $role->id }}"> {{ $role->name }} </option>
-                                        @endforeach
-                                    </select>
-                                </div> 
-                            </div>
 
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
