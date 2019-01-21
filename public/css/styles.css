@@ -1,3 +1,21 @@
+html {
+    height: 100%;
+    box-sizing: border-box;
+  }
+
+  *,
+  *:before,
+  *:after {
+    box-sizing: inherit;
+  }
+
+body {
+    position: relative;
+    margin: 0;
+    padding-bottom: 6rem;
+    min-height: 100%;
+}
+
 html, body {
     background-color: #fff;
     color: #636b6f;
@@ -48,13 +66,34 @@ html, body {
 .m-b-md {
     margin-bottom: 30px;
 }
-
-#footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background-color: #343a40;
-    color: white;
+main {
+    margin-bottom: 118px;
 }
 
+#footer {
+    /* height: 118px;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    color: white;
+    position: relative; */
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+    text-align: center;
+    background-color: #343a40;
+    display: block;
+}
+
+#logonav {
+    font-family: Staatliches; 
+    display : inline-block;
+    margin : 5px;
+    font-size: 34px;
+}
+
+.navbarFont {
+    font-size : 20px;
+}
