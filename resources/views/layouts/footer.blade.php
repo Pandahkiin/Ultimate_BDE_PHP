@@ -1,33 +1,32 @@
-<footer class="page-footer font-small special-color-dark" style="margin-top:100%;">
-
-    <div class="container">
+<footer id="footer">
 
             <div class="row">
 
-              <div class="col-md-12 py-5">
-                <div class="mb-5 flex-center">
+              <div class="mx-auto pb-4 pt-3">
+                <div class="mb-2 flex-center">
 
-                  <a class="fb-ic">
-                    <i class="fab fa-facebook-square fa-lg black-text mr-md-5 mr-3 fa-2x"> </i>
+                  <a href="http://zombo.com">
+                    <i class="fab fa-facebook-square fa-lg text-white mr-md-2 ml-md-2 fa-2x mx-auto d-block"> </i>
                   </a>
-                  <a class="tw-ic">
-                    <i class="fab fa-twitter-square fa-lg black-text mr-md-5 mr-3 fa-2x"> </i>
+                  <a href="http://google.com">
+                    <i class="fab fa-twitter-square fa-lg text-white mr-md-2 ml-md-2 fa-2x mx-auto d-block"> </i>
                   </a>
-                  <a class="li-ic">
-                    <i class="fab fa-linkedin fa-lg black-text mr-md-5 mr-3 fa-2x"> </i>
+                  <a href="http://bing.com">
+                    <i class="fab fa-linkedin fa-lg text-white mr-md-2 ml-md-2 fa-2x mx-auto d-block"> </i>
                   </a>
-                  <a class="li-via">
-                        <i class="fab fa-viadeo-square fa-lg black-text mr-md-5 mr-3 fa-2x"> </i>
+                  <a href="http://duckduckgo.com">
+                        <i class="fab fa-viadeo-square fa-lg text-white mr-md-2 ml-md-2 fa-2x mx-auto d-block"> </i>
                       </a>
                 </div>
               </div>
       
             </div>
       
-          </div>
-      
-          <div class="footer-copyright text-center py-3">© 2019 Copyright:
-            <a href="{{ route('Acceuil') }}"> Carnofric.cesi</a>
+          <div class="text-center pb-3 pt-1" id="footer-links">
+            <a class="mx-3 text-white" href="{{ route('Acceuil') }}">Politique de confidentialité</a>
+            <a class="mx-3 text-white" href="{{ route('Acceuil') }}">Mentions légales</a>
+            <a class="mx-3 text-white" href="{{ route('Acceuil') }}">Crédits</a>
+            <a class="mx-3 text-white" href="{{ route('Acceuil') }}">© Carnofric 2019</a>
           </div>
 
 </footer>
