@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
 use App\Models\Campus;
+use App\Models\Role;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -52,8 +53,8 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'firstname' => ['required', 'string', 'max:255'],
             'lastname' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email|regex:/.*(viacesi\.fr)|(cesi\.fr)/', 'max:255', 'unique:users_data.users'],
-            'password' => ['required', 'string', 'min:6|regex:/.*[A-Z]+.*[0-9]+.*|.*[0-9]+.*[A-Z]+.*/', 'confirmed'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users_data.users'],
+            'password' => ['required', 'string', 'min:6','regex:/.*[A-Z]+.*[0-9]+.*|.*[0-9]+.*[A-Z]+.*/', 'confirmed'],
         ]);
     }
 
@@ -67,7 +68,7 @@ class RegisterController extends Controller
     {
         return User::create([
             'id_campus' => $data['campus'],
-            'id_role' => 'Etudiant',
+            'id_role' => Role::where('name','Etudiant')->first()->id,
             'firstname' => $data['firstname'],
             'lastname' => $data['lastname'],
             'email' => $data['email'],

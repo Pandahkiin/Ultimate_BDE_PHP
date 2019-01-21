@@ -4,8 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class UserCampus extends Model
+class Role extends Model
 {
     protected $connection = 'users_data';
-    protected $table = 'campuses';
+    protected $table = 'roles';
 }
