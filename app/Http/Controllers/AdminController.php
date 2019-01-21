@@ -15,8 +15,6 @@ class AdminController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        if(Auth::check() && Auth::user()->role->name != 'Membre BDE')
-            abort(403, 'Accès non autorisé.');
     }
 
     /**
@@ -26,6 +24,6 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('suggestions.main');
+        return view('admin');
     }
 }

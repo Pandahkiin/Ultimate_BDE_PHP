@@ -23,4 +23,6 @@ Route::get('/evenements', 'EventsController@index')->name('Evenements');
 Route::get('/boutique', 'ShopController@index')->name('Boutique');
 Route::get('/suggestions', 'SuggestionsController@index')->name('Boite à idées');
 
-Route::get('/administration', 'AdminController@index')->name('Admin');
+Route::group(['middleware' => 'App\Http\Middleware\BDEMiddleware'], function() {
+    Route::get('/administration', 'AdminController@index')->name('Admin');
+});
