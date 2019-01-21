@@ -29,6 +29,9 @@
     </ul>
 
     <ul class="navbar-nav ml-auto">
+        @if(Auth::check() && Auth::user()->role->name === 'Membre BDE')
+          <a class="mr-3" href="{{ route('Admin') }}">Administration</a>
+        @endif
         <a href="{{ url('/logout') }}">Se déconnecter</a>
     </ul>
 
