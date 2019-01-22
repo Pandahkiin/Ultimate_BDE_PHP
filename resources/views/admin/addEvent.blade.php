@@ -2,12 +2,12 @@
     <form id="add-event">
         <div class="form-group">
             <label for="add-event-name">Nom de l'événement</label>
-            <input type="text" class="form-control is-invalid" name="name" maxlength="50" id="add-event-name" required>
+            <input type="text" class="form-control" name="name" maxlength="50" id="add-event-name" required>
             <label class="form-text text-danger"></label>
         </div>
         <div class="form-group">
             <label for="add-event-description">Déscription (1500 caractères)</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" maxlength="1500" name="description" id="add-event-description" required></textarea>
+            <textarea class="form-control" rows="3" maxlength="1500" name="description" id="add-event-description" required></textarea>
             <label class="form-text text-danger"></label>
         </div>
         <div class="form-group">
