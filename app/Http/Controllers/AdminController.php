@@ -26,4 +26,12 @@ class AdminController extends Controller
     {
         return view('admin.main');
     }
+
+    public function addEvent(Request $request) {
+        $response = array(
+            'status' => 'success',
+            'msg' => $request->message,
+        );
+        return response()->json($response);
+    }
 }
