@@ -1,0 +1,19 @@
+#footer {
+    left:0;
+    bottom:0;
+    right : 0;
+    position: relative;
+    color: white;
+    background-color: #343a40;
+}
+
+#logonav {
+    font-family: Staatliches; 
+    display : inline-block;
+    margin : 5px;
+    font-size: 34px;
+}
+
+.navbarFont {
+    font-size : 17px;
+}

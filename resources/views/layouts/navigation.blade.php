@@ -11,14 +11,14 @@
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav navbarFont">
       <li class="nav-item">
-        <a class="nav-link mx-2" href="{{ route('Evenements') }}"><i class="far fa-calendar mx-2"></i> Événements</a>
+        <a class="nav-link mx-1" href="{{ route('Evenements') }}"><i class="far fa-calendar mx-1"></i> Événements</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link mx-2" href="{{ route('Boite à idées') }}"><i class="far fa-lightbulb mx-2"></i> Boite à idées</a>
+        <a class="nav-link mx-1" href="{{ route('Boite à idées') }}"><i class="far fa-lightbulb mx-1"></i> Boite à idées</a>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle mx-2" href="{{ route('Boutique') }}" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-shopping-cart mx-2"></i> Boutique
+        <a class="nav-link dropdown-toggle mx-1" href="{{ route('Boutique') }}" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-shopping-cart mx-1"></i> Boutique
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <a class="dropdown-item" href="{{ route('Boutique') }}">Produits</a>
@@ -30,7 +30,7 @@
 
     <ul class="navbar-nav ml-auto">
         @if(Auth::check() && Auth::user()->role->name === 'Membre BDE')
-          <a class="mr-4 navbarFont" href="{{ route('Admin') }}"><i class="fas fa-user-cog mx-2"></i> Administration</a>
+          <a class="mr-3 navbarFont" href="{{ route('Admin') }}"><i class="fas fa-user-cog mx-1"></i> Administration</a>
         @endif
         <a class="navbarFont" href="{{ url('/logout') }}">Se déconnecter</a>
     </ul>
