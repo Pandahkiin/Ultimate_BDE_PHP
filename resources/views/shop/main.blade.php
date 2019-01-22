@@ -1,5 +1,9 @@
 @extends('layouts.template')
 
 @section('content')
-SHOP
+
+@foreach ($goodies as $goodie)
+    @include('shop.product') 
+@endforeach
+
 @endsection

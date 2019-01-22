@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Site\Goodie;
 
 class ShopController extends Controller
 {
@@ -23,6 +24,8 @@ class ShopController extends Controller
      */
     public function index()
     {
-        return view('shop.main');
+        $goodies = Goodie::all();
+        return view('shop.main', compact('goodies'));
+        //return var_dump($goodie);
     }
 }
