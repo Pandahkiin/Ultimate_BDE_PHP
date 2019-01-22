@@ -25,7 +25,8 @@ class ShopController extends Controller
     public function index()
     {
         $goodies = Goodie::all();
-        return view('shop.main', compact('goodies'));
-        //return var_dump($goodie);
+        $bestSeller = $goodies->sortByDesc('purchase_order');
+        return view('shop.main', compact('goodies', 'bestSeller'));
+        //return var_dump($bestSeller);
     }
 }
