@@ -75,4 +75,15 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
+
+    /**
+     * Show the application registration form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showRegistrationForm()
+    {
+        $campuses = Campus::all();
+        return view('auth.register', compact('campuses'));
+    }
 }

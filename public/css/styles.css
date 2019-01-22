@@ -88,3 +88,19 @@ main {
 .navbarFont {
     font-size : 20px;
 }
+
+#alert {
+    position: absolute;
+    width: 50%;
+    height: 50px;
+    margin: 10px auto;
+    left: 0;
+    right: 0;
+    z-index: 1;
+
+    transition: 0.5s;
+}
+
+.alert-hidden {
+    transform: translateY(-100px);
+}

@@ -30,7 +30,7 @@ class AdminController extends Controller
     public function addEvent(Request $request) {
         $response = array(
             'status' => 'success',
-            'msg' => $request->message,
+            'msg' => 'Événement créer avec succés !',
         );
         return response()->json($response);
     }

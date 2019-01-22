@@ -43,7 +43,7 @@
                             <label for="centre" class="col-md-4 col-form-label text-md-right">{{ __('Campus') }}</label>
                             <div class="col-md-6">
                                 <select class="form-control" name="campus">
-                                    @foreach (App\Models\Campus::all() as $campus)
+                                    @foreach ($campuses as $campus)
                                         <option value="{{ $campus->id }}"> {{ $campus->location }} </option>
                                     @endforeach
                                 </select>
