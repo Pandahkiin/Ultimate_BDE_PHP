@@ -1,5 +1,10 @@
 var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
 
+/**
+ * Get all inputs values from a form
+ * @param {string} id id of the target form
+ * @returns {indexed array} array with name: values from form inputs
+ */
 function serializeForm(id) {
     var unindexed_array = $(id).serializeArray();
     var indexed_array = {};
@@ -11,6 +16,12 @@ function serializeForm(id) {
     return indexed_array;
 }
 
+/**
+ * Verify if inputs of a forms are valids
+ * @param {*} formID id of the target form
+ * @param {*} verification array [input name, error message, verification regex]
+ * @returns {boolean} return if the verification fail
+ */
 function fieldsVerification(formID, verification) {
     var formFail;
     verification.forEach(element => {
@@ -37,14 +48,15 @@ function fieldsVerification(formID, verification) {
 
     return formFail;
 }
-
+/* Alert animation */
 function delayAlertPopUp() {
-    $('#alert').delay(2000).queue(function() {
+    $('#alert').delay(3000).queue(function() {
         $('#alert').addClass("alert-hidden");
         $('#alert').dequeue();
     });
 }
 
+/* Function launch if ajax is successful */
 function ajaxSuccess(response) {
     $('#alert').text(response.msg);
     $('#alert').removeClass();
@@ -58,6 +70,7 @@ function ajaxSuccess(response) {
         delayAlertPopUp();
     }
 }
+/* Function launch if ajax fail */
 function ajaxFail(response) {
     $('#alert').text(response.msg);
     $('#alert').text('Une erreur c\'est produite lors de l\'envoi des données.');
@@ -65,13 +78,17 @@ function ajaxFail(response) {
     $('#alert').addClass('alert alert-danger').delayAlertPopUp();
 }
 
+/**
+ * Get data from the form, verify and send it with ajax
+ */
 function sendNewEvent() {
-
-    formData = serializeForm("#addEventForm");
+    formData = serializeForm("#add-event");
 
     verification = [
-        ['name','Pas de caractères spéciaux.','^[_A-z0-9]*((-|\s)*[_A-z0-9])*$'],
-        ['description','',''],
+        ['name','Pas de caractères spéciaux.','^[_A-z0-9]*((-|\\s)*[_A-z0-9])*$'],
+        ['description','required',''],
+        ['date','required',''],
+        ['image','Url invalide','https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)'],
         ['price',' Le prix doit être un nombre.','[+-]?([0-9]*[.])?[0-9]+']
     ];
 

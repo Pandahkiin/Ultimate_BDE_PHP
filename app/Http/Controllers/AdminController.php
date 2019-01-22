@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+use App\Models\Site\Event;
+use App\Models\Site\Repetition;
+
 class AdminController extends Controller
 {
     /**
@@ -24,14 +27,36 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin.main');
+        $repetitions = Repetition::all();
+        return view('admin.main', compact('repetitions'));
     }
 
     public function addEvent(Request $request) {
-        $response = array(
-            'status' => 'success',
-            'msg' => 'Événement créer avec succés !',
-        );
-        return response()->json($response);
+        $newEvent = json_decode($request->message);
+
+        try {
+            $event = Event::create([
+                'name' => $newEvent->name,
+                'date' => $newEvent->date,
+                'image' => $newEvent->image,
+                'description' => $newEvent->description,
+                'price_participation' => $newEvent->price,
+                'id_Campuses' => Auth::user()->id_campus,
+                'id_Repetitions' => $newEvent->reccurency
+            ]);
+    
+            $response = array(
+                'status' => 'success',
+                'msg' => 'Événement créer avec succés !',
+            );
+            return response()->json($response);
+        }
+        catch (\Exception $e) {
+            $response = array(
+                'status' => 'failure',
+                'msg' => 'Whoops, Un problème à eu lieu durant la création de l\'événement ...',
+            );
+            return response()->json($response);
+        }
     }
 }

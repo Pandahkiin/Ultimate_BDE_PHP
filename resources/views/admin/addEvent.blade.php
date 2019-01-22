@@ -6,6 +6,16 @@
             <label class="form-text text-danger"></label>
         </div>
         <div class="form-group">
+            <label for="add-event-date">Date de l'événement</label>
+            <input type="date" class="form-control" name="date" id="add-event-date" required>
+            <label class="form-text text-danger"></label>
+        </div>
+        <div class="form-group">
+            <label for="add-event-image">Image d'illustration</label>
+            <input type="text" class="form-control" name="image" id="add-event-image" placeholder="http://" required>
+            <label class="form-text text-danger"></label>
+        </div>
+        <div class="form-group">
             <label for="add-event-description">Déscription (1500 caractères)</label>
             <textarea class="form-control" rows="3" maxlength="1500" name="description" id="add-event-description" required></textarea>
             <label class="form-text text-danger"></label>
@@ -13,15 +23,14 @@
         <div class="form-group">
             <label for="add-event-recurrence">Récurrence</label>
             <select class="form-control" id="add-event-recurrence" name="reccurency">
-                <option>Auncune</option>
-                <option>Semaine</option>
-                <option>Mois</option>
-                <option>Année</option>
+                 @foreach ($repetitions as $repetition)
+                    <option value="{{ $repetition->id }}"> {{ $repetition->repetition }} </option>
+                @endforeach
             </select>
         </div>
         <div class="form-group">
             <label for="add-event-price">Participation des participant</label>
-            <input type="text" class="form-control" name="price" id="add-event-price">
+            <input type="text" class="form-control" name="price" id="add-event-price" aria-describedby="addon-euro" placeholder="0.0 €">
             <label class="form-text text-danger"></label>
         </div>
         <button type="button" class="btn btn-primary mt-3" onclick="sendNewEvent()">Créer !</button>
