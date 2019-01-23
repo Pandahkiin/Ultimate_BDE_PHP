@@ -21,6 +21,20 @@
             </div>
         </div>
     </div>
+    <div class="card">
+        <div class="card-header" id="headingAdminGoodies">
+            <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseAdminGoodies" aria-expanded="true" aria-controls="collapseAdminGoodies">
+                    Ajouter des goodies
+                </button>
+            </h5>
+        </div>
+        <div id="collapseAdminGoodies" class="collapse" aria-labelledby="headingAdminGoodies" data-parent="#adminAccordion">
+            <div class="card-body">
+                @include('admin.goodies')
+            </div>
+        </div>
+    </div>
 
     <div class="card">
             <div class="card-header" id="headingPastEvent">
@@ -48,6 +62,20 @@
         <div id="collapseAdminSuggestions" class="collapse" aria-labelledby="headingAdminSuggestions" data-parent="#adminAccordion">
             <div class="card-body">
                 @include('admin.suggestions')
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header" id="headingAdminImage">
+            <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseAdminImage" aria-expanded="true" aria-controls="collapseAdminImage">
+                    Administration de la boite à idée
+                </button>
+            </h5>
+        </div>
+        <div id="collapseAdminImage" class="collapse" aria-labelledby="headingAdminImage" data-parent="#adminAccordion">
+            <div class="card-body">
+                @include('admin.image')
             </div>
         </div>
     </div>

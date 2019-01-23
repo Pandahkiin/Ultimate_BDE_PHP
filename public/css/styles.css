@@ -65,10 +65,15 @@ html, body {
 .m-b-md {
     margin-bottom: 30px;
 }
-main {
-    margin-bottom: 118px;
+#app {
+    display: table;
+    overflow: auto;
+    height: 100%;
+    width: 100%;
 }
-
+main {
+    padding-bottom: 50px;
+}
 #alert {
     position: fixed;
     width: 50%;

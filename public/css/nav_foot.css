@@ -1,8 +1,8 @@
 #footer {
-    left:0;
+    width: 100%;
     bottom:0;
-    right : 0;
-    position: relative;
+    display: table-row;
+    height: 118px;
     color: white;
     background-color: #343a40;
 }

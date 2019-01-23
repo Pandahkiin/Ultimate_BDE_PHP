@@ -29,10 +29,17 @@
     </ul>
 
     <ul class="navbar-nav ml-auto">
-        @if(Auth::check() && Auth::user()->role->name === 'Membre BDE')
-          <a class="mr-3 navbarFont" href="{{ route('Admin') }}"><i class="fas fa-user-cog mx-1"></i> Administration</a>
-        @endif
-        <a class="navbarFont" href="{{ url('/logout') }}">Se déconnecter</a>
+        @auth
+          @if(Auth::check() && Auth::user()->role->name === 'Membre BDE')
+            <a class="mr-3 navbarFont" href="{{ route('Admin') }}"><i class="fas fa-user-cog mx-1"></i> Administration</a>
+          @endif
+          <a class="navbarFont" href="{{ url('/logout') }}">Se déconnecter</a>
+        @else
+          <a href="{{ route('login') }}" class="navbarFont mr-3">Se connecter</a>
+          @if (Route::has('register'))
+              <a href="{{ route('register') }}" class="navbarFont">S'inscrire</a>
+          @endif
+        @endauth
     </ul>
 
   </div>

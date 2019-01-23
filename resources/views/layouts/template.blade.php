@@ -25,13 +25,10 @@
 <body>
     <div id="alert" class="alert alert-hidden" onclick="$(this).addClass('alert-hidden')">Alert</div>
     <div id="app">
-        @guest
-            @include('layouts.guest')
-        @else
-            @include('layouts.navigation')
-        @endguest
+        
+        @include('layouts.navigation')
 
-        <main class="py-4">
+        <main>
             @yield('content')
         </main>
 
