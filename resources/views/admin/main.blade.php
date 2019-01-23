@@ -69,7 +69,7 @@
         <div class="card-header" id="headingAdminImage">
             <h5 class="mb-0">
                 <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseAdminImage" aria-expanded="true" aria-controls="collapseAdminImage">
-                    Administration de la boite à idée
+                    Ajouter une image
                 </button>
             </h5>
         </div>
