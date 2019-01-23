@@ -26,5 +26,6 @@ Route::get('/suggestions', 'SuggestionsController@index')->name('Boite à idées
 
 Route::group(['middleware' => 'App\Http\Middleware\BDEMiddleware'], function() {
     Route::get('/administration', 'AdminController@index')->name('Admin');
-    Route::post('/administration','AdminController@addEvent');
+    Route::post('/addEvent','EventsController@addEvent');
+    Route::post('/addGoodie','ShopController@addGoodie');
 });

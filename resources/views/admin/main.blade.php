@@ -37,14 +37,14 @@
     </div>
 
     <div class="card">
-            <div class="card-header" id="headingPastEvent">
-                <h5 class="mb-0">
-                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapsePastEvent" aria-expanded="true" aria-controls="collapseAdminEvent">
-                        Administrer événements passés
-                    </button>
-                </h5>
-            </div>
-            <div id="collapsePastEvent" class="collapse" aria-labelledby="headingPastEvent" data-parent="#adminAccordion">
+        <div class="card-header" id="headingPastEvent">
+            <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapsePastEvent" aria-expanded="true" aria-controls="collapseAdminEvent">
+                    Administrer événements
+                </button>
+            </h5>
+        </div>
+        <div id="collapsePastEvent" class="collapse" aria-labelledby="headingPastEvent" data-parent="#adminAccordion">
                 <div class="card-body">
                     @include('admin.pastEvents')
                 </div>

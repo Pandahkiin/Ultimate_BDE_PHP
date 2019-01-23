@@ -30,9 +30,9 @@
         </div>
         <div class="form-group">
             <label for="add-event-price">Participation des participant</label>
-            <input type="text" class="form-control" name="price" id="add-event-price" aria-describedby="addon-euro" placeholder="0.0 €">
+            <input type="text" class="form-control" name="price" id="add-event-price" aria-describedby="addon-euro" value="0.0">
             <label class="form-text text-danger"></label>
         </div>
-        <button type="button" class="btn btn-primary mt-3" onclick="sendNewEvent()">Créer !</button>
+        <button type="button" class="btn btn-primary mt-3" onclick="sendNewEvent()">Créer l'événement !</button>
     </form>
 </div>

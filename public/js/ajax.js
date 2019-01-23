@@ -77,6 +77,24 @@ function ajaxFail(response) {
     $('#alert').removeClass();
     $('#alert').addClass('alert alert-danger').delayAlertPopUp();
 }
+/**
+ * POST Ajax function
+ * @param {string} url target url
+ * @param {JSON} data JSON formated data to send
+ */
+function sendPostAjax(url, data) {
+    $.ajax({
+        // the route pointing to the post function
+        url: url,
+        type: 'POST',
+        // send the csrf-token and the input to the controller
+        data: {_token: CSRF_TOKEN, message:data},
+        dataType: 'JSON',
+
+        success: function(response) {ajaxSuccess(response)},
+        fail: function(response) {ajaxFail(response)}
+    });
+}
 
 /**
  * Get data from the form, verify and send it with ajax
@@ -92,17 +110,21 @@ function sendNewEvent() {
         ['price',' Le prix doit être un nombre.','[+-]?([0-9]*[.])?[0-9]+']
     ];
 
-    if(!fieldsVerification('#add-event', verification)) {
-        $.ajax({
-            // the route pointing to the post function
-            url: '/administration',
-            type: 'POST',
-            // send the csrf-token and the input to the controller
-            data: {_token: CSRF_TOKEN, message:JSON.stringify(formData)},
-            dataType: 'JSON',
-            // remind that 'data' is the response of the AjaxController
-            success: function(response) {ajaxSuccess(response)},
-            fail: function(response) {ajaxFail(response)}
-        });
-    }
+    if(!fieldsVerification('#add-event', verification))
+        sendPostAjax('/addEvent',JSON.stringify(formData));
+}
+
+function sendNewGoodie() {
+    formData = serializeForm("#add-goodie");
+
+    verification = [
+        ['name','Pas de caractères spéciaux.','^[_A-z0-9]*((-|\\s)*[_A-z0-9])*$'],
+        ['description','required',''],
+        ['image','Url invalide','https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)'],
+        ['price',' Le prix doit être un nombre.','[+-]?([0-9]*[.])?[0-9]+'],
+        ['stock',' Le stock doit être un entier.','[0-9]*']
+    ];
+
+    if(!fieldsVerification('#add-goodie', verification))
+        sendPostAjax('/addGoodie',JSON.stringify(formData));
 }
