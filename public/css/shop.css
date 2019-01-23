@@ -1,6 +1,6 @@
 .deckSize {
     height: auto; 
-    width : 800px;
+    width : 900px;
 }
 
 .description {
@@ -21,8 +21,9 @@
 
 .categories {
     background-color: lightgrey;
+    overflow : auto;
 }
 
-.mainShop {
-
+#shopRow {
+    width: 100%;
 }
