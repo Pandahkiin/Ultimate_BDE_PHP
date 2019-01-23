@@ -3,7 +3,7 @@
 @section('content')
 
 @push('head')
-<script src="{{ asset('js/ajax.js') }}" defer></script>
+<script src="{{ asset('js/admin.js') }}" defer></script>
 @endpush
 
 <div id="adminAccordion">

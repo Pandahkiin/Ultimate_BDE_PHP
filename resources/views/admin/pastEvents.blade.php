@@ -2,7 +2,7 @@
     <table class="table table-striped">
         <thead>
             <tr>
-                <th scope="col">Nom</th>
+                <th scope="col"></th>
                 <th scope="col">Date</th>
                 <th scope="col">Nombre inscrit</th>
                 <th scope="col">Liste des inscrit</th>
@@ -12,11 +12,16 @@
         <tbody>
             @foreach ($events as $event)
             <tr>
-                <td scope="row">{{ $event->name }}</td>
+                <th scope="row">{{ $event->name }}</th>
                 <td>{{ $event->date }}</td>
-                <td>TODO</td>
-                <td>TODO</td>
-                <td><a href="#"><i class="fas fa-trash-alt"></i></a></td>
+                <td>
+                    {{$registeredEvents->where('id_Events','=',$event->id)->first()->total}}
+                </td>
+                <td>
+                    <button type="button" class="btn btn-outline-dark m-1" title="Télécharger au format CSV">CSV</button>
+                    <button type="button" class="btn btn-outline-dark m-1" title="Télécharger au format PDF">PDF</button>
+                </td>
+                <td><a href="#" class="text-danger"><i class="fas fa-trash-alt"></i></a></td>
             </tr>
             @endforeach
         </tbody>

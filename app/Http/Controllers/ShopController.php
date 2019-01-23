@@ -21,34 +21,4 @@ class ShopController extends Controller
         return view('shop.main', compact('goodies', 'bestSellers'));
         //return var_dump($bestSeller);
     }
-
-    public function addGoodie(Request $request) {
-        $newGoodie = json_decode($request->message);
-
-        try {
-            $event = Goodie::create([
-                'name' => $newGoodie->name,
-                'image' => $newGoodie->image,
-                'description' => $newGoodie->description,
-                'price' => $newGoodie->price,
-                'stock' => $newGoodie->stock,
-                'purchase_order' => 0,
-                'id_Campuses' => Auth::user()->id_campus,
-                'id_Categories' => $newGoodie->categorie
-            ]);
-    
-            $response = array(
-                'status' => 'success',
-                'msg' => 'Goodie créer avec succés !',
-            );
-            return response()->json($response);
-        }
-        catch (\Exception $e) {
-            $response = array(
-                'status' => 'failure',
-                'msg' => $e->getMessage()
-            );
-            return response()->json($response);
-        }
-    }
 }

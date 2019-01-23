@@ -10,6 +10,6 @@ class Event extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'name' , 'date', 'description', 'image','price_participation', 'id_Campuses','id_Repetitions'
+        'name' , 'date', 'description', 'image','price_participation', 'id_Campuses','id_Repetitions', 'id_Users', 'id_Approbations'
     ];
 }
