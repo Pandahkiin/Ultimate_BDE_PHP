@@ -2,21 +2,31 @@
 
 @section('content')
 
-<p class="text-center">INSANE BOUTIQUE</p>
+<div class="row">
+    <aside class="categories col-2">
 
-<div class="card-deck mx-3 my-5">
+        
 
-    @for($i=0; $i<3; $i++)
-        @include('shop.bestSeller', ['bestOne'=>$bestSeller[$i]])
-    @endfor
+    </aside>
+
+    <div class="mainShop col-10">
+        <h1 class="text-center mt-3">INSANE BOUTIQUE</h1>
+
+        <div class="card-deck mx-3 my-3">
+
+            @foreach($bestSellers as $bestSeller)
+                @include('shop.bestSeller')
+            @endforeach
+
+        </div>
+
+        <div class="card-deck deckSize ml-3 my-3">
+
+        @foreach ($goodies as $goodie)
+            @include('shop.product')
+        @endforeach
+
+        </div>
+    </div>
 </div>
-
-<div class="card-deck deckSize ml-3 my-3">
-
-@foreach ($goodies as $goodie)
-    @include('shop.product')
-@endforeach
-
-</div>
-
 @endsection

@@ -14,9 +14,11 @@ class ShopController extends Controller
      */
     public function index()
     {
-        $goodies = Goodie::all();
-        $bestSeller = $goodies->sortByDesc('purchase_order');
-        return view('shop.main', compact('goodies', 'bestSeller'));
+        $goodies = Goodie::paginate(10);
+        $bestSellers = Goodie::all()->sortByDesc(function($goodie){
+            return $goodie->purchase_order;
+        })->take(3);
+        return view('shop.main', compact('goodies', 'bestSellers'));
         //return var_dump($bestSeller);
     }
 }

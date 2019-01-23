@@ -16,5 +16,13 @@
 
 .bestSellImg {
     height: auto;
-    width: 250px;
+    width: 100%;
+}
+
+.categories {
+    background-color: lightgrey;
+}
+
+.mainShop {
+
 }
