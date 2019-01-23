@@ -20,7 +20,7 @@
       </div>
       <div class="modal-body">
         <img src="{{ $goodie->image }}" alt="Image de {{ $goodie->name }}" width="150px" height="auto;" class="text-left">
-        <p class="text-center overflow-auto">{{ $goodie->description }}</p>
+        <p class="float-right overflow-auto d-block">{{ $goodie->description }}</p>
         <form>
           <div class="form-group">
             <label for="qty">Quantité</label>

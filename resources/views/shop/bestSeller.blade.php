@@ -28,7 +28,7 @@
       </div>
       <div class="modal-body">
         <img src="{{ $bestSeller->image }}" alt="Image de {{ $bestSeller->name }}" width="150px" height="auto;" class="text-left">
-        <p class="text-center overflow-auto">{{ $bestSeller->description }}</p>
+        <p class="d-block float-right overflow-auto">{{ $bestSeller->description }}</p>
         <form>
           <div class="form-group">
             <label for="qty">Quantité</label>

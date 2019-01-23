@@ -10,6 +10,6 @@ class Goodie extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'name' , 'price', 'stock', 'description', 'image','id_Categories', 'id_Campuses', 'purchase_order'
+        'name' , 'price', 'stock', 'description', 'image','id_Categories', 'id_Campuses', 'total_order'
     ];
 }
