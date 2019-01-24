@@ -24,7 +24,7 @@
         <form>
           <div class="form-group">
             <label for="qty">Quantité</label>
-            <input type="email" class="form-control" id="qty" value="1">
+            <input type="number" class="form-control" id="qty" value="1" name="quantity">
           </div>
         </form>
       </div>

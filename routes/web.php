@@ -36,3 +36,8 @@ Route::group(['middleware' => 'App\Http\Middleware\BDEMiddleware'], function() {
 /* Ajax interaction routes */
 Route::post('/registerEvent','EventsController@registerEvent');
 Route::post('/unregisterEvent','EventsController@unregisterEvent');
+
+/*Shopping cart routes*/
+Route::get('/form', 'CartController@index');
+Route::post('/add', 'CartController@add');
+Route::get('/cart', 'CartController@cart');
