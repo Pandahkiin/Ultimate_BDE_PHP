@@ -11,11 +11,15 @@ function sendPostAjax(url, data) {
         url: url,
         type: 'POST',
         // send the csrf-token and the input to the controller
-        data: {_token: CSRF_TOKEN, message:data},
+        data: {data},
         dataType: 'JSON',
 
-        success: function(response) {alertPopUp(response.status, response.msg);},
-        fail: function(response) {alertPopUp(response.status, response.msg)},
+        success: function(response) {
+            alertPopUp(response.status, response.msg);
+        },
+        fail: function(response) {
+            alertPopUp(response.status, response.msg);
+        },
         timeout: 3000,
         error: function(jqXHR, textStatus, errorThrown) {
             if(textStatus==="timeout") {

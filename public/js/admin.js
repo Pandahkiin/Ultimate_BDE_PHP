@@ -1,3 +1,20 @@
+
+function connectToAPI() {
+
+    $.ajax({
+        // the route pointing to the post function
+        type: 'GET',
+        url: 'http://127.0.0.1:3000/api/campuses',
+        crossDomain: true,
+        dataType: 'JSON',
+        headers: { 'x-access-token': APItoken },
+        success: function(response) {
+           console.log(response);
+        }
+    });
+}
+connectToAPI();
+
 /**
  * Get all inputs values from a form
  * @param {string} id id of the target form
@@ -52,7 +69,7 @@ function fieldsVerification(formID, verification) {
  */
 function sendNewEvent() {
     var formData = serializeForm("#add-event");
-
+    console.log(formData);
     var verification = [
         ['name','Pas de caractères spéciaux.','^[_A-z0-9]*((-|\\s)*[_A-z0-9])*$'],
         ['description','required',''],
@@ -62,7 +79,7 @@ function sendNewEvent() {
     ];
 
     if(!fieldsVerification('#add-event', verification)) {
-        sendPostAjax('/addEvent',JSON.stringify(formData));
+        sendPostAjax('/addEvent', JSON.stringify(formData));
         $("#add-goodie").trigger("reset");
     }
 }
