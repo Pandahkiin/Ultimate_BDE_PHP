@@ -18,8 +18,7 @@ class EventsController extends Controller
     public function index()
     {
         $events = Event::all();
-        $registeredEvents = Register::where('id_Users', Auth::id())->get();
-        return view('events.main', compact('events', 'registeredEvents'));
+        return view('events.main', compact('events'));
     }
 
     public function registerEvent(Request $request) {

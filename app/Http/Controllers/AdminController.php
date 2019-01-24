@@ -9,8 +9,9 @@ use App\Models\Site\Event;
 use App\Models\Site\Repetition;
 use App\Models\Site\Categorie;
 use App\Models\Site\Register;
+use App\Models\Site\Goodie;
 
-use DB;
+use Storage;
 
 class AdminController extends Controller
 {
@@ -35,13 +36,13 @@ class AdminController extends Controller
         $repetitions = Repetition::all();
         $categories = Categorie::all();
 
-        $registeredEvents = Register::select(
-            DB::raw('id_Events, count(id_Users) as total'))
-            ->groupBy('id_Events')
-            ->get();
-        return view('admin.main', compact('repetitions','categories','events','registeredEvents'));
+        return view('admin.main', compact('repetitions','categories','events'));
     }
 
+    /**
+     * Handle AJAX request : create event
+     * @return response in JSON
+     */
     public function addEvent(Request $request) {
         $newEvent = json_decode($request->message);
 
@@ -67,12 +68,16 @@ class AdminController extends Controller
         catch (\Exception $e) {
             $response = array(
                 'status' => 'danger',
-                'msg' => $e->getMessage() //'Whoops, une erreur c\'est produite durant la création de l\'évenement'
+                'msg' => 'Whoops, une erreur c\'est produite durant la création de l\'évenement'
             );
             return response()->json($response);
         }
     }
 
+    /**
+     * Handle AJAX request : create goodie
+     * @return response in JSON
+     */
     public function addGoodie(Request $request) {
         $newGoodie = json_decode($request->message);
 
@@ -96,17 +101,30 @@ class AdminController extends Controller
         catch (\Exception $e) {
             $response = array(
                 'status' => 'danger',
-                'msg' => $e->getMessage()
+                'msg' => 'Whoops, une erreur c\'est produite durant la création du goodie'
             );
             return response()->json($response);
         }
     }
 
+    /**
+     * Download file : registered list
+     * @return file in specified format
+     */
     public function getRegisterList(Request $request) {
+        $request->eventID;
+        $request->fileFormat;
+
+        Storage::put('/app/register_list/file.csv', $data);
+
         $pathToFile = storage_path('/app/test.csv');
         $headers = [
             'Content-Type' => 'application/csv'
         ];
         return response()->download($pathToFile, 'test.csv', $headers);
     }
+
+    /**
+     * Delete an event
+     */
 }

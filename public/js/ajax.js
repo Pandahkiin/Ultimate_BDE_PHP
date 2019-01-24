@@ -14,7 +14,7 @@ function sendPostAjax(url, data) {
         data: {_token: CSRF_TOKEN, message:data},
         dataType: 'JSON',
 
-        success: function(response) {alertPopUp(response.status, response.msg)},
+        success: function(response) {alertPopUp(response.status, response.msg);},
         fail: function(response) {alertPopUp(response.status, response.msg)},
         timeout: 3000,
         error: function(jqXHR, textStatus, errorThrown) {
@@ -26,12 +26,19 @@ function sendPostAjax(url, data) {
 }
 
 function sendGetAjax(url, param) {
+    param._token = CSRF_TOKEN;
     $.ajax({
-        // the route pointing to the post function
-        url: url,
+        url: url + '?' + $.param(param),
         type: 'GET',
-        // send the csrf-token and the input to the controller
-        data: param,
+        timeout: 3000
+    });
+}
+
+function sendDeleteAjax(url, param) {
+    param._token = CSRF_TOKEN;
+    $.ajax({
+        url: url + '?' + $.param(param),
+        type: 'DELETE',
         timeout: 3000
     });
 }

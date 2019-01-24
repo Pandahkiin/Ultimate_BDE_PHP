@@ -4,10 +4,12 @@
         <h5 class="card-title">{{$event->name}}</h5>
         <p class="card-text" style="height: 100px;text-overflow: ellipsis;overflow: hidden;">{{ $event->description }}</p>
         
-        @if($registeredEvents->contains('id_Events', $event->id))
-        <button type="button" class="btn btn-outline-primary btn-lg btn-block" onclick="unregisterEvent({{$event->id}}, this)">Se désinscrire</button>
-        @else
-        <button type="button" class="btn btn-primary btn-lg btn-block" onclick="registerEvent({{$event->id}}, this)">S'inscrire</button>
-        @endif
+        @auth
+            @if(App\Models\Site\Register::isUserRegister($event->id))
+            <button type="button" class="btn btn-outline-primary btn-lg btn-block" onclick="unregisterEvent({{$event->id}}, this)">Se désinscrire</button>
+            @else
+            <button type="button" class="btn btn-primary btn-lg btn-block" onclick="registerEvent({{$event->id}}, this)">S'inscrire</button>
+            @endif
+        @endauth
     </div>
 </div>

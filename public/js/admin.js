@@ -1,5 +1,3 @@
-var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-
 /**
  * Get all inputs values from a form
  * @param {string} id id of the target form
@@ -63,10 +61,15 @@ function sendNewEvent() {
         ['price',' Le prix doit être un nombre.','[+-]?([0-9]*[.])?[0-9]+']
     ];
 
-    if(!fieldsVerification('#add-event', verification))
+    if(!fieldsVerification('#add-event', verification)) {
         sendPostAjax('/addEvent',JSON.stringify(formData));
+        $("#add-goodie").trigger("reset");
+    }
 }
 
+/**
+ * Get data from the form, verify and send it with ajax
+ */
 function sendNewGoodie() {
     var formData = serializeForm("#add-goodie");
 
@@ -78,10 +81,25 @@ function sendNewGoodie() {
         ['stock',' Le stock doit être un entier.','[0-9]*']
     ];
 
-    if(!fieldsVerification('#add-goodie', verification))
+    if(!fieldsVerification('#add-goodie', verification)) {
         sendPostAjax('/addGoodie', JSON.stringify(formData));
+        $("#add-goodie").trigger("reset");
+    }
 }
 
 function getRegisterList(eventID, fileFormat) {
     window.location="/getRegisterList?_token="+CSRF_TOKEN+"&eventID="+eventID+"&fileFormat="+fileFormat;
+}
+
+/**
+ * Delete an event
+ */
+function deleteEventModal(eventName, eventID) {
+    $('#modal-event-delete-name').text(eventName);
+    $('#modal-event-delete-function').attr("onclick","deleteEvent("+eventID+")");
+}
+
+function deleteEvent(eventID) {
+    var param = {"eventID":eventID};
+    sendDeleteAjax('/', param);
 }
