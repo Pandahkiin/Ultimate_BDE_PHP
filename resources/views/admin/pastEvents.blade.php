@@ -13,14 +13,14 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-danger" id="modal-event-delete-function">Confirmer</button>
+        <button type="button" class="btn btn-danger" id="modal-event-delete-function" data-dismiss="modal">Confirmer</button>
       </div>
     </div>
   </div>
 </div>
 
 <div class="card">
-    <table class="table table-striped">
+    <table class="table table-striped" id="past-event-list">
         <thead>
             <tr>
                 <th scope="col"></th>
@@ -43,7 +43,7 @@
                     <button class="btn btn-outline-dark m-1" title="Télécharger au format PDF">PDF</button>
                 </td>
                 <td>
-                    <button onclick="deleteEventModal('{{$event->name}}',{{$event->id}})" type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#modal-event-delete">
+                    <button onclick="deleteEventModal('{{$event->name}}',{{$event->id}}, $(this).closest('td').parent()[0].sectionRowIndex)" type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#modal-event-delete">
                         <i class="fas fa-trash-alt"></i>
                     </button>
                 </td>

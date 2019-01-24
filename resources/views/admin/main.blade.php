@@ -8,6 +8,7 @@
 
 <script>
     var APItoken = {!! json_encode(Auth::user()->token) !!};
+    var connected_user = ({!! json_encode(Auth::user()) !!});
 </script>
 
 <div id="adminAccordion">

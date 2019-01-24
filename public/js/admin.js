@@ -1,20 +1,22 @@
 
-function connectToAPI() {
+$.ajaxSetup({
+    headers: {
+        'x-access-token': APItoken
+    }
+});
 
+function connectToAPI() {
     $.ajax({
         // the route pointing to the post function
         type: 'GET',
         url: 'http://127.0.0.1:3000/api/campuses',
         crossDomain: true,
         dataType: 'JSON',
-        headers: { 'x-access-token': APItoken },
         success: function(response) {
            console.log(response);
         }
     });
 }
-connectToAPI();
-
 /**
  * Get all inputs values from a form
  * @param {string} id id of the target form
@@ -69,7 +71,9 @@ function fieldsVerification(formID, verification) {
  */
 function sendNewEvent() {
     var formData = serializeForm("#add-event");
-    console.log(formData);
+    formData.id_campus = connected_user.id_campus;
+    formData.id_user = connected_user.id;
+
     var verification = [
         ['name','Pas de caractères spéciaux.','^[_A-z0-9]*((-|\\s)*[_A-z0-9])*$'],
         ['description','required',''],
@@ -79,8 +83,8 @@ function sendNewEvent() {
     ];
 
     if(!fieldsVerification('#add-event', verification)) {
-        sendPostAjax('/addEvent', JSON.stringify(formData));
-        $("#add-goodie").trigger("reset");
+        apiAJAXPost('/events', JSON.stringify(formData));
+        $("#add-event").trigger("reset");
     }
 }
 
@@ -89,7 +93,7 @@ function sendNewEvent() {
  */
 function sendNewGoodie() {
     var formData = serializeForm("#add-goodie");
-
+    formData.id_campus = connected_user.id_campus;
     var verification = [
         ['name','Pas de caractères spéciaux.','^[_A-z0-9]*((-|\\s)*[_A-z0-9])*$'],
         ['description','required',''],
@@ -99,7 +103,7 @@ function sendNewGoodie() {
     ];
 
     if(!fieldsVerification('#add-goodie', verification)) {
-        sendPostAjax('/addGoodie', JSON.stringify(formData));
+        apiAJAXPost('/goodies', JSON.stringify(formData));
         $("#add-goodie").trigger("reset");
     }
 }
@@ -111,12 +115,13 @@ function getRegisterList(eventID, fileFormat) {
 /**
  * Delete an event
  */
-function deleteEventModal(eventName, eventID) {
+function deleteEventModal(eventName, eventID, rowNumber) {
     $('#modal-event-delete-name').text(eventName);
-    $('#modal-event-delete-function').attr("onclick","deleteEvent("+eventID+")");
+    $('#modal-event-delete-function').attr("onclick","deleteEvent("+eventID+","+rowNumber+")");
 }
 
-function deleteEvent(eventID) {
-    var param = {"eventID":eventID};
-    sendDeleteAjax('/', param);
+function deleteEvent(eventID, rowNumber) {
+    console.log(rowNumber);
+    document.getElementById("past-event-list").deleteRow(rowNumber+1); 
+    apiAJAXDelete('/events/'+eventID);
 }

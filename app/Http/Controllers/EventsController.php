@@ -32,14 +32,14 @@ class EventsController extends Controller
     
             $response = array(
                 'status' => 'success',
-                'msg' => 'Inscription réussi !',
+                'msg' => 'Inscription réussie !',
             );
             return response()->json($response);
         }
         catch (\Exception $e) {
             $response = array(
                 'status' => 'failure',
-                'msg' => 'Whoops, une erreur c\'est produite durant l\'inscription ...'
+                'msg' => 'Whoops, une erreur s\'est produite durant l\'inscription ...'
             );
             return response()->json($response);
         }

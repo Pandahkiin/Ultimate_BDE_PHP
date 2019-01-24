@@ -10,6 +10,7 @@
             <input type="date" class="form-control" name="date" id="add-event-date" required>
             <label class="form-text text-danger"></label>
         </div>
+        
         <div class="form-group">
             <label for="add-event-image">Image d'illustration</label>
             <input type="text" class="form-control" name="image" id="add-event-image" placeholder="http://" required>
@@ -21,8 +22,8 @@
             <label class="form-text text-danger"></label>
         </div>
         <div class="form-group">
-            <label for="add-event-recurrence">Récurrence</label>
-            <select class="form-control" id="add-event-recurrence" name="reccurency">
+            <label for="add-event-id_repetition">Récurrence</label>
+            <select class="form-control" id="add-event-id_repetition" name="id_repetition">
                  @foreach ($repetitions as $repetition)
                     <option value="{{ $repetition->id }}"> {{ $repetition->repetition }} </option>
                 @endforeach
