@@ -41,6 +41,7 @@ class AdminController extends Controller
             ->get();
         return view('admin.main', compact('repetitions','categories','events','registeredEvents'));
     }
+
     public function addEvent(Request $request) {
         $newEvent = json_decode($request->message);
 
@@ -65,7 +66,7 @@ class AdminController extends Controller
         }
         catch (\Exception $e) {
             $response = array(
-                'status' => 'failure',
+                'status' => 'danger',
                 'msg' => $e->getMessage() //'Whoops, une erreur c\'est produite durant la création de l\'évenement'
             );
             return response()->json($response);
@@ -82,7 +83,6 @@ class AdminController extends Controller
                 'description' => $newGoodie->description,
                 'price' => $newGoodie->price,
                 'stock' => $newGoodie->stock,
-                'purchase_order' => 0,
                 'id_Campuses' => Auth::user()->id_campus,
                 'id_Categories' => $newGoodie->categorie
             ]);
@@ -95,10 +95,18 @@ class AdminController extends Controller
         }
         catch (\Exception $e) {
             $response = array(
-                'status' => 'failure',
+                'status' => 'danger',
                 'msg' => $e->getMessage()
             );
             return response()->json($response);
         }
+    }
+
+    public function getRegisterList(Request $request) {
+        $pathToFile = storage_path('/app/test.csv');
+        $headers = [
+            'Content-Type' => 'application/csv'
+        ];
+        return response()->download($pathToFile, 'test.csv', $headers);
     }
 }

@@ -15,11 +15,15 @@
                 <th scope="row">{{ $event->name }}</th>
                 <td>{{ $event->date }}</td>
                 <td>
-                    {{$registeredEvents->where('id_Events','=',$event->id)->first()->total}}
+                    @if($registeredEvents->where('id_Events','=',$event->id)->first())
+                        {{$registeredEvents->where('id_Events','=',$event->id)->first()->total}}
+                    @else
+                        {{0}}
+                    @endif
                 </td>
                 <td>
-                    <button type="button" class="btn btn-outline-dark m-1" title="Télécharger au format CSV">CSV</button>
-                    <button type="button" class="btn btn-outline-dark m-1" title="Télécharger au format PDF">PDF</button>
+                    <button onclick="getRegisterList(12, 'CSV')" class="btn btn-outline-dark m-1" title="Télécharger au format CSV" download>CSV</button>
+                    <button class="btn btn-outline-dark m-1" title="Télécharger au format PDF">PDF</button>
                 </td>
                 <td><a href="#" class="text-danger"><i class="fas fa-trash-alt"></i></a></td>
             </tr>

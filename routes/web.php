@@ -30,6 +30,7 @@ Route::group(['middleware' => 'App\Http\Middleware\BDEMiddleware'], function() {
     Route::get('/administration', 'AdminController@index')->name('Admin');
     Route::post('/addEvent','AdminController@addEvent');
     Route::post('/addGoodie','AdminController@addGoodie');
+    Route::get('/getRegisterList','AdminController@getRegisterList');
 });
 
 /* Ajax interaction routes */

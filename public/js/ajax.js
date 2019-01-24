@@ -1,34 +1,5 @@
 var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
 
-/* Alert animation */
-function delayAlertPopUp() {
-    $('#alert').delay(3000).queue(function() {
-        $('#alert').addClass("alert-hidden");
-        $('#alert').dequeue();
-    });
-}
-
-/* Function launch if ajax is successful */
-function ajaxSuccess(response) {
-    $('#alert').text(response.msg);
-    $('#alert').removeClass();
-
-    if(response.status == 'success') {
-        $('#alert').addClass('alert alert-success');
-        delayAlertPopUp();
-    }
-    else {
-        $('#alert').addClass('alert alert-danger');
-        delayAlertPopUp();
-    }
-}
-/* Function launch if ajax fail */
-function ajaxFail(response) {
-    $('#alert').text(response.msg);
-    $('#alert').text('Une erreur c\'est produite lors de l\'envoi des données.');
-    $('#alert').removeClass();
-    $('#alert').addClass('alert alert-danger').delayAlertPopUp();
-}
 /**
  * POST Ajax function
  * @param {string} url target url
@@ -43,7 +14,24 @@ function sendPostAjax(url, data) {
         data: {_token: CSRF_TOKEN, message:data},
         dataType: 'JSON',
 
-        success: function(response) {ajaxSuccess(response)},
-        fail: function(response) {ajaxFail(response)}
+        success: function(response) {alertPopUp(response.status, response.msg)},
+        fail: function(response) {alertPopUp(response.status, response.msg)},
+        timeout: 3000,
+        error: function(jqXHR, textStatus, errorThrown) {
+            if(textStatus==="timeout") {
+                alertPopUp('warning', 'Délai d\'attente dépassé ...');
+            }
+        }
+    });
+}
+
+function sendGetAjax(url, param) {
+    $.ajax({
+        // the route pointing to the post function
+        url: url,
+        type: 'GET',
+        // send the csrf-token and the input to the controller
+        data: param,
+        timeout: 3000
     });
 }

@@ -53,9 +53,9 @@ function fieldsVerification(formID, verification) {
  * Get data from the form, verify and send it with ajax
  */
 function sendNewEvent() {
-    formData = serializeForm("#add-event");
+    var formData = serializeForm("#add-event");
 
-    verification = [
+    var verification = [
         ['name','Pas de caractères spéciaux.','^[_A-z0-9]*((-|\\s)*[_A-z0-9])*$'],
         ['description','required',''],
         ['date','required',''],
@@ -68,9 +68,9 @@ function sendNewEvent() {
 }
 
 function sendNewGoodie() {
-    formData = serializeForm("#add-goodie");
+    var formData = serializeForm("#add-goodie");
 
-    verification = [
+    var verification = [
         ['name','Pas de caractères spéciaux.','^[_A-z0-9]*((-|\\s)*[_A-z0-9])*$'],
         ['description','required',''],
         ['image','Url invalide','https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)'],
@@ -79,5 +79,9 @@ function sendNewGoodie() {
     ];
 
     if(!fieldsVerification('#add-goodie', verification))
-        sendPostAjax('/addGoodie',JSON.stringify(formData));
+        sendPostAjax('/addGoodie', JSON.stringify(formData));
+}
+
+function getRegisterList(eventID, fileFormat) {
+    window.location="/getRegisterList?_token="+CSRF_TOKEN+"&eventID="+eventID+"&fileFormat="+fileFormat;
 }

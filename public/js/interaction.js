@@ -1,3 +1,19 @@
+/**
+ * Show an alert message
+ * @param {string} status bootstrap alert class, define the style
+ * @param {string} message message to show
+ */
+function alertPopUp(status, message) {
+    $('#alert').text(message);
+    $('#alert').removeClass();
+    $('#alert').addClass('alert alert-'+status);
+
+    $('#alert').delay(3000).queue(function() {
+        $('#alert').addClass("alert-hidden");
+        $('#alert').dequeue();
+    });
+}
+
 function registerEvent(eventID, element) {
     sendPostAjax('/registerEvent', eventID);
 
