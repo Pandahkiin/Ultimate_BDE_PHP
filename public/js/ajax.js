@@ -17,20 +17,22 @@ function apiAJAXPost(url, data) {
         data: data,
         crossDomain: true,
         dataType: 'JSON',
-
-        success: function(response) {
-            alertPopUp(response.status, response.message);
-        },
-        fail: function(response) {
-            alertPopUp(response.status, response.message);
-        },
         timeout: 3000,
         error: function(jqXHR, textStatus, errorThrown) {
             if(textStatus==="timeout") {
                 alertPopUp('warning', 'Délai d\'attente dépassé ...');
             }
         }
-    });
+    }).done(
+        function(response) {
+            alertPopUp(response.status, response.message);
+        }
+    ).fail(
+        function(jqXHR) {
+            response = JSON.parse(jqXHR.responseText);
+            alertPopUp(response.status, response.message);
+        }
+    );
 }
 
 function sendPostAjax(url, data) {

@@ -20,11 +20,9 @@
   </div>
   
   <div class="card">
-    
     <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#adminAddGoodie" aria-expanded="false" aria-controls="adminAddGoodie">
         Ajouter un goodie
     </button>
-
     <div class="collapse" id="adminAddGoodie">
         <div class="card card-body">
             <form id="add-goodie">
@@ -47,7 +45,7 @@
                     <label for="add-goodie-id_category">Catégorie</label>
                     <select class="form-control" id="add-goodie-id_category" name="id_category">
                         @foreach ($categories as $categorie)
-                            <option value="{{ $categorie->id }}"> {{ $categorie->name }} </option>
+                            <option value="8"> {{ $categorie->name }} </option>
                         @endforeach
                     </select>
                 </div>
@@ -66,32 +64,22 @@
         </div>
     </div>
 
-    <table class="table table-striped" id="goodie-list">
+    <table id="AJAXgoodieTable" class="table display">
         <thead>
             <tr>
-                <th scope="col"></th>
+                <th scope="col">Nom</th>
                 <th scope="col">Prix</th>
-                <th scope="col">Description</th>
-                <th scope="col">Stock</th>
-                <th scope="col">Nombre commande</th>
-                <th scope="col"></th>
+                <th scope="col">Déscription</th>
+                <th scope="col">image</th>
+                <th scope="col">Commandes totales</th>
+                <th scope="col">Catégorie</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($goodies as $goodie)
             <tr>
-                <th scope="row">{{ $goodie->name }}</th>
-                <td>{{ $goodie->price }} €</td>
-                <td>{{ $goodie->description }}</td>
-                <td>{{ $goodie->stock }}</td>
-                <td>{{ $goodie->total_orders }}</td>
-                <td>
-                    <button onclick="deleteEventModal('{{$goodie->name}}',{{$goodie->id}}, $(this).closest('td').parent()[0].sectionRowIndex)" type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#modal-goodie-delete">
-                        <i class="fas fa-trash-alt"></i>
-                    </button>
-                </td>
+                <td scope="col">Row 1 Data 1</td>
+                <td scope="col">Row 1 Data 2</td>
             </tr>
-            @endforeach
         </tbody>
     </table>
 </div>

@@ -104,7 +104,7 @@ function sendNewGoodie() {
 
     if(!fieldsVerification('#add-goodie', verification)) {
         apiAJAXPost('/goodies', JSON.stringify(formData));
-        $("#add-goodie").trigger("reset");
+        //$("#add-goodie").trigger("reset");
     }
 }
 

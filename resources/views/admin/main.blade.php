@@ -31,7 +31,7 @@
     <div class="card">
         <div class="card-header" id="headingPastEvent">
             <h5 class="mb-0">
-                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapsePastEvent" aria-expanded="true" aria-controls="collapseAdminEvent">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapsePastEvent" aria-expanded="true" aria-controls="collapsePastEvent">
                     Administrer événements
                 </button>
             </h5>
