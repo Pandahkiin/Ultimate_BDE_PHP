@@ -5,7 +5,7 @@
 <div class="container mx-auto p-4">
     <div class="row">
         <div class="col-6">
-            <h3>Derniere suggestions</h3>
+            <h3>Dernières suggestions</h3>
         </div>
         <div class="col-6">
             @auth
@@ -42,6 +42,31 @@
             </div>
         @endauth
     </div>
+    @foreach ($events as $event)
+    <div class="row">
+        <div class="card m-2 w-100">
+            <div class="card-header">
+                <div class="row">
+                    <h4 class="col m-0">{{$event->name}}</h4>
+                    <cite class="col text-right">Par {{$event->user->firstname}} {{$event->user->lastname}}</cite>
+                </div>
+            </div>
+            <div class="card-body">
+                <blockquote class="blockquote mb-0">
+                    <p>{{$event->description}}</p>
+                </blockquote>
+                <div class="float-right">
+                    <label class="text-secondary">{{App\Models\Site\Vote::totalUsersVote($event->id)}} vote(s)</label>
+                    @if(App\Models\Site\Vote::haveUserVote($event->id))
+                        <button type="button" class="btn btn-outline-danger"><i class="far fa-thumbs-down"></i></i></button>
+                    @else
+                        <button type="button" class="btn btn-outline-success"><i class="far fa-thumbs-up"></i></button>
+                    @endif
+                </div>
+            </div>
+        </div>
+    </div>
+    @endforeach
 </div>
 
 @endsection

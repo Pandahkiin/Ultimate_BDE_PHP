@@ -11,6 +11,8 @@ function sendNewEvent() {
     formData.id_campus = connected_user.id_campus;
     formData.id_user = connected_user.id;
 
+    console.log(formData);
+
     var verification = [
         ['name','Pas de caractères spéciaux.','^[_A-z0-9]*((-|\\s)*[_A-z0-9])*$'],
         ['description','required',''],
@@ -20,7 +22,7 @@ function sendNewEvent() {
     ];
 
     if(!fieldsVerification('#add-event', verification)) {
-        apiAJAXPost('/events', JSON.stringify(formData));
+        apiAJAXPost('/events', formData);
         $("#add-event").trigger("reset");
     }
 }
@@ -31,6 +33,7 @@ function sendNewEvent() {
 function sendNewGoodie() {
     var formData = serializeForm("#add-goodie");
     formData.id_campus = connected_user.id_campus;
+
     var verification = [
         ['name','Pas de caractères spéciaux.','^[_A-z0-9]*((-|\\s)*[_A-z0-9])*$'],
         ['description','required',''],
@@ -40,7 +43,7 @@ function sendNewGoodie() {
     ];
 
     if(!fieldsVerification('#add-goodie', verification)) {
-        apiAJAXPost('/goodies', JSON.stringify(formData));
+        apiAJAXPost('/goodies', formData);
         $("#add-goodie").trigger("reset");
     }
 }

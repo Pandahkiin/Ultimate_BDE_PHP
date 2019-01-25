@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Site\Repetition;
+use App\Models\Site\Event;
 
 class SuggestionsController extends Controller
 {
@@ -15,7 +16,8 @@ class SuggestionsController extends Controller
      */
     public function index()
     {
+        $events = Event::all();
         $repetitions = Repetition::all();
-        return view('suggestions.main', compact('repetitions'));
+        return view('suggestions.main', compact('repetitions', 'events'));
     }
 }

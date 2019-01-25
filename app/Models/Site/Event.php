@@ -12,4 +12,8 @@ class Event extends Model
     protected $fillable = [
         'name' , 'date', 'description', 'image','price_participation', 'id_Campuses','id_Repetitions', 'id_Users', 'id_Approbations'
     ];
+
+    public function user() {
+        return $this->hasOne('App\Models\User', 'id', 'id_Users');
+    }
 }

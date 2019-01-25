@@ -10,16 +10,16 @@ $.ajaxSetup({
  * @param {string} url target url
  * @param {JSON} data JSON formated data to send
  */
-function apiAJAXPost(url, data) {
+function apiAJAXPost(url, data, callbackSuccess) {
     $.ajax({
         // the route pointing to the post function
         url: 'http://127.0.0.1:3000/api'+url,
         type: 'POST',
         headers: {
-            'Content-Type' : 'application/json'
+            'Content-Type': 'application/json'
         },
         // send the csrf-token and the input to the controller
-        data: data,
+        data: JSON.stringify(data),
         crossDomain: true,
         dataType: 'JSON',
         timeout: 3000,
@@ -31,6 +31,7 @@ function apiAJAXPost(url, data) {
     }).done(
         function(response) {
             alertPopUp(response.status, response.message);
+            callbackSuccess();
         }
     ).fail(
         function(jqXHR) {

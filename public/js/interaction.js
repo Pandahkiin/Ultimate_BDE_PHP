@@ -28,9 +28,9 @@ function unregisterEvent(eventID, element) {
 function sendNewSuggestion() {
     var formData = serializeForm("#add-suggestion");
     formData.id_campus = connected_user.id_campus;
-    formData.image = '';
+    formData.image = '0';
     formData.id_user = connected_user.id;
-    formData.date = '0-0-0';
+    formData.date = '1970-1-1';
     formData.price = '0';
 
     console.log(formData);
@@ -41,7 +41,7 @@ function sendNewSuggestion() {
     ];
 
     if(!fieldsVerification('#add-suggestion', verification)) {
-        apiAJAXPost('/events', JSON.stringify(formData));
+        apiAJAXPost('/events', formData);
         $("#add-suggestion").trigger("reset");
     }
 }
