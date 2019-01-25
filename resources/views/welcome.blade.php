@@ -1,21 +1,14 @@
 @extends('layouts.template')
 
 @section('content')
-<div class="content">
-    <div class="title m-b-md">
-        @auth
-            {{ Auth::user()->role->name }}
-        @else
-            レロレロレロレロ
-        @endauth
+<div>
+    <h1 class="text-center mt-3">Bienvenue au BDE du CESI</h1>
+        <div>
+            @auth
+                {{ Auth::user()->role->name }}
+            @else
+                レロレロレロレロ
+            @endauth
+        </div>
     </div>
-    <div class="links">
-        <a href="https://laravel.com/docs">Documentation</a>
-        <a href="https://laracasts.com">Laracasts</a>
-        <a href="https://laravel-news.com">News</a>
-        <a href="https://nova.laravel.com">Nova</a>
-        <a href="https://forge.laravel.com">Forge</a>
-        <a href="https://github.com/laravel/laravel">GitHub</a>
-    </div>
-</div>
 @endsection
