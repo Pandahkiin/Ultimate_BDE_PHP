@@ -10,7 +10,9 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
+    <script src="{{ asset('vendor/jquery-3.3.1.min.js') }}"></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/DOMInteraction.js') }}" defer></script>
     <script src="{{ asset('js/interaction.js') }}" defer></script>
     <script src="{{ asset('js/ajax.js') }}" defer></script>
 
@@ -21,13 +23,16 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito|Staatliches|Roboto" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
     <link href="{{ asset('css/nav_foot.css') }}" rel="stylesheet">
     <link href="{{ asset('css/shop.css') }}" rel="stylesheet">
 
     <link href="{{ asset('vendor/DataTables/datatables.min.css') }}" rel="stylesheet">
+
+    <script>
+        var connected_user = ({!! json_encode(Auth::user()) !!});
+    </script>
 </head>
 <body>
     <div id="alert" class="alert alert-hidden" onclick="$(this).addClass('alert-hidden')">Alert</div>

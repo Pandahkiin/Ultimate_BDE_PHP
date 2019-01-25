@@ -1,19 +1,3 @@
-/**
- * Show an alert message
- * @param {string} status bootstrap alert class, define the style
- * @param {string} message message to show
- */
-function alertPopUp(status, message) {
-    $('#alert').text(message);
-    $('#alert').removeClass();
-    $('#alert').addClass('alert alert-'+status);
-
-    $('#alert').delay(3000).queue(function() {
-        $('#alert').addClass("alert-hidden");
-        $('#alert').dequeue();
-    });
-}
-
 function registerEvent(eventID, element) {
     sendPostAjax('/registerEvent', eventID);
 
@@ -32,4 +16,20 @@ function unregisterEvent(eventID, element) {
     $(element).text('S\'inscrire');
 
     $(element).attr("onclick","registerEvent("+eventID+",this)");
+}
+
+function sendNewSuggestion() {
+    var formData = serializeForm("#add-suggestion");
+    formData.id_campus = connected_user.id_campus;
+    formData.id_user = connected_user.id;
+
+    var verification = [
+        ['name','Pas de caractères spéciaux.','^[_A-z0-9]*((-|\\s)*[_A-z0-9])*$'],
+        ['description','required','']
+    ];
+
+    if(!fieldsVerification('#add-suggestion', verification)) {
+        apiAJAXPost('/events', JSON.stringify(formData));
+        $("#add-suggestion").trigger("reset");
+    }
 }

@@ -65,35 +65,37 @@
         </div>
     </div>
 
-    <table class="table table-striped" id="past-event-list">
-        <thead>
-            <tr>
-                <th scope="col"></th>
-                <th scope="col">Date</th>
-                <th scope="col">Nombre inscrit</th>
-                <th scope="col">Liste des inscrit</th>
-                <th scope="col"></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($events as $event)
-            <tr>
-                <th scope="row">{{ $event->name }}</th>
-                <td>{{ $event->date }}</td>
-                <td>
-                    {{App\Models\Site\Register::totalUsersRegistered($event->id)}}
-                </td>
-                <td>
-                    <button onclick="getRegisterList(12, 'CSV')" class="btn btn-outline-dark m-1" title="Télécharger au format CSV" download>CSV</button>
-                    <button class="btn btn-outline-dark m-1" title="Télécharger au format PDF">PDF</button>
-                </td>
-                <td>
-                    <button onclick="deleteEventModal('{{$event->name}}',{{$event->id}}, $(this).closest('td').parent()[0].sectionRowIndex)" type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#modal-event-delete">
-                        <i class="fas fa-trash-alt"></i>
-                    </button>
-                </td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
+    <div class="card card-body">
+        <table class="table table-striped" id="past-event-list">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Date</th>
+                    <th>Nombre inscrit</th>
+                    <th>Liste des inscrit</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($events as $event)
+                <tr>
+                    <th>{{ $event->name }}</th>
+                    <td>{{ $event->date }}</td>
+                    <td>
+                        {{App\Models\Site\Register::totalUsersRegistered($event->id)}}
+                    </td>
+                    <td>
+                        <button onclick="getRegisterList(12, 'CSV')" class="btn btn-outline-dark m-1" title="Télécharger au format CSV" download>CSV</button>
+                        <button class="btn btn-outline-dark m-1" title="Télécharger au format PDF">PDF</button>
+                    </td>
+                    <td>
+                        <button onclick="deleteEventModal('{{$event->name}}',{{$event->id}}, $(this).closest('td').parent()[0].sectionRowIndex)" type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#modal-event-delete">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
 </div>

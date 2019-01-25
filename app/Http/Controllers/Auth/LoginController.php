@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
+use GuzzleHttp\Exception\GuzzleException;
+use GuzzleHttp\Client;
+
 use App\Models\User;
 
 class LoginController extends Controller
@@ -32,8 +35,9 @@ class LoginController extends Controller
 
     public function authenticated(Request $request, User $user)
     {
-        if($user->role->name === "Membre BDE")
-            User::where('id',$user->id)->update(['token' => str_random(60)]);
+        $client = new Client();
+        $res = $client->request('POST', 'http://127.0.0.1/api/auth/signin', ['password' => $user->password, 'email' => $user->email]);
+        $res->getBody();
     }
     /**
      * Create a new controller instance.

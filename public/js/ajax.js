@@ -1,5 +1,10 @@
 var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
 
+$.ajaxSetup({
+    headers: {
+        'x-access-token': APItoken
+    }
+});
 /**
  * POST Ajax function
  * @param {string} url target url

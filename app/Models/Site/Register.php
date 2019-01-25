@@ -44,6 +44,6 @@ class Register extends Model
         if($registeredEvents)
             return $registeredEvents->total;
         else
-            return 'Auncun';
+            return 'Aucun';
     }
 }
