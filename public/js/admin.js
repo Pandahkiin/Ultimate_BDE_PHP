@@ -113,15 +113,25 @@ function getRegisterList(eventID, fileFormat) {
 }
 
 /**
- * Delete an event
+ * Delete a event, show the modal with event name and function to api
  */
 function deleteEventModal(eventName, eventID, rowNumber) {
     $('#modal-event-delete-name').text(eventName);
     $('#modal-event-delete-function').attr("onclick","deleteEvent("+eventID+","+rowNumber+")");
 }
-
 function deleteEvent(eventID, rowNumber) {
-    console.log(rowNumber);
     document.getElementById("past-event-list").deleteRow(rowNumber+1); 
     apiAJAXDelete('/events/'+eventID);
+}
+
+/**
+ * Delete a goodie, show the modal with godie name and function to api
+ */
+function deleteEventModal(goodieName, goodieID, rowNumber) {
+    $('#modal-goodie-delete-name').text(goodieName);
+    $('#modal-goodie-delete-function').attr("onclick","deleteEvent("+goodieID+","+rowNumber+")");
+}
+function deleteEvent(goodieID, rowNumber) {
+    document.getElementById("goodie-list").deleteRow(rowNumber+1); 
+    apiAJAXDelete('/goodies/'+goodieID);
 }

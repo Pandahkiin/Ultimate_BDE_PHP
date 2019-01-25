@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+
+use App\Models\User;
 
 class LoginController extends Controller
 {
@@ -27,6 +30,11 @@ class LoginController extends Controller
      */
     protected $redirectTo = '/home';
 
+    public function authenticated(Request $request, User $user)
+    {
+        if($user->role->name === "Membre BDE")
+            User::where('id',$user->id)->update(['token' => str_random(60)]);
+    }
     /**
      * Create a new controller instance.
      *

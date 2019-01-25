@@ -12,29 +12,16 @@
 </script>
 
 <div id="adminAccordion">
+
     <div class="card">
-        <div class="card-header" id="headingAdminEvent">
+        <div class="card-header" id="headingGoodies">
             <h5 class="mb-0">
-                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseAdminEvent" aria-expanded="true" aria-controls="collapseAdminEvent">
-                    Ajouter des événements
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseGoodies" aria-expanded="true" aria-controls="collapseGoodies">
+                    Administrer goodies
                 </button>
             </h5>
         </div>
-        <div id="collapseAdminEvent" class="collapse" aria-labelledby="headingAdminEvent" data-parent="#adminAccordion">
-            <div class="card-body">
-                @include('admin.addEvent')
-            </div>
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-header" id="headingAdminGoodies">
-            <h5 class="mb-0">
-                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseAdminGoodies" aria-expanded="true" aria-controls="collapseAdminGoodies">
-                    Ajouter des goodies
-                </button>
-            </h5>
-        </div>
-        <div id="collapseAdminGoodies" class="collapse" aria-labelledby="headingAdminGoodies" data-parent="#adminAccordion">
+        <div id="collapseGoodies" class="collapse" aria-labelledby="headingGoodies" data-parent="#adminAccordion">
             <div class="card-body">
                 @include('admin.goodies')
             </div>
@@ -50,11 +37,11 @@
             </h5>
         </div>
         <div id="collapsePastEvent" class="collapse" aria-labelledby="headingPastEvent" data-parent="#adminAccordion">
-                <div class="card-body">
-                    @include('admin.pastEvents')
-                </div>
+            <div class="card-body">
+                @include('admin.events')
             </div>
         </div>
+    </div>
     
     <div class="card">
         <div class="card-header" id="headingAdminSuggestions">

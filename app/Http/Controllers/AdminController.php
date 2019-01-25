@@ -35,8 +35,9 @@ class AdminController extends Controller
         $events = Event::all();
         $repetitions = Repetition::all();
         $categories = Categorie::all();
+        $goodies = Goodie::all();
 
-        return view('admin.main', compact('repetitions','categories','events'));
+        return view('admin.main', compact('repetitions','categories','events', 'goodies'));
     }
 
     public function getRegisterList(Request $request) {
