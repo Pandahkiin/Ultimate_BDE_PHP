@@ -1,5 +1,5 @@
 <div class="card col-md-12 border-danger rounded-0">
-        <div class="row px-3 py-3">
+        <div class="row">
             <div class="w-100 bg-light"><h2 class="card-title text-center w-100">{{ $pastEvent->name }}</h2></div>
             <div class="col-md-6">
             <div class="card-block">

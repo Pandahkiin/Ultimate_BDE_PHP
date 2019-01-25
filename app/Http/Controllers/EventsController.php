@@ -19,7 +19,8 @@ class EventsController extends Controller
     {
         $events = Event::whereDate('date', '>', date("Y-m-d"))->where('id_Approbations','2')->get();
         $pastEvents = Event::whereDate('date', '<', date("Y-m-d"))->where('id_Approbations','2')->get();
-        return view('events.main', compact('events', 'pastEvents'));
+        $topEvents = Event::whereDate('date', '>', date("Y-m-d"))->where('id_Approbations','4')->get();
+        return view('events.main', compact('events', 'pastEvents', 'topEvents'));
     }
 
     public function registerEvent(Request $request) {
