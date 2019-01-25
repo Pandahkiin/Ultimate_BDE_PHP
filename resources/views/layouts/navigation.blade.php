@@ -11,18 +11,18 @@
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav navbarFont">
       <li class="nav-item">
-        <a class="nav-link mx-1" href="{{ route('Evenements') }}"><i class="far fa-calendar mx-1"></i> Événements</a>
+        <a class="nav-link mx-1" href="{{ route('Evenements') }}">
+          <i class="far fa-calendar mx-1"></i> Événements</a>
       </li>
       <li class="nav-item">
         <a class="nav-link mx-1" href="{{ route('Boite à idées') }}"><i class="far fa-lightbulb mx-1"></i> Boite à idées</a>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle mx-1" href="{{ route('Boutique') }}" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle mx-1" href="{{ route('Boutique') }}" id="shopDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-shopping-cart mx-1"></i> Boutique
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        <div class="dropdown-menu" aria-labelledby="shopDropdown">
           <a class="dropdown-item" href="{{ route('Boutique') }}">Produits</a>
-          <a class="dropdown-item" href="{{ route('Boutique') }}">Catégories</a>
           <a class="dropdown-item" href="{{ route('Boutique') }}">Panier</a>
         </div>
       </li>
