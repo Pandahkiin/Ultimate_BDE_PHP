@@ -45,7 +45,7 @@
                     <label for="add-goodie-id_category">Catégorie</label>
                     <select class="form-control" id="add-goodie-id_category" name="id_category">
                         @foreach ($categories as $categorie)
-                            <option value="8"> {{ $categorie->name }} </option>
+                            <option value="{{ $categorie->id }}"> {{ $categorie->category }} </option>
                         @endforeach
                     </select>
                 </div>
@@ -64,22 +64,25 @@
         </div>
     </div>
 
-    <table id="AJAXgoodieTable" class="table display">
-        <thead>
-            <tr>
-                <th scope="col">Nom</th>
-                <th scope="col">Prix</th>
-                <th scope="col">Déscription</th>
-                <th scope="col">image</th>
-                <th scope="col">Commandes totales</th>
-                <th scope="col">Catégorie</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td scope="col">Row 1 Data 1</td>
-                <td scope="col">Row 1 Data 2</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="card card-body">
+        <table id="AJAXgoodieTable" class="table display">
+            <thead>
+                <tr>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Prix</th>
+                    <th scope="col">Déscription</th>
+                    <th scope="col">Stock</th>
+                    <th scope="col">Commandes totales</th>
+                    <th scope="col">Campus d'origine</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td scope="col">Row 1 Data 1</td>
+                    <td scope="col">Row 1 Data 2</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>

@@ -1,9 +1,26 @@
-
 $.ajaxSetup({
     headers: {
         'x-access-token': APItoken
     }
 });
+
+$('#AJAXgoodieTable').DataTable( {
+    ajax: {
+        url: 'http://127.0.0.1:3000/api/goodies',
+        dataSrc: function (json) {
+            console.log(json.result);
+            return json.result;
+        },
+        columns: [
+            { data: 'name' },
+            { data: 'price' },
+            { data: 'description' },
+            { data: 'stock' },
+            { data: 'total_orders' },
+            { data: 'location' }
+        ]
+    }
+} );
 
 function connectToAPI() {
     $.ajax({
@@ -104,7 +121,7 @@ function sendNewGoodie() {
 
     if(!fieldsVerification('#add-goodie', verification)) {
         apiAJAXPost('/goodies', JSON.stringify(formData));
-        //$("#add-goodie").trigger("reset");
+        $("#add-goodie").trigger("reset");
     }
 }
 

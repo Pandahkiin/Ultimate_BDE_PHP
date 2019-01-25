@@ -13,6 +13,8 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/interaction.js') }}" defer></script>
     <script src="{{ asset('js/ajax.js') }}" defer></script>
+
+    <script src="{{ asset('vendor/DataTables/datatables.min.js') }}" defer></script>
     @stack('head')
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -24,6 +26,8 @@
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
     <link href="{{ asset('css/nav_foot.css') }}" rel="stylesheet">
     <link href="{{ asset('css/shop.css') }}" rel="stylesheet">
+
+    <link href="{{ asset('vendor/DataTables/datatables.min.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="alert" class="alert alert-hidden" onclick="$(this).addClass('alert-hidden')">Alert</div>
@@ -38,6 +42,4 @@
         @include('layouts.footer')
     </div>
 </body>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
 </html>
