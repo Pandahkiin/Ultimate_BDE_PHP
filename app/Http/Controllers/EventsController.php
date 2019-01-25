@@ -17,8 +17,8 @@ class EventsController extends Controller
      */
     public function index()
     {
-        $events = Event::whereDate('date', '>', date("Y-m-d"))->get();
-        $pastEvents = Event::whereDate('date', '<', date("Y-m-d"))->get();
+        $events = Event::whereDate('date', '>', date("Y-m-d"))->where('id_Approbations','2')->get();
+        $pastEvents = Event::whereDate('date', '<', date("Y-m-d"))->where('id_Approbations','2')->get();
         return view('events.main', compact('events', 'pastEvents'));
     }
 

@@ -47,7 +47,7 @@
                     <label for="add-goodie-id_category">Catégorie</label>
                     <select class="form-control" id="add-goodie-id_category" name="id_category">
                         @foreach ($categories as $categorie)
-                            <option value="{{ $categorie->id }}"> {{ $categorie->name }} </option>
+                            <option value="{{ $categorie->id }}"> {{ $categorie->category }} </option>
                         @endforeach
                     </select>
                 </div>

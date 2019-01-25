@@ -33,6 +33,7 @@
 
     <script>
         var connected_user = ({!! json_encode(Auth::user()) !!});
+        var APItoken = {!! json_encode(Session::get('APItoken')) !!};
     </script>
 </head>
 <body>

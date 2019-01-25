@@ -6,10 +6,6 @@
 <script src="{{ asset('js/admin.js') }}" defer></script>
 @endpush
 
-<script>
-    var APItoken = {!! json_encode(Auth::user()->token) !!};
-</script>
-
 <div id="adminAccordion">
 
     <div class="card">

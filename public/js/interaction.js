@@ -1,5 +1,11 @@
 function registerEvent(eventID, element) {
-    sendPostAjax('/registerEvent', eventID);
+
+    var data = {
+        id_user: connected_user.id,
+        id_event: eventID
+    };
+
+    apiAJAXPost('/registers', data);
 
     $(element).addClass('btn-outline-primary');
     $(element).removeClass('btn-primary');
@@ -9,7 +15,8 @@ function registerEvent(eventID, element) {
 }
 
 function unregisterEvent(eventID, element) {
-    sendPostAjax('/unregisterEvent', eventID);
+
+    apiAJAXDelete('/users/'+connected_user.id+'/events/'+eventID);
 
     $(element).removeClass('btn-outline-primary');
     $(element).addClass('btn-primary');
@@ -21,7 +28,12 @@ function unregisterEvent(eventID, element) {
 function sendNewSuggestion() {
     var formData = serializeForm("#add-suggestion");
     formData.id_campus = connected_user.id_campus;
+    formData.image = '';
     formData.id_user = connected_user.id;
+    formData.date = '0-0-0';
+    formData.price = '0';
+
+    console.log(formData);
 
     var verification = [
         ['name','Pas de caractères spéciaux.','^[_A-z0-9]*((-|\\s)*[_A-z0-9])*$'],

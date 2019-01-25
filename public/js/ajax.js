@@ -40,6 +40,22 @@ function apiAJAXPost(url, data) {
     );
 }
 
+function apiAJAXDelete(url) {
+    $.ajax({
+        url: 'http://127.0.0.1:3000/api'+url,
+        type: 'DELETE',
+        crossDomain: true,
+        dataType: 'JSON',
+        success: function(response) {
+            alertPopUp(response.status, response.message);
+        },
+        fail: function(response) {
+            alertPopUp(response.status, response.message);
+        },
+    });
+    
+}
+
 function sendPostAjax(url, data) {
     $.ajax({
         // the route pointing to the post function
@@ -57,20 +73,4 @@ function sendPostAjax(url, data) {
             }
         }
     });
-}
-
-function apiAJAXDelete(url) {
-    $.ajax({
-        url: 'http://127.0.0.1:3000/api'+url,
-        type: 'DELETE',
-        crossDomain: true,
-        dataType: 'JSON',
-        success: function(response) {
-            alertPopUp(response.status, response.message);
-        },
-        fail: function(response) {
-            alertPopUp(response.status, response.message);
-        },
-    });
-    
 }

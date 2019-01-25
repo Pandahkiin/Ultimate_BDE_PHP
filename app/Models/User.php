@@ -10,6 +10,8 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    public static $APItoken;
+
     protected $connection = 'users_data';
     /**
      * The attributes that are mass assignable.

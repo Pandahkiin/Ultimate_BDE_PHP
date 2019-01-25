@@ -50,9 +50,6 @@ html, body {
     height: 100%;
     width: 100%;
 }
-main {
-    padding-bottom: 50px;
-}
 #alert {
     position: fixed;
     width: 50%;
