@@ -16,16 +16,8 @@ class Vote extends Model
         'id_Users', 'id_Events'
     ];
 
-    public function user() {
-        return $this->hasOne('App\Models\User', 'id', 'id_Users');
-    }
-    public function event() {
-        return $this->hasOne('App\Models\Site\Event', 'id', 'id_Events');
-    }
-
     /**
-     * Check if user is registerd to an event
-     *
+     * Check if user is have like a event
      * @return boolean
      */
     public static function haveUserVote($eventID) {
@@ -33,8 +25,7 @@ class Vote extends Model
     }
 
     /**
-     * Return total number of registered users
-     *
+     * Return total number of like on a event
      * @return int
      */
     public static function totalUsersVote($eventID) {

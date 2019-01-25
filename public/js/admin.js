@@ -22,7 +22,7 @@ function sendNewEvent() {
     ];
 
     if(!fieldsVerification('#add-event', verification)) {
-        apiAJAXPost('/events', formData);
+        apiAJAXSend('/events', formData, 'POST');
         $("#add-event").trigger("reset");
     }
 }
@@ -43,7 +43,7 @@ function sendNewGoodie() {
     ];
 
     if(!fieldsVerification('#add-goodie', verification)) {
-        apiAJAXPost('/goodies', formData);
+        apiAJAXSend('/goodies', formData, 'POST');
         $("#add-goodie").trigger("reset");
     }
 }

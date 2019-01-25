@@ -1,28 +1,41 @@
-function registerEvent(eventID, element) {
-
-    var data = {
+function likeSuggestion(eventID, element) {
+    apiAJAXSend('/like', {
         id_user: connected_user.id,
         id_event: eventID
-    };
+    }, function() {
+        $(element).addClass('btn-outline-primary').removeClass('btn-primary')
+            .text('Se desinscrire')
+            .attr("onclick","unregisterEvent("+eventID+",this)");
+    },
+    'PUT');
+}
 
-    apiAJAXPost('/registers', data);
+function unlikeSuggestion(eventID, element) {
+    apiAJAXDelete('/users/'+connected_user.id+'/events/'+eventID, function() {
+        $(element).removeClass('btn-outline-primary').addClass('btn-primary')
+            .text('S\'inscrire')
+            .attr("onclick","registerEvent("+eventID+",this)");
+    });
+}
 
-    $(element).addClass('btn-outline-primary');
-    $(element).removeClass('btn-primary');
-    $(element).text('Se désinscrire');
-
-    $(element).attr("onclick","unregisterEvent("+eventID+",this)");
+function registerEvent(eventID, element) {
+    apiAJAXSend('/registers', {
+        id_user: connected_user.id,
+        id_event: eventID
+    }, function() {
+        $(element).addClass('btn-outline-primary').removeClass('btn-primary')
+            .text('Se desinscrire')
+            .attr("onclick","unregisterEvent("+eventID+",this)");
+    },
+    'POST');
 }
 
 function unregisterEvent(eventID, element) {
-
-    apiAJAXDelete('/users/'+connected_user.id+'/events/'+eventID);
-
-    $(element).removeClass('btn-outline-primary');
-    $(element).addClass('btn-primary');
-    $(element).text('S\'inscrire');
-
-    $(element).attr("onclick","registerEvent("+eventID+",this)");
+    apiAJAXDelete('/users/'+connected_user.id+'/events/'+eventID, function() {
+        $(element).removeClass('btn-outline-primary').addClass('btn-primary')
+            .text('S\'inscrire')
+            .attr("onclick","registerEvent("+eventID+",this)");
+    });
 }
 
 function sendNewSuggestion() {
@@ -41,7 +54,7 @@ function sendNewSuggestion() {
     ];
 
     if(!fieldsVerification('#add-suggestion', verification)) {
-        apiAJAXPost('/events', formData);
+        apiAJAXSend('/events', formData, 'POST');
         $("#add-suggestion").trigger("reset");
     }
 }

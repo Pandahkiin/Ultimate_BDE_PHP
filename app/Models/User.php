@@ -38,4 +38,8 @@ class User extends Authenticatable
     public function role() {
         return $this->hasOne('App\Models\Role', 'id', 'id_role');
     }
+
+    public function voteFor() {
+        return $this->belongsToMany('App\Models\Site\Event','votes' ,'id_Events', 'id_Users');
+    }
 }

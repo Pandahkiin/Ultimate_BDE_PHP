@@ -10,11 +10,11 @@ $.ajaxSetup({
  * @param {string} url target url
  * @param {JSON} data JSON formated data to send
  */
-function apiAJAXPost(url, data, callbackSuccess) {
+function apiAJAXSend(url, data, callbackSuccess, httpMethod) {
     $.ajax({
         // the route pointing to the post function
         url: 'http://127.0.0.1:3000/api'+url,
-        type: 'POST',
+        type: httpMethod,
         headers: {
             'Content-Type': 'application/json'
         },
@@ -41,7 +41,7 @@ function apiAJAXPost(url, data, callbackSuccess) {
     );
 }
 
-function apiAJAXDelete(url) {
+function apiAJAXDelete(url, callbackSuccess) {
     $.ajax({
         url: 'http://127.0.0.1:3000/api'+url,
         type: 'DELETE',
@@ -49,6 +49,7 @@ function apiAJAXDelete(url) {
         dataType: 'JSON',
         success: function(response) {
             alertPopUp(response.status, response.message);
+            callbackSuccess();
         },
         fail: function(response) {
             alertPopUp(response.status, response.message);

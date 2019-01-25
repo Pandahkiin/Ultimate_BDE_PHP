@@ -16,8 +16,9 @@ class SuggestionsController extends Controller
      */
     public function index()
     {
-        $events = Event::all();
+        $bestVotes = Event::bestVotesEvents();
         $repetitions = Repetition::all();
-        return view('suggestions.main', compact('repetitions', 'events'));
+        return '<pre>'.var_dump($bestVotes).'</pre>';
+        //return view('suggestions.main', compact('repetitions', 'bestVotes'));
     }
 }
