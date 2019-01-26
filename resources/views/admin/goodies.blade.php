@@ -1,24 +1,3 @@
-<!-- Modal -->
-<div class="modal fade" id="deleteGoodie" tabindex="-1" role="dialog" aria-labelledby="deleteGoodie-title" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="deleteGoodie-title">Confirmer la suppression</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p>Etes vous vraiment sure de supprimer le goodie <b id="deleteGoodie-name" class="font-weight-bold"></b> ? Cette action est définitive.</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-danger" id="deleteGoodie-function" data-dismiss="modal">Confirmer</button>
-            </div>
-        </div>
-    </div>
-</div>
-  
 @include('admin.editGoodie')
 
 <div class="card">
@@ -98,7 +77,7 @@
                         <button type="button" onclick="editModalGoodie({{$goodie->id}})" class="btn btn-outline-info m-1" data-toggle="modal" data-target="#editGoodie">
                             <i class="fas fa-pen"></i>
                         </button>
-                        <button onclick="deleteModal('deleteGoodie','{{$goodie->name}}',{{$goodie->id}})" type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#deleteGoodie">
+                        <button onclick="deleteModal('deleteGoodie','{{$goodie->name}}',{{$goodie->id}})" type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#delete-modal">
                             <i class="fas fa-trash-alt"></i>
                         </button>
                     </td>

@@ -16,7 +16,7 @@ class SuggestionsController extends Controller
      */
     public function index()
     {
-        $bestVotes = Event::bestVotesEvents();
+        $bestVotes = Event::mostVotesSuggestion();
         $repetitions = Repetition::all();
         return view('suggestions.main', compact('repetitions', 'bestVotes'));
     }

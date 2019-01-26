@@ -22,7 +22,7 @@ class EventsController extends Controller
         $topEvents = Event::whereDate('date', '>', date("Y-m-d"))->where('id_Approbations','4')->get();
         return view('events.main', compact('events', 'pastEvents', 'topEvents'));
     }
-
+/*
     public function registerEvent(Request $request) {
         $idEvent = $request->message;
 
@@ -69,5 +69,5 @@ class EventsController extends Controller
             );
             return response()->json($response);
         }
-    }
+    }*/
 }

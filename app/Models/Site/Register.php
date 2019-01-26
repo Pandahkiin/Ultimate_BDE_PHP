@@ -25,7 +25,6 @@ class Register extends Model
 
     /**
      * Check if user is registerd to an event
-     *
      * @return boolean
      */
     public static function isUserRegister($eventID) {
@@ -34,7 +33,6 @@ class Register extends Model
 
     /**
      * Return total number of registered users
-     *
      * @return int
      */
     public static function totalUsersRegistered($eventID) {

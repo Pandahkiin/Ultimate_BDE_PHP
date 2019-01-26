@@ -78,21 +78,36 @@ function apiAJAXDelete(url, callbackSuccess) {
     );
 }
 
-function sendPostAjax(url, data) {
+function sendPictureAjax(url, image, callbackSuccess) {
     $.ajax({
         // the route pointing to the post function
         url: url,
         type: 'POST',
         // send the csrf-token and the input to the controller
-        data: {_token: CSRF_TOKEN, message:data},
-        dataType: 'JSON',
-        success: function(response) {alertPopUp(response.status, response.msg);},
-        fail: function(response) {alertPopUp(response.status, response.msg)},
+        data: image,
+        cache: false,
+        contentType: false,
+        processData: false,
         timeout: 3000,
         error: function(jqXHR, textStatus, errorThrown) {
             if(textStatus==="timeout") {
                 alertPopUp('warning', 'Délai d\'attente dépassé ...');
             }
+            else {
+                response = JSON.parse(jqXHR.responseText);
+                alertPopUp(response.status, response.message);
+            }
         }
-    });
+    }).done(
+        function(response) {
+            alertPopUp(response.status, response.message);
+            if(callbackSuccess)
+                callbackSuccess(response);
+        }
+    ).fail(
+        function(jqXHR) {
+            response = JSON.parse(jqXHR.responseText);
+            alertPopUp(response.status, response.message);
+        }
+    );
 }

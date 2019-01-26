@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,6 +14,7 @@ use App\Models\Site\Goodie;
 use App\Models\Campus;
 
 use Storage;
+use PDF;
 
 class AdminController extends Controller
 {
@@ -47,14 +49,67 @@ class AdminController extends Controller
 
     public function getRegisterList(Request $request) {
         $eventID = $request->eventID;
-        $request->fileFormat;
+        $fileFormat = $request->fileFormat;
 
-        Storage::put('/app/register_list/file.csv', $data);
+        $registerList = Register::where('id_Events', $request->eventID)->get();
+        $eventName = Event::find($request->eventID)->name;
 
-        $pathToFile = storage_path('/app/test.csv');
-        $headers = [
-            'Content-Type' => 'application/csv'
-        ];
-        return response()->download($pathToFile, 'test.csv', $headers);
+        if($fileFormat == 'CSV') {
+            $fileName = time().'_'.$eventName.'.csv';
+            $fileContents = '';
+    
+            foreach($registerList as $row) {
+                $fileContents .= $row->user->firstname.';'.$row->user->lastname.";\n";
+            }
+            Storage::put($fileName, $fileContents);
+            return response()
+                ->download(storage_path('/app/'.$fileName))
+                ->deleteFileAfterSend();
+        }
+        else if($fileFormat == 'PDF') {
+            $pdf = PDF::loadView('admin.pdf', compact('eventName', 'registerList'));
+            $fileName = time().'_'.$eventName.'.pdf';
+
+            return $pdf->download($fileName);
+        }
+    }
+
+    public function pictureUpload(Request $request) {
+                
+        /*$this->validate($request, [
+            'input_img' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+    
+        if ($request->hasFile('input_img')) {
+            try {
+                $image = $request->file('input_img');
+                $name = time().'.'.$image->getClientOriginalExtension();
+    
+                $destinationPath = storage_path('/app/pictures/BDE');
+                $image->move($destinationPath, $name);
+                $this->save();
+        
+                $response = array(
+                    'status' => 'Success',
+                    'msg' => 'Image enregistré !',
+                    'path' => $destinationPath.'/'.$name
+                );
+                return response()->json($response);
+            }
+            catch (\Exception $e) {
+                $response = array(
+                    'status' => 'failure',
+                    'msg' => 'Whoops, une erreur s\'est produite durant l\'upload de l\'image ...'
+                );
+                return response()->json($response);
+            }
+        }
+        else {
+            $response = array(
+                'status' => 'warning',
+                'msg' => 'Le format de l\'image est invalide'
+            );
+            return response()->json($response);
+        }*/
     }
 }

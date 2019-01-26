@@ -32,7 +32,7 @@ class Event extends Model
      * Return events sorted by votes
      * @return int
      */
-    public static function bestVotesEvents() {
+    public static function mostVotesSuggestion() {
         return Event::with('votedBy')->where('id_Approbations', 1)->get()->sortByDesc(function($event)
         {
             return $event->votedBy->count();

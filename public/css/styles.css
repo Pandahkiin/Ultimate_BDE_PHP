@@ -54,3 +54,8 @@ main {
 .alert-hidden {
     transform: translateY(-100px);
 }
+
+.dataTables_wrapper {
+    display: block;
+    overflow-x: scroll;
+}

@@ -29,6 +29,7 @@ Route::get('/suggestions', 'SuggestionsController@index')->name('Boite à idées
 Route::group(['middleware' => 'App\Http\Middleware\BDEMiddleware'], function() {
     Route::get('/administration', 'AdminController@index')->name('Admin');
     Route::get('/getRegisterList','AdminController@getRegisterList');
+    Route::post('/adminUploadPicture','AdminController@pictureUpload');
 });
 
 /* Ajax interaction routes */

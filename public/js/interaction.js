@@ -31,7 +31,7 @@ function registerEvent(eventID, element) {
 }
 
 function unregisterEvent(eventID, element) {
-    apiAJAXDelete('/users/'+connected_user.id+'/events/'+eventID, function() {
+    apiAJAXDelete('/registers/users/'+connected_user.id+'/events/'+eventID, function() {
         $(element).removeClass('btn-outline-primary').addClass('btn-primary')
             .text('S\'inscrire')
             .attr("onclick","registerEvent("+eventID+",this)");
