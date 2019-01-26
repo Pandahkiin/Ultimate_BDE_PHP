@@ -1,7 +1,7 @@
-$(document).ready(function() {
-    $('#goodie-list-dataTable').DataTable();
-    $('#past-event-list').DataTable();
-});
+
+var dataTableGoodie = $('#goodie-list-dataTable').DataTable();
+var dataTableEvent = $('#event-list-dataTable').DataTable();
+var dataTableSuggestion = $('#suggestion-list-dataTable').DataTable();
 
 /**
  * Get data from the form, verify and send it with ajax
@@ -10,8 +10,6 @@ function sendNewEvent() {
     var formData = serializeForm("#add-event");
     formData.id_campus = connected_user.id_campus;
     formData.id_user = connected_user.id;
-
-    console.log(formData);
 
     var verification = [
         ['name','Pas de caractères spéciaux.','^[_A-z0-9]*((-|\\s)*[_A-z0-9])*$'],
@@ -22,7 +20,7 @@ function sendNewEvent() {
     ];
 
     if(!fieldsVerification('#add-event', verification)) {
-        apiAJAXSend('/events', formData, 'POST');
+        apiAJAXSend('/events', formData, null,'POST');
         $("#add-event").trigger("reset");
     }
 }
@@ -43,7 +41,7 @@ function sendNewGoodie() {
     ];
 
     if(!fieldsVerification('#add-goodie', verification)) {
-        apiAJAXSend('/goodies', formData, 'POST');
+        apiAJAXSend('/goodies', formData, null,'POST');
         $("#add-goodie").trigger("reset");
     }
 }
@@ -55,23 +53,24 @@ function getRegisterList(eventID, fileFormat) {
 /**
  * Delete a event, show the modal with event name and function to api
  */
-function deleteEventModal(eventName, eventID, rowNumber) {
+function deleteEventModal(eventName, eventID) {
     $('#modal-event-delete-name').text(eventName);
-    $('#modal-event-delete-function').attr("onclick","deleteEvent("+eventID+","+rowNumber+")");
+    $('#modal-event-delete-function').attr("onclick","deleteEvent("+eventID+")");
 }
-function deleteEvent(eventID, rowNumber) {
-    document.getElementById("past-event-list").deleteRow(rowNumber+1); 
-    apiAJAXDelete('/events/'+eventID);
+function deleteEvent(eventID) {
+    apiAJAXDelete('/events/'+eventID, function() {
+        dataTableEvent.row($('#table-event-row-'+goodieID)).remove().draw();
+    });
 }
-
 /**
  * Delete a goodie, show the modal with godie name and function to api
  */
-function deleteEventModal(goodieName, goodieID, rowNumber) {
+function deleteGoodieModal(goodieName, goodieID) {
     $('#modal-goodie-delete-name').text(goodieName);
-    $('#modal-goodie-delete-function').attr("onclick","deleteEvent("+goodieID+","+rowNumber+")");
+    $('#modal-goodie-delete-function').attr("onclick","deleteGoodie("+goodieID+")");
 }
-function deleteEvent(goodieID, rowNumber) {
-    document.getElementById("goodie-list-dataTable").deleteRow(rowNumber+1); 
-    apiAJAXDelete('/goodies/'+goodieID);
+function deleteGoodie(goodieID) {
+    apiAJAXDelete('/goodies/'+goodieID, function() {
+        dataTableGoodie.row($('#table-goodie-row-'+goodieID)).remove().draw();
+    });
 }

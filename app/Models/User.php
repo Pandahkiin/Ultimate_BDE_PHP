@@ -6,6 +6,8 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+use Illuminate\Support\Facades\Auth;
+
 class User extends Authenticatable
 {
     use Notifiable;
@@ -40,6 +42,14 @@ class User extends Authenticatable
     }
 
     public function voteFor() {
-        return $this->belongsToMany('App\Models\Site\Event','votes' ,'id_Events', 'id_Users');
+        return $this->belongsToMany('App\Models\Site\Event','site_data.votes' ,'id_Users', 'id_Events');
+    }
+
+    /**
+     * Check if the authentificated user have vote for a given event
+     * @return bool
+     */
+    public static function haveVoteFor($eventID) {
+        return User::find(Auth::id())->voteFor->find($eventID);
     }
 }

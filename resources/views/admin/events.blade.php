@@ -66,30 +66,42 @@
     </div>
 
     <div class="card card-body">
-        <table class="table table-striped" id="past-event-list">
+        <table class="table table-striped" id="event-list-dataTable">
             <thead>
                 <tr>
-                    <th></th>
+                    <th>Nom</th>
+                    <th>Description</th>
+                    <th>Image</th>
                     <th>Date</th>
-                    <th>Nombre inscrit</th>
-                    <th>Liste des inscrit</th>
+                    <th>Prix (participant)</th>
+                    <th>Nombre participants</th>
+                    <th>Auteur</th>
+                    <th>Campus</th>
+                    <th>Répétition</th>
+                    <th></th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($events as $event)
-                <tr>
+                <tr id="table-event-row-{{$event->id}}">
                     <th>{{ $event->name }}</th>
+                    <td>{{ $event->description }}</td>
+                    <td>{{ $event->image }}</td>
                     <td>{{ $event->date }}</td>
+                    <td>{{ $event->price_participation }} €</td>
                     <td>
                         {{App\Models\Site\Register::totalUsersRegistered($event->id)}}
                     </td>
+                    <td>{{ $event->author->firstname.' '.$event->author->lastname }}</td>
+                    <td>{{ $event->campus->location }}</td>
+                    <td>{{ $event->repetition->repetition }}</td>
                     <td>
                         <button onclick="getRegisterList(12, 'CSV')" class="btn btn-outline-dark m-1" title="Télécharger au format CSV" download>CSV</button>
                         <button class="btn btn-outline-dark m-1" title="Télécharger au format PDF">PDF</button>
                     </td>
                     <td>
-                        <button onclick="deleteEventModal('{{$event->name}}',{{$event->id}}, $(this).closest('td').parent()[0].sectionRowIndex)" type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#modal-event-delete">
+                        <button type="button" onclick="deleteEventModal('{{$event->name}}',{{$event->id}})" class="btn btn-outline-danger" data-toggle="modal" data-target="#modal-event-delete">
                             <i class="fas fa-trash-alt"></i>
                         </button>
                     </td>

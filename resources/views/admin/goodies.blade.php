@@ -80,14 +80,14 @@
             </thead>
             <tbody>
                 @foreach ($goodies as $goodie)
-                <tr>
+                <tr id="table-goodie-row-{{$goodie->id}}">
                     <th>{{ $goodie->name }}</th>
                     <td>{{ $goodie->price }} €</td>
                     <td>{{ $goodie->description }}</td>
                     <td>{{ $goodie->stock }}</td>
                     <td>{{ $goodie->total_orders }}</td>
                     <td>
-                        <button onclick="deleteEventModal('{{$goodie->name}}',{{$goodie->id}}, $(this).closest('td').parent()[0].sectionRowIndex)" type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#modal-goodie-delete">
+                        <button onclick="deleteGoodieModal('{{$goodie->name}}',{{$goodie->id}})" type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#modal-goodie-delete">
                             <i class="fas fa-trash-alt"></i>
                         </button>
                     </td>

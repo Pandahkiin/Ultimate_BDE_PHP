@@ -42,25 +42,25 @@
             </div>
         @endauth
     </div>
-    @foreach ($bestVotes as $votes)
+    @foreach ($bestVotes as $event)
     <div class="row">
         <div class="card m-2 w-100">
             <div class="card-header">
                 <div class="row">
-                    <h4 class="col m-0">{{$votes->event->name}}</h4>
-                    <cite class="col text-right">Par {{$votes->event->user->firstname}} {{$votes->event->user->lastname}}</cite>
+                    <h4 class="col m-0">{{$event->name}}</h4>
+                    <cite class="col text-right">Par {{$event->user->firstname}} {{$event->user->lastname}}</cite>
                 </div>
             </div>
             <div class="card-body">
                 <blockquote class="blockquote mb-0">
-                    <p>{{$votes->event->description}}</p>
+                    <p>{{$event->description}}</p>
                 </blockquote>
                 <div class="float-right">
-                    <label class="text-secondary">{{$votes->total}} vote(s)</label>
-                    @if(App\Models\Site\Vote::haveUserVote($votes->event->id))
-                        <button type="button" class="btn btn-outline-danger" onclick="unlikeSuggestion({{$votes->event->id}}, this)"><i class="far fa-thumbs-down"></i></i></button>
+                    <label class="text-secondary">{{$event->votedBy->count()}} vote(s)</label>
+                    @if(App\Models\User::haveVoteFor($event->id))
+                        <button type="button" class="btn btn-outline-danger" onclick="unlikeSuggestion({{$event->id}}, this)"><i class="fas fa-heart-broken"></i></i></i></button>
                     @else
-                        <button type="button" class="btn btn-outline-success" onclick="likeSuggestion({{$votes->event->id}}, this)"><i class="far fa-thumbs-up"></i></button>
+                        <button type="button" class="btn btn-outline-success" onclick="likeSuggestion({{$event->id}}, this)"><i class="far fa-heart"></i></i></button>
                     @endif
                 </div>
             </div>

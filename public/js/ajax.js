@@ -27,11 +27,16 @@ function apiAJAXSend(url, data, callbackSuccess, httpMethod) {
             if(textStatus==="timeout") {
                 alertPopUp('warning', 'Délai d\'attente dépassé ...');
             }
+            else {
+                response = JSON.parse(jqXHR.responseText);
+                alertPopUp(response.status, response.message);
+            }
         }
     }).done(
         function(response) {
             alertPopUp(response.status, response.message);
-            callbackSuccess();
+            if(callbackSuccess)
+                callbackSuccess();
         }
     ).fail(
         function(jqXHR) {
@@ -47,15 +52,28 @@ function apiAJAXDelete(url, callbackSuccess) {
         type: 'DELETE',
         crossDomain: true,
         dataType: 'JSON',
-        success: function(response) {
+        timeout: 3000,
+        error: function(jqXHR, textStatus, errorThrown) {
+            if(textStatus==="timeout") {
+                alertPopUp('warning', 'Délai d\'attente dépassé ...');
+            }
+            else {
+                response = JSON.parse(jqXHR.responseText);
+                alertPopUp(response.status, response.message);
+            }
+        }
+    }).done(
+        function(response) {
             alertPopUp(response.status, response.message);
-            callbackSuccess();
-        },
-        fail: function(response) {
+            if(callbackSuccess)
+                callbackSuccess();
+        }
+    ).fail(
+        function(jqXHR) {
+            response = JSON.parse(jqXHR.responseText);
             alertPopUp(response.status, response.message);
-        },
-    });
-    
+        }
+    );
 }
 
 function sendPostAjax(url, data) {

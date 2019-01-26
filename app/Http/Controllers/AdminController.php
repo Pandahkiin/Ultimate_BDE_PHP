@@ -32,12 +32,16 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $events = Event::all();
-        $repetitions = Repetition::all();
-        $categories = Categorie::all();
+        $events = Event::where('id_Approbations', 2)->get();
+        $suggestions = Event::where('id_Approbations', 1)->get();
+        $goodies = Goodie::all();
         $goodies = Goodie::all();
 
-        return view('admin.main', compact('repetitions','categories','events', 'goodies'));
+        /* Fill select box */
+        $repetitions = Repetition::all();
+        $categories = Categorie::all();
+
+        return view('admin.main', compact('repetitions','categories','events', 'goodies', 'suggestions'));
     }
 
     public function getRegisterList(Request $request) {

@@ -18,7 +18,6 @@ class SuggestionsController extends Controller
     {
         $bestVotes = Event::bestVotesEvents();
         $repetitions = Repetition::all();
-        return '<pre>'.var_dump($bestVotes).'</pre>';
-        //return view('suggestions.main', compact('repetitions', 'bestVotes'));
+        return view('suggestions.main', compact('repetitions', 'bestVotes'));
     }
 }
