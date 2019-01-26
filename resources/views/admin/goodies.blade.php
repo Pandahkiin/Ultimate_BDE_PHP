@@ -1,25 +1,27 @@
 <!-- Modal -->
-<div class="modal fade" id="modal-goodie-delete" tabindex="-1" role="dialog" aria-labelledby="modal-goodie-delete-title" aria-hidden="true">
+<div class="modal fade" id="deleteGoodie" tabindex="-1" role="dialog" aria-labelledby="deleteGoodie-title" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="modal-goodie-delete-title">Confirmer la suppression</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteGoodie-title">Confirmer la suppression</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Etes vous vraiment sure de supprimer le goodie <b id="deleteGoodie-name" class="font-weight-bold"></b> ? Cette action est définitive.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger" id="deleteGoodie-function" data-dismiss="modal">Confirmer</button>
+            </div>
         </div>
-        <div class="modal-body">
-          <p>Etes vous vraiment sure de supprimer le goodie <b id="modal-goodie-delete-name" class="font-weight-bold"></b> ? Cette action est définitive.</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-danger" id="modal-goodie-delete-function" data-dismiss="modal">Confirmer</button>
-        </div>
-      </div>
     </div>
-  </div>
+</div>
   
-  <div class="card">
+@include('admin.editGoodie')
+
+<div class="card">
     
     <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#adminAddGoodie" aria-expanded="false" aria-controls="adminAddGoodie">
         Ajouter un goodie
@@ -73,21 +75,30 @@
                     <th>Nom</th>
                     <th>Prix</th>
                     <th>Description</th>
+                    <th>Image</th>
                     <th>Stock</th>
                     <th>Nombre commande</th>
+                    <th>Catégorie</th>
+                    <th>Campus</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($goodies as $goodie)
                 <tr id="table-goodie-row-{{$goodie->id}}">
-                    <th>{{ $goodie->name }}</th>
-                    <td>{{ $goodie->price }} €</td>
+                    <td>{{ $goodie->name }}</td>
+                    <td>{{ $goodie->price }}</td>
                     <td>{{ $goodie->description }}</td>
+                    <td>{{ $goodie->image }}</td>
                     <td>{{ $goodie->stock }}</td>
                     <td>{{ $goodie->total_orders }}</td>
-                    <td>
-                        <button onclick="deleteGoodieModal('{{$goodie->name}}',{{$goodie->id}})" type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#modal-goodie-delete">
+                    <td>{{ $goodie->category->category }}</td>
+                    <td>{{ $goodie->campus->location }}</td>
+                    <td class="float-right">
+                        <button type="button" onclick="editModalGoodie({{$goodie->id}})" class="btn btn-outline-info m-1" data-toggle="modal" data-target="#editGoodie">
+                            <i class="fas fa-pen"></i>
+                        </button>
+                        <button onclick="deleteModal('deleteGoodie','{{$goodie->name}}',{{$goodie->id}})" type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#deleteGoodie">
                             <i class="fas fa-trash-alt"></i>
                         </button>
                     </td>

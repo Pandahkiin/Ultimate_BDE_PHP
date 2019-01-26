@@ -10,6 +10,7 @@ use App\Models\Site\Repetition;
 use App\Models\Site\Categorie;
 use App\Models\Site\Register;
 use App\Models\Site\Goodie;
+use App\Models\Campus;
 
 use Storage;
 
@@ -35,13 +36,13 @@ class AdminController extends Controller
         $events = Event::where('id_Approbations', 2)->get();
         $suggestions = Event::where('id_Approbations', 1)->get();
         $goodies = Goodie::all();
-        $goodies = Goodie::all();
 
         /* Fill select box */
         $repetitions = Repetition::all();
         $categories = Categorie::all();
+        $campuses = Campus::all();
 
-        return view('admin.main', compact('repetitions','categories','events', 'goodies', 'suggestions'));
+        return view('admin.main', compact('repetitions','categories','events', 'goodies', 'suggestions', 'campuses'));
     }
 
     public function getRegisterList(Request $request) {

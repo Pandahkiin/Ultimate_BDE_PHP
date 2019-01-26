@@ -33,7 +33,7 @@ class Event extends Model
      * @return int
      */
     public static function bestVotesEvents() {
-        return Event::with('votedBy')->get()->sortByDesc(function($event)
+        return Event::with('votedBy')->where('id_Approbations', 1)->get()->sortByDesc(function($event)
         {
             return $event->votedBy->count();
         });

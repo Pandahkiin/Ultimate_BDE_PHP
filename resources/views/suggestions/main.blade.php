@@ -48,7 +48,7 @@
             <div class="card-header">
                 <div class="row">
                     <h4 class="col m-0">{{$event->name}}</h4>
-                    <cite class="col text-right">Par {{$event->user->firstname}} {{$event->user->lastname}}</cite>
+                    <cite class="col text-right">Par {{$event->author->firstname.' '.$event->author->lastname}}</cite>
                 </div>
             </div>
             <div class="card-body">
@@ -56,11 +56,11 @@
                     <p>{{$event->description}}</p>
                 </blockquote>
                 <div class="float-right">
-                    <label class="text-secondary">{{$event->votedBy->count()}} vote(s)</label>
+                    <label class="text-secondary mx-2">{{$event->votedBy->count()}} vote(s)</label>
                     @if(App\Models\User::haveVoteFor($event->id))
-                        <button type="button" class="btn btn-outline-danger" onclick="unlikeSuggestion({{$event->id}}, this)"><i class="fas fa-heart-broken"></i></i></i></button>
+                        <button type="button" class="btn btn-outline-danger" onclick="unlikeSuggestion({{$event->id}}, this)"><i class="fas fa-heart-broken"></i></button>
                     @else
-                        <button type="button" class="btn btn-outline-success" onclick="likeSuggestion({{$event->id}}, this)"><i class="far fa-heart"></i></i></button>
+                        <button type="button" class="btn btn-outline-success" onclick="likeSuggestion({{$event->id}}, this)"><i class="far fa-heart"></i></button>
                     @endif
                 </div>
             </div>

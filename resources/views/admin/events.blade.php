@@ -1,23 +1,25 @@
-<!-- Modal -->
-<div class="modal fade" id="modal-event-delete" tabindex="-1" role="dialog" aria-labelledby="modal-event-delete-title" aria-hidden="true">
+<!-- Delete -->
+<div class="modal fade" id="deleteEvent" tabindex="-1" role="dialog" aria-labelledby="deleteEvent-title" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="modal-event-delete-title">Confirmer la suppression</h5>
+        <h5 class="modal-title" id="deleteEvent-title">Confirmer la suppression</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <p>Etes vous vraiment sure de supprimer l'événement <b id="modal-event-delete-name" class="font-weight-bold"></b> ? Cette action est définitive.</p>
+        <p>Etes vous vraiment sure de supprimer l'événement <b id="deleteEvent-name" class="font-weight-bold"></b> ? Cette action est définitive.</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-danger" id="modal-event-delete-function" data-dismiss="modal">Confirmer</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+        <button type="button" class="btn btn-danger" id="deleteEvent-function" data-dismiss="modal">Confirmer</button>
       </div>
     </div>
   </div>
 </div>
+
+@include('admin.editEvent')
 
 <div class="card">
     <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#adminAddEvent" aria-expanded="false" aria-controls="adminAddEvent">
@@ -78,18 +80,18 @@
                     <th>Auteur</th>
                     <th>Campus</th>
                     <th>Répétition</th>
-                    <th></th>
+                    <th>Liste inscrits</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($events as $event)
                 <tr id="table-event-row-{{$event->id}}">
-                    <th>{{ $event->name }}</th>
+                    <td>{{ $event->name }}</td>
                     <td>{{ $event->description }}</td>
                     <td>{{ $event->image }}</td>
                     <td>{{ $event->date }}</td>
-                    <td>{{ $event->price_participation }} €</td>
+                    <td>{{ $event->price_participation }}</td>
                     <td>
                         {{App\Models\Site\Register::totalUsersRegistered($event->id)}}
                     </td>
@@ -100,8 +102,11 @@
                         <button onclick="getRegisterList(12, 'CSV')" class="btn btn-outline-dark m-1" title="Télécharger au format CSV" download>CSV</button>
                         <button class="btn btn-outline-dark m-1" title="Télécharger au format PDF">PDF</button>
                     </td>
-                    <td>
-                        <button type="button" onclick="deleteEventModal('{{$event->name}}',{{$event->id}})" class="btn btn-outline-danger" data-toggle="modal" data-target="#modal-event-delete">
+                    <td class="float-right">
+                        <button type="button" onclick="editModalEvent({{$event->id}})" class="btn btn-outline-info m-1" data-toggle="modal" data-target="#editEvent">
+                            <i class="fas fa-pen"></i>
+                        </button>
+                        <button type="button" onclick="deleteModal('deleteEvent','{{$event->name}}',{{$event->id}})" class="btn btn-outline-danger m-1" data-toggle="modal" data-target="#deleteEvent">
                             <i class="fas fa-trash-alt"></i>
                         </button>
                     </td>

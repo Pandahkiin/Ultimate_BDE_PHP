@@ -8,7 +8,9 @@ $.ajaxSetup({
 /**
  * POST Ajax function
  * @param {string} url target url
- * @param {JSON} data JSON formated data to send
+ * @param {object} data data to send
+ * @param {function} callbackSuccess launch on AJAX success
+ * @param {string} httpMethod type of HTTP request
  */
 function apiAJAXSend(url, data, callbackSuccess, httpMethod) {
     $.ajax({
