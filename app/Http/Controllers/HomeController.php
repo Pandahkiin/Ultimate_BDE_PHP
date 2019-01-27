@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp;
+use App\Models\Site\Event;
+use App\Models\Site\Goodie;
 
 class HomeController extends Controller
 {
@@ -17,6 +19,9 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $bestSellers = Goodie::all()->sortByDesc('total_orders')->take(3);
+        $topEvent = Event::whereDate('date', '>', date("Y-m-d"))->where('id_Approbations',4)->first();
+
         if(\Auth::check() && !\Session::get('APItoken')) {
             $client = new GuzzleHttp\Client();
             $res = $client->request('POST', 'http://127.0.0.1:3000/api/auth/signin', [
@@ -24,6 +29,6 @@ class HomeController extends Controller
                 ]);
             \Session::put('APItoken', json_decode($res->getBody())->accessToken);
         }
-        return view('home');
+        return view('home', compact('bestSellers', 'topEvent'));
     }
 }

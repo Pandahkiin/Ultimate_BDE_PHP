@@ -62,30 +62,10 @@ main {
 .carousel-control-next, .carousel-control-prev {
     height: 15%;
 }
-.home-main {
-    height: 100%;
-    width: 100%;
-    background: url(/img/CESI_Corporate_Ecole_Ingenieurs.jpg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.home-main-title {
-    color: white;
-    margin: auto 0;
-    font-size: 90px;
-    text-shadow: 0 0 5px grey;
-
-    font-family: Nunito;
-    font-weight: bold;
-}
 
 .report-button {
     position: absolute;
     top: 0;
     right: 0;
 }
+

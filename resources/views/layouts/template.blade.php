@@ -30,6 +30,7 @@
     <link href="{{ asset('css/nav_foot.css') }}" rel="stylesheet">
     <link href="{{ asset('css/shop.css') }}" rel="stylesheet">
     <link href="{{ asset('css/events.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/home.css') }}" rel="stylesheet">
 
     <link href="{{ asset('vendor/DataTables/datatables.min.css') }}" rel="stylesheet">
 

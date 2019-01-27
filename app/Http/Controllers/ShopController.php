@@ -14,7 +14,7 @@ class ShopController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
-    { $truc = Order::all();
+    {   $order = Order::all();
         $goodies = Goodie::paginate(10);
         $bestSellers = Goodie::all()->sortByDesc('total_orders')->take(3);
         return view('shop.main', compact('goodies', 'bestSellers','truc'));
