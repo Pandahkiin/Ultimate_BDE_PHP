@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Auth::routes();
@@ -29,6 +29,12 @@ Route::get('/suggestions', 'SuggestionsController@index')->name('Boite à idées
 Route::group(['middleware' => 'App\Http\Middleware\BDEMiddleware'], function() {
     Route::get('/administration', 'AdminController@index')->name('Admin');
     Route::get('/getRegisterList','AdminController@getRegisterList');
+    Route::post('/editComment','AdminController@editComment');
+});
+
+Route::group(['middleware' => 'App\Http\Middleware\CESIEmployeeMiddleWare'], function() {
+    Route::post('/reportComment','AdminController@reportComment');
+    Route::get('/getPictures', 'PictureController@getPictures');
 });
 
 /* Ajax interaction routes */

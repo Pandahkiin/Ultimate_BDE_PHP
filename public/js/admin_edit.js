@@ -37,16 +37,37 @@ function editModalSuggestion(suggestionID) {
     row.toArray().forEach(function(element) {
         data.push($(element).text());
     });
-    console.log(data);
     $("#edit-suggestion-name").val(data[0]);
     $("#edit-suggestion-description").val(data[1]);
 
     $('#editSuggestion-function').attr("onclick","editSuggestion("+suggestionID+")");
 }
+
+function editModalComment(commentID) {
+    var row =$("#table-comment-row-"+commentID+" td");
+    var data = [];
+    row.toArray().forEach(function(element) {
+        data.push($(element).text());
+    });
+    $("#edit-comment-content").val(data[0]);
+
+    commentID
+    $('#editComment-function').attr("onclick","editComment("+parseInt(commentID.charAt(0))+","+parseInt(commentID.charAt(1))+")");
+}
 /* Send UPDATE to database */
+function editComment(id_User, id_Picture) {
+    var formData = serializeForm("#edit-comment");
+    formData.id_User = id_User;
+    formData.id_Picture = id_Picture;
+    formData._token = CSRF_TOKEN;
+
+    $('#editComment').modal('toggle');
+    sendPostAjax('/editComment', JSON.stringify(formData), null,'JSON', 'POST');
+}
+
 function editEvent(eventID) {
     var formData = serializeForm("#edit-event");
-    formData.id_approbation = 3;
+    formData.id_approbation = 2;
     var verification = [
         ['name','Pas de caractères spéciaux.','^[_A-z0-9]*((-|\\s)*[_A-z0-9])*$'],
         ['description','required',''],
@@ -82,7 +103,7 @@ function editGoodie(goodieID) {
 }
 function editSuggestion(suggestionID) {
     var formData = serializeForm("#edit-suggestion");
-    formData.id_approbation = 3;
+    formData.id_approbation = 1;
     var verification = [
         ['name','Pas de caractères spéciaux.','^[_A-z0-9]*((-|\\s)*[_A-z0-9])*$'],
         ['description','required','']

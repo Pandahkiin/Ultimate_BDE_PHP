@@ -11,6 +11,7 @@ use App\Models\Site\Repetition;
 use App\Models\Site\Categorie;
 use App\Models\Site\Register;
 use App\Models\Site\Goodie;
+use App\Models\Site\Comment;
 use App\Models\Campus;
 
 use Storage;
@@ -35,16 +36,17 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $events = Event::where('id_Approbations', 2)->orWhere('id_Approbations', 3)->get();
-        $suggestions = Event::where('id_Approbations', 1)->get();
+        $events = Event::where('id_Approbations', 2)->orWhere('id_Approbations', 12)->get();
+        $suggestions = Event::where('id_Approbations', 1)->orWhere('id_Approbations',11)->get();
         $goodies = Goodie::all();
+        $comments = Comment::all();
 
         /* Fill select box */
         $repetitions = Repetition::all();
         $categories = Categorie::all();
         $campuses = Campus::all();
 
-        return view('admin.main', compact('repetitions','categories','events', 'goodies', 'suggestions', 'campuses'));
+        return view('admin.main', compact('repetitions','categories','events', 'goodies', 'suggestions', 'campuses', 'comments'));
     }
 
     public function getRegisterList(Request $request) {
@@ -72,5 +74,36 @@ class AdminController extends Controller
 
             return $pdf->download($fileName);
         }
+    }
+
+    public function editComment(Request $request) {
+        $id_picture = $request->id_Picture;
+        $id_user = $request->id_User;
+        $content = $request->content;
+        $datetime = (new \DateTime())->format('Y-m-d');
+
+        $comment = Comment::where([
+            ['id_Pictures', $id_picture],
+            ['id_Users', $id_user],
+        ])->update(['content' => $content, 'date' => $datetime]);
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Modification du commentaire réussi !',
+        ]);
+    }
+    public function reportComment(Request $request) {
+        $id_picture = $request->id_Picture;
+        $id_user = $request->id_User;
+    
+        $comment = Comment::where([
+            ['id_Pictures', $id_picture],
+            ['id_Users', $id_user],
+        ])->update(['date' => '1970-01-01']);
+    
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Signalement du commentaire réussi !',
+        ]);
     }
 }

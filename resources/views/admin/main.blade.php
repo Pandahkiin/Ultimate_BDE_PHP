@@ -73,6 +73,22 @@
             </div>
         </div>
     </div>
+
+    <div class="card">
+        <div class="card-header" id="headingAdminComment">
+            <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseAdminComment" aria-expanded="true" aria-controls="collapseAdminComment">
+                    Administration des commentaires
+                </button>
+            </h5>
+        </div>
+        <div id="collapseAdminComment" class="collapse" aria-labelledby="headingAdminComment" data-parent="#adminAccordion">
+            <div class="card-body">
+                @include('admin.comment')
+            </div>
+        </div>
+    </div>
+
     <div class="card">
         <div class="card-header" id="headingAdminImage">
             <h5 class="mb-0">
@@ -87,5 +103,6 @@
             </div>
         </div>
     </div>
+
 </div>
 @endsection

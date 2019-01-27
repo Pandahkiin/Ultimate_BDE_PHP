@@ -18,6 +18,9 @@ class Comment extends Model
     public function author() {
         return $this->hasOne('App\Models\User', 'id', 'id_Users');
     }
+    public function picture() {
+        return $this->hasOne('App\Models\Site\Picture', 'id', 'id_Pictures');
+    }
 
     /**
      * Get all comments for a given picture ID

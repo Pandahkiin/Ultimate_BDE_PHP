@@ -137,6 +137,7 @@ return [
     'providers' => [
         'Collective\Html\HtmlServiceProvider',
         Barryvdh\DomPDF\ServiceProvider::class,
+        'Chumper\Zipper\ZipperServiceProvider',
         /*
          * Laravel Framework Service Providers...
          */
@@ -191,6 +192,7 @@ return [
 
     'aliases' => [
         'PDF' => Barryvdh\DomPDF\Facade::class,
+        'Zipper' => 'Chumper\Zipper\Zipper',
         'Form' => 'Collective\Html\FormFacade',
         'Html' => 'Collective\Html\HtmlFacade',
 

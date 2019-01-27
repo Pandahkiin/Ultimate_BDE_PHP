@@ -50,7 +50,7 @@
                     <h4 class="col m-0">{{$event->name}}</h4>
                     <cite class="col text-right px-5">Par {{$event->author->firstname.' '.$event->author->lastname}}</cite>
                     @if(Auth::user()->role->name === 'Personnel CESI')
-                        <button type="button" class="btn btn-outline-danger m-1 report-button" onclick="reportEvent({{$event->id}})" title="Signaler la suggestion">
+                        <button type="button" class="btn btn-outline-danger m-1 report-button" onclick="reportSuggestion({{$event->id}})" title="Signaler la suggestion">
                             <i class="fas fa-exclamation-triangle"></i>
                         </button>
                     @endif

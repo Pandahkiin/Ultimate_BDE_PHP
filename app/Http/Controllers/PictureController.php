@@ -20,6 +20,9 @@ class PictureController extends Controller
         $this->middleware('auth');
     }
 
+    /**
+     * Add a comment with the actual date
+     */
     public function createComment(Request $request) {
         $datetime = (new \DateTime())->format('Y-m-d');
         try {
@@ -40,6 +43,14 @@ class PictureController extends Controller
                 'message' => 'Un problème a eu lieu ...',
             ]);
         }
+    }
+
+    public function getPictures(Request $request) {
+        $files = glob(public_path('img/upload/'.$request->eventID.'/*'));
+        \Zipper::make(public_path('event_'.$request->eventID.'.zip'))->add($files)->close();
+        return response()
+            ->download(public_path('event_'.$request->eventID.'.zip'))
+            ->deleteFileAfterSend();
     }
 
     /**

@@ -86,8 +86,8 @@
                     <td>{{ $event->campus->location }}</td>
                     <td>{{ $event->repetition->repetition }}</td>
                     <td>
-                        @if($event->id_Approbations == 3)
-                        <p class="text-danger">Cette élément à été signalé</p>
+                        @if($event->id_Approbations == 12)
+                        <p class="text-danger">Cette événement à été signalé</p>
                         @else
                         <button onclick="getRegisterList({{$event->id}}, 'CSV')" class="btn btn-outline-dark m-1" title="Télécharger au format CSV" download>CSV</button>
                         <button onclick="getRegisterList({{$event->id}}, 'PDF')" class="btn btn-outline-dark m-1" title="Télécharger au format PDF">PDF</button>

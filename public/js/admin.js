@@ -23,6 +23,15 @@ var dataTableSuggestion = $('#suggestion-list-dataTable').DataTable({
     ]
 });
 
+var dataTableComment = $('#comment-list-dataTable').DataTable({
+    columnDefs: [
+        {"targets": 4,
+        "searchable": false},
+        {"targets": 4,
+        "orderable": false}
+    ]
+});
+
 /**
  * Get data from the form, verify and send it with ajax
  */

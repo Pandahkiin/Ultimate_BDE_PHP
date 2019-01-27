@@ -22,12 +22,16 @@
                     <td>{{ $suggestion->campus->location }}</td>
                     <td>{{ $suggestion->repetition->repetition }}</td>
                     <td class="float-right">
+                        @if($suggestion->id_Approbations == 11)
+                        <p class="text-danger">Cette suggestion à été signalé</p>
+                        @else
                         <button type="button" onclick="editModalSuggestion({{$suggestion->id}})" class="btn btn-outline-info m-1" data-toggle="modal" data-target="#editSuggestion">
                             <i class="fas fa-pen"></i>
                         </button>
                         <button type="button" onclick="deleteModal('deleteSuggestion','{{$suggestion->name}}',{{$suggestion->id}})" class="btn btn-outline-danger m-1" data-toggle="modal" data-target="#delete-modal">
                             <i class="fas fa-trash-alt"></i>
                         </button>
+                        @endif
                     </td>
                 </tr>
                 @endforeach
