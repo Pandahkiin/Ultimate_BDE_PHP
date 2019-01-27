@@ -20,9 +20,9 @@ class EventsController extends Controller
     {
         $events = Event::whereDate('date', '>', date("Y-m-d"))->where('id_Approbations','2')->get();
         $pastEvents = Event::whereDate('date', '<', date("Y-m-d"))->where('id_Approbations','2')->get();
-        $topEvents = Event::whereDate('date', '>', date("Y-m-d"))->where('id_Approbations','4')->get();
+        $topEvent = Event::whereDate('date', '>', date("Y-m-d"))->where('id_Approbations','4')->first();
         $pictures = Picture::all();
-        return view('events.main', compact('events', 'pastEvents', 'topEvents', 'pictures'));
+        return view('events.main', compact('events', 'pastEvents', 'topEvent', 'pictures'));
     }
 
     public function registerEvent(Request $request) {
