@@ -1,3 +1,23 @@
+function likePicture(pictureID, element) {
+    apiAJAXSend('/likes', {
+        id_user: connected_user.id,
+        id_picture: pictureID
+    }, function() {
+        $(element).removeClass('btn-outline-success').addClass('btn-outline-danger')
+            .html('<i class="fas fa-heart-broken"></i>')
+            .attr("onclick","unlikePicture("+pictureID+",this)");
+    },
+    'POST');
+}
+
+function unlikePicture(pictureID, element) {
+    apiAJAXDelete('/likes/users/'+connected_user.id+'/pictures/'+pictureID, function() {
+        $(element).addClass('btn-outline-success').removeClass('btn-outline-danger')
+            .html('<i class="far fa-heart"></i>')
+            .attr("onclick","likePicture("+pictureID+",this)");
+    });
+}
+
 function likeSuggestion(eventID, element) {
     apiAJAXSend('/votes', {
         id_user: connected_user.id,

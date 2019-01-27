@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="container mx-auto p-4">
+<div class="container mx-auto p-4 bg-light" style="height:100%">
     <div class="row">
         <div class="col-6">
             <h3>Dernières suggestions</h3>
@@ -48,7 +48,12 @@
             <div class="card-header">
                 <div class="row">
                     <h4 class="col m-0">{{$event->name}}</h4>
-                    <cite class="col text-right">Par {{$event->author->firstname.' '.$event->author->lastname}}</cite>
+                    <cite class="col text-right px-5">Par {{$event->author->firstname.' '.$event->author->lastname}}</cite>
+                    @if(Auth::user()->role->name === 'Personnel CESI')
+                        <button type="button" class="btn btn-outline-danger m-1 report-button" onclick="reportEvent({{$event->id}})" title="Signaler la suggestion">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </button>
+                    @endif
                 </div>
             </div>
             <div class="card-body">

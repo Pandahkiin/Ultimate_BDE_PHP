@@ -30,7 +30,7 @@
 
     <ul class="navbar-nav ml-auto">
         @auth
-          @if(Auth::check() && Auth::user()->role->name === 'Membre BDE')
+          @if(Auth::user()->role->name === 'Membre BDE')
             <a class="mr-3 navbarFont" href="{{ route('Admin') }}"><i class="fas fa-user-cog mx-1"></i> Administration</a>
           @endif
           <a class="navbarFont" href="{{ url('/logout') }}">Se déconnecter</a>

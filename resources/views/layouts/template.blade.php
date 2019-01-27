@@ -16,6 +16,7 @@
     <script src="{{ asset('js/interaction.js') }}" defer></script>
     <script src="{{ asset('js/ajax.js') }}" defer></script>
     <script src="{{ asset('js/shop.js') }}" defer></script>
+    <script src="{{ asset('js/cesi_management.js') }}" defer></script>
 
     <script src="{{ asset('vendor/DataTables/datatables.min.js') }}" defer></script>
     @stack('head')

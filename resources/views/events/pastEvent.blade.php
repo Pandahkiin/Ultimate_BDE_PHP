@@ -1,22 +1,20 @@
-<div class="card col-md-12 border-0">
-    <div class="row">
-        <div class="w-100 bg-light">
-            <h2 class="card-title text-center w-100">{{ $pastEvent->name }}</h2>
+<div class="card mt-2">
+    <div class="card-body row d-flex flex-column mx-1">
+        <h5 class="card-title">{{ $pastEvent->name }}</h5>
+        @if(Auth::user()->role->name === 'Personnel CESI')
+        <button type="button" class="btn btn-outline-danger m-1 report-button" onclick="reportEvent({{$pastEvent->id}})" title="Signaler l'événemebnt">
+            <i class="fas fa-exclamation-triangle"></i>
+        </button>
+        @endif
+        <h6 class="card-subtitle mb-2 text-muted">{{ $event->date }}</h6>
+        <p class="card-text">{{ $pastEvent->description }}</p>
+
+        <div class="mt-auto">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalPastEvent{{ $pastEvent->id }}">En savoir plus</button>
+            @auth
+            <button type="button" class="btn btn-outline-primary" onclick="setUploadPictureModal(false,'{{$pastEvent->id}}')"  data-toggle="modal" data-target="#upload-picture">Poster une image</button>
+            @endauth
         </div>
-        <div class="col-md-6">
-            <div class="card-block">
-                <div id="eventText">
-                    <p class="pastEventDescription text-justify card-text">{{ $pastEvent->description }}</p>
-                </div>
-                <br>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalPastEvent{{    $pastEvent->id }}">En savoir plus</button>
-                @auth
-                <button type="button" class="btn btn-outline-primary" onclick="setUploadPictureModal(false,'{{$pastEvent->id}}')"  data-toggle="modal" data-target="#upload-picture">Poster une image</button>
-                @endauth
-                <p class="card-text">Date : {{ $pastEvent->date }}</p>
-            </div>
-        </div>
-        <img class="mx-auto my-auto" src="{{ $pastEvent->image }}" alt="{{ $pastEvent->name }}" width="100" height="100">
     </div>
 </div>
 
@@ -42,6 +40,13 @@
                                         @auth
                                         <div class="my-2">
                                             <div class="row">
+                                                @if(App\Models\Site\Like::haveUserLike($picture->id))
+                                                <button type="button" class="btn btn-outline-danger btn-lg btn-block" onclick="unlikePicture({{$picture->id}},this)"><i class="fas fa-heart-broken"></i></button>
+                                                @else
+                                                <button type="button" class="btn btn-outline-success btn-lg btn-block" onclick="likePicture({{$picture->id}},this)"><i class="far fa-heart"></i></button>
+                                                @endif
+                                            </div>
+                                            <div class="row">
                                                 <div class="col">
                                                     @if(App\Models\Site\Comment::haveUserComment($picture->id))
                                                     <textarea class="form-control" id="picture-comment-{{$picture->id}}" rows="2" placeholder="Ajouter un commentaire"></textarea>
@@ -49,21 +54,21 @@
                                                     @endif
                                                 </div>
                                             </div>
+                                            @foreach (App\Models\Site\Comment::getPictureComments($picture->id) as $comment)
                                             <div class="row mt-2">
-                                                @foreach (App\Models\Site\Comment::getPictureComments($picture->id) as $comment)
-                                                    <div class="card">
-                                                      <div class="card-header">
-                                                            {{ $comment->author->firstname.' '.$comment->author->lastname }}
-                                                      </div>
-                                                      <div class="card-body">
-                                                        <blockquote class="blockquote mb-0">
-                                                          <p>{{$comment->content}}</p>
-                                                          <footer class="blockquote-footer">{{$comment->date}}</footer>
-                                                        </blockquote>
-                                                      </div>
-                                                    </div>
-                                                @endforeach
+                                                <div class="card col">
+                                                  <div class="card-header">
+                                                        {{ $comment->author->firstname.' '.$comment->author->lastname }}
+                                                  </div>
+                                                  <div class="card-body">
+                                                    <blockquote class="blockquote mb-0">
+                                                      <p>{{$comment->content}}</p>
+                                                      <footer class="blockquote-footer">{{$comment->date}}</footer>
+                                                    </blockquote>
+                                                  </div>
+                                                </div>
                                             </div>
+                                            @endforeach
                                         </div>
                                         @endauth
                                     </div>

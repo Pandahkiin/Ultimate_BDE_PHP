@@ -35,7 +35,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $events = Event::where('id_Approbations', 2)->get();
+        $events = Event::where('id_Approbations', 2)->orWhere('id_Approbations', 3)->get();
         $suggestions = Event::where('id_Approbations', 1)->get();
         $goodies = Goodie::all();
 

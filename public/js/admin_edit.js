@@ -46,7 +46,7 @@ function editModalSuggestion(suggestionID) {
 /* Send UPDATE to database */
 function editEvent(eventID) {
     var formData = serializeForm("#edit-event");
-
+    formData.id_approbation = 3;
     var verification = [
         ['name','Pas de caractères spéciaux.','^[_A-z0-9]*((-|\\s)*[_A-z0-9])*$'],
         ['description','required',''],
@@ -82,7 +82,7 @@ function editGoodie(goodieID) {
 }
 function editSuggestion(suggestionID) {
     var formData = serializeForm("#edit-suggestion");
-
+    formData.id_approbation = 3;
     var verification = [
         ['name','Pas de caractères spéciaux.','^[_A-z0-9]*((-|\\s)*[_A-z0-9])*$'],
         ['description','required','']
