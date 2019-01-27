@@ -83,8 +83,11 @@ function sendPostAjax(url, data, callbackSuccess, contentType) {
         // the route pointing to the post function
         url: url,
         type: 'POST',
+        // send the csrf-token and the input to the controller
         data: data,
+        cache: false,
         contentType: contentType,
+        processData: false,
         timeout: 3000,
         error: function(jqXHR, textStatus, errorThrown) {
             if(textStatus==="timeout") {

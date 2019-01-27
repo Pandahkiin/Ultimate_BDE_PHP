@@ -39,6 +39,31 @@
 </head>
 <body>
     <div id="alert" class="alert alert-hidden" onclick="$(this).addClass('alert-hidden')">Alert</div>
+    <div class="modal fade" id="upload-picture" tabindex="-1" role="dialog" aria-labelledby="upload-picture-title" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="upload-picture-title">Chargement d'image</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+                <form id="upload-picture-form" enctype="multipart/form-data" method="post" action="{{url('adminUploadPicture')}}">
+                    <div class="form-group">
+                        <input type="hidden" name="_token" value="{{ csrf_token()}}">
+                        <label>File input</label>
+                        <input type="file" name="image" class="form-control" id="catagry_logo">
+                    </div>
+                </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+            <button type="button" data-target="" id="upload-picture-ok" class="btn btn-primary" onclick="uploadPicture('upload-picture', $(this).data('target'))">Ok</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <div id="app">
         
         @include('layouts.navigation')

@@ -1,31 +1,5 @@
 @include('admin.editEvent')
 
-<div class="modal fade" id="upload-picture" tabindex="-1" role="dialog" aria-labelledby="upload-picture-title" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="upload-picture-title">Chargement d'image</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-            <form id="upload_form" enctype="multipart/form-data" method="post" action="{{url('adminUploadPicture')}}">
-                <div class="form-group">
-                    <input type="hidden" name="_token" value="{{ csrf_token()}}">
-                    <label>File input</label>
-                    <input type="file" name="image" class="form-control" id="catagry_logo">
-                </div>
-            </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-        <button type="button" class="btn btn-primary" onclick="uploadPicture('upload_form')">Ok</button>
-      </div>
-    </div>
-  </div>
-</div>
-
 <div class="card">
     <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#adminAddEvent" aria-expanded="false" aria-controls="adminAddEvent">
         Ajouter un événement
@@ -47,12 +21,12 @@
                 <div class="form-group row">
                     <div class="col-6">
                         <label for="add-event-image">Image d'illustration</label>
-                        <input type="text" class="form-control" name="image" id="add-event-image" placeholder="http://" required>
+                        <input type="text" class="form-control" name="image" id="add-event-image" required>
                         <label class="form-text text-danger"></label>
                     </div>
                     <div class="col-6">
                         <label for="add-event-image-upload">Charger une image sur le serveur</label>
-                        <button id="add-event-image-upload" type="button" class="btn btn-primary form-control" data-toggle="modal" data-target="#upload-picture">
+                        <button id="add-event-image-upload" onclick="$('#upload-picture-ok').attr('data-target','add-event-image')" type="button" class="btn btn-primary form-control" data-toggle="modal" data-target="#upload-picture">
                             Charger une image
                         </button>
                     </div>

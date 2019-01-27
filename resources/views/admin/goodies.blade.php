@@ -14,10 +14,18 @@
                     <input type="text" class="form-control" name="name" maxlength="50" id="add-goodie-name" required>
                     <label class="form-text text-danger"></label>
                 </div>
-                <div class="form-group">
-                    <label for="add-goodie-image">Image d'illustration</label>
-                    <input type="text" class="form-control" name="image" id="add-goodie-image" placeholder="http://">
-                    <label class="form-text text-danger"></label>
+                <div class="form-group row">
+                    <div class="col-6">
+                        <label for="add-goodie-image">Image d'illustration</label>
+                        <input type="text" class="form-control" name="image" id="add-goodie-image" placeholder="http://">
+                        <label class="form-text text-danger"></label>
+                    </div>
+                    <div class="col-6">
+                        <label for="add-event-image-upload">Charger une image sur le serveur</label>
+                        <button id="add-event-image-upload" onclick="$('#upload-picture-ok').attr('data-target','add-goodie-image')" type="button" class="btn btn-primary form-control" data-toggle="modal" data-target="#upload-picture">
+                            Charger une image
+                        </button>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="add-goodie-description">Déscription (1500 caractères)</label>

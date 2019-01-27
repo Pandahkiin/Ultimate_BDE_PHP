@@ -63,14 +63,16 @@ function sendNewSuggestion() {
 /**
  * Upload a picture on the server
  */
-function uploadPicture(formID) {
-    var form = new FormData($('#'+formID)[0]);
-    sendPictureAjax(
+function uploadPicture(modalID, pathTargetID) {
+    console.log(pathTargetID);
+    var form = new FormData($('#'+modalID+'-form')[0]);
+    sendPostAjax(
         '/uploadPicture',
         form,
         function(response) {
-            $('#upload-picture').modal('toggle');
-            $('#add-event-image').val(response.path);
+            $('#'+modalID).modal('toggle');
+            if(pathTargetID)
+                $('#'+pathTargetID).val(response.path);
         },
         false);
 }
