@@ -36,7 +36,7 @@ function sendNewEvent() {
         ['name','Pas de caractères spéciaux.','^[_A-z0-9]*((-|\\s)*[_A-z0-9])*$'],
         ['description','required',''],
         ['date','required',''],
-        ['image','Url invalide','https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)'],
+        ['image','required',''],
         ['price',' Le prix doit être un nombre.','[+-]?([0-9]*[.])?[0-9]+']
     ];
 
@@ -97,20 +97,4 @@ function deleteGoodie(goodieID) {
     apiAJAXDelete('/goodies/'+goodieID, function() {
         dataTableGoodie.row($('#table-goodie-row-'+goodieID)).remove().draw();
     });
-}
-
-/**
- * Upload a picture on the server
- */
-function uploadPictureEvent() {
-
-    var image = $('#add-event-image-upload')[0].files[0];
-    var form = new FormData();
-    form.append('image', image);
-
-    sendPictureAjax('/adminUploadPicture',
-        form,
-        function(response) {
-            $('#add-event-image').val(response.path);
-        });
 }

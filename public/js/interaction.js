@@ -59,3 +59,18 @@ function sendNewSuggestion() {
         $("#add-suggestion").trigger("reset");
     }
 }
+
+/**
+ * Upload a picture on the server
+ */
+function uploadPicture(formID) {
+    var form = new FormData($('#'+formID)[0]);
+    sendPictureAjax(
+        '/uploadPicture',
+        form,
+        function(response) {
+            $('#upload-picture').modal('toggle');
+            $('#add-event-image').val(response.path);
+        },
+        false);
+}

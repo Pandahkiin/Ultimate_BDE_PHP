@@ -75,41 +75,24 @@ class AdminController extends Controller
     }
 
     public function pictureUpload(Request $request) {
-                
-        /*$this->validate($request, [
-            'input_img' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        $this->validate($request, [
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
-    
-        if ($request->hasFile('input_img')) {
-            try {
-                $image = $request->file('input_img');
-                $name = time().'.'.$image->getClientOriginalExtension();
-    
-                $destinationPath = storage_path('/app/pictures/BDE');
-                $image->move($destinationPath, $name);
-                $this->save();
-        
-                $response = array(
-                    'status' => 'Success',
-                    'msg' => 'Image enregistré !',
-                    'path' => $destinationPath.'/'.$name
-                );
-                return response()->json($response);
-            }
-            catch (\Exception $e) {
-                $response = array(
-                    'status' => 'failure',
-                    'msg' => 'Whoops, une erreur s\'est produite durant l\'upload de l\'image ...'
-                );
-                return response()->json($response);
-            }
+
+        if ($request->hasFile('image')) {
+            $imageName = time().'.'.$request->image->getClientOriginalExtension();
+            $request->image->move(public_path('img/upload'), $imageName);
+
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Image chargé avec succès !',
+                'path' => '/img/upload/'.$imageName
+            ]);
         }
-        else {
-            $response = array(
-                'status' => 'warning',
-                'msg' => 'Le format de l\'image est invalide'
-            );
-            return response()->json($response);
-        }*/
+
+        return response()->json([
+            'status' => 'warning',
+            'message' => 'Fichier invalide !'
+        ]);
     }
 }

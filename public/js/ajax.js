@@ -78,16 +78,13 @@ function apiAJAXDelete(url, callbackSuccess) {
     );
 }
 
-function sendPictureAjax(url, image, callbackSuccess) {
+function sendPostAjax(url, data, callbackSuccess, contentType) {
     $.ajax({
         // the route pointing to the post function
         url: url,
         type: 'POST',
-        // send the csrf-token and the input to the controller
-        data: image,
-        cache: false,
-        contentType: false,
-        processData: false,
+        data: data,
+        contentType: contentType,
         timeout: 3000,
         error: function(jqXHR, textStatus, errorThrown) {
             if(textStatus==="timeout") {

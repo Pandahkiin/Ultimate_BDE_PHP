@@ -1,16 +1,16 @@
 <h4>{{$eventName}} : liste des inscrits</h4>
-<table class="table">
+<table style="width: 100%;" cellpadding=0 cellspacing=0>
   <thead>
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">Prénom</th>
-      <th scope="col">Nom</th>
+      <th>#</th>
+      <th>Prénom</th>
+      <th>Nom</th>
     </tr>
   </thead>
   <tbody>
     @foreach ($registerList as $row)
     <tr>
-        <th scope="row">{{$row->user->id}}</th>
+        <th>{{$row->user->id}}</th>
         <td>{{$row->user->firstname}}</td>
         <td>{{$row->user->lastname}}</td>
     </tr>
