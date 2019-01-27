@@ -20,4 +20,12 @@ class Picture extends Model
     public function event(){
         return $this->hasOne('App\Models\Site\Event', 'id','id_Events');
     }
+
+    /**
+     * All pictures for one event
+     * @return Collection
+     */
+    public static function getEventPictures($eventID) {
+        return Picture::where('id_Events', $eventID)->get();
+    }
 }

@@ -52,8 +52,10 @@
                 <form id="upload-picture-form" enctype="multipart/form-data" method="post" action="{{url('adminUploadPicture')}}">
                     <div class="form-group">
                         <input type="hidden" name="_token" value="{{ csrf_token()}}">
+                        <input type="hidden" name="id_user" value="{{ Auth::id()}}">
+                        <input id="upload-picture-form-id_event" type="hidden" name="id_event" value="">
                         <label>File input</label>
-                        <input type="file" name="image" class="form-control" id="catagry_logo">
+                        <input type="file" name="image" class="form-control-file">
                     </div>
                 </form>
           </div>

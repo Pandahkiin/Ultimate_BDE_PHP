@@ -33,7 +33,7 @@ Route::group(['middleware' => 'App\Http\Middleware\BDEMiddleware'], function() {
 
 /* Ajax interaction routes */
 Route::post('/uploadPicture','PictureController@upload');
-
+Route::post('/sendComment','PictureController@createComment');
 /*Shopping cart routes*/
 Route::get('/form', 'CartController@index');
 Route::post('/add', 'CartController@add');

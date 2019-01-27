@@ -64,7 +64,6 @@ function sendNewSuggestion() {
  * Upload a picture on the server
  */
 function uploadPicture(modalID, pathTargetID) {
-    console.log(pathTargetID);
     var form = new FormData($('#'+modalID+'-form')[0]);
     sendPostAjax(
         '/uploadPicture',
@@ -75,4 +74,24 @@ function uploadPicture(modalID, pathTargetID) {
                 $('#'+pathTargetID).val(response.path);
         },
         false);
+}
+function setUploadPictureModal(target, eventID) {
+    $('#upload-picture-ok').attr('data-target', target);
+    $('#upload-picture-form-id_event').val(eventID);
+}
+
+function sendComment(pictureID) {
+    var data = {
+        _token: CSRF_TOKEN,
+        comment: $('#picture-comment-'+pictureID).val(),
+        id_picture: pictureID,
+    };
+    sendPostAjax(
+        '/sendComment',
+        JSON.stringify(data),
+        function() {
+            $('#picture-comment-'+pictureID).val('');
+            $('#picture-comment-button-'+pictureID).remove();
+        },
+        'JSON');
 }

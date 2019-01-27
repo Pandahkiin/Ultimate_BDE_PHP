@@ -22,7 +22,7 @@
                     </div>
                     <div class="col-6">
                         <label for="add-event-image-upload">Charger une image sur le serveur</label>
-                        <button id="add-event-image-upload" onclick="$('#upload-picture-ok').attr('data-target','add-goodie-image')" type="button" class="btn btn-primary form-control" data-toggle="modal" data-target="#upload-picture">
+                        <button id="add-event-image-upload" onclick="setUploadPictureModal('add-goodie-image','')" type="button" class="btn btn-primary form-control" data-toggle="modal" data-target="#upload-picture">
                             Charger une image
                         </button>
                     </div>

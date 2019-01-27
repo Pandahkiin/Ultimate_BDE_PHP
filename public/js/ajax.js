@@ -83,6 +83,9 @@ function sendPostAjax(url, data, callbackSuccess, contentType) {
         // the route pointing to the post function
         url: url,
         type: 'POST',
+        headers: (contentType=='JSON')? {
+            'Content-Type': 'application/json'
+        } : {},
         // send the csrf-token and the input to the controller
         data: data,
         cache: false,

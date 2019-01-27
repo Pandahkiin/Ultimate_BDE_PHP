@@ -73,26 +73,4 @@ class AdminController extends Controller
             return $pdf->download($fileName);
         }
     }
-
-    public function pictureUpload(Request $request) {
-        $this->validate($request, [
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);
-
-        if ($request->hasFile('image')) {
-            $imageName = time().'.'.$request->image->getClientOriginalExtension();
-            $request->image->move(public_path('img/upload'), $imageName);
-
-            return response()->json([
-                'status' => 'success',
-                'message' => 'Image chargé avec succès !',
-                'path' => '/img/upload/'.$imageName
-            ]);
-        }
-
-        return response()->json([
-            'status' => 'warning',
-            'message' => 'Fichier invalide !'
-        ]);
-    }
 }
