@@ -18,6 +18,6 @@
             @endauth
             </div>
         </div>
-            <img class="mx-auto my-auto" src="{{ $topEvent->name }}" alt="{{ $topEvent->name }}" width="400" height="400">
+            <img class="mx-auto my-auto" src="{{ $topEvent->image }}" alt="{{ $topEvent->name }}" width="400" height="400">
         </div>
     </div>
