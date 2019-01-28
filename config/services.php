@@ -28,6 +28,9 @@ return [
 
     'sparkpost' => [
         'secret' => env('SPARKPOST_SECRET'),
+        'options' => [
+            'endpoint' => 'https://api.eu.sparkpost.com/api/v1/transmissions',
+        ],
     ],
 
     'stripe' => [
@@ -38,6 +41,20 @@ return [
             'secret' => env('STRIPE_WEBHOOK_SECRET'),
             'tolerance' => env('STRIPE_WEBHOOK_TOLERANCE', 300),
         ],
+    ],
+
+    'mailtrap' => [
+        "driver" => "smtp",
+        "host" => "smtp.mailtrap.io",
+        "port" => 2525,
+        "from" => array(
+            "address" => "armada424777@gmail.com",
+            "name" => "Example"
+            ),
+        "username" => "b3898c73f4e872",
+        "password" => "bd966c9aa19bad",
+        "sendmail" => "/usr/sbin/sendmail -bs",
+        "pretend" => false
     ],
 
 ];

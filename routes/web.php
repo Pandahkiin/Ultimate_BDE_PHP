@@ -44,3 +44,5 @@ Route::post('/addToCart', 'CartController@addToCart');
 Route::get('/form', 'CartController@index');
 Route::post('/add', 'CartController@add');
 Route::get('/cart', 'CartController@cart');
+
+Route::get('/order', 'OrderNotifyController@index');
