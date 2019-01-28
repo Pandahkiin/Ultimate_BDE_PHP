@@ -1,4 +1,5 @@
-<div class="col card border-dark">
+<!--
+<div class="card border-dark">
 <img src="{{ $goodie->image }}" class="card-img-top" alt="Image de {{ $goodie->name }}">
   <div class="card-body">
   <h2 class="card-title">{{ $goodie->name }}</h2>
@@ -33,5 +34,24 @@
         <button type="button" class="btn btn-primary">Ajouter au panier</button>
       </div>
     </div>
+  </div>
+</div>
+-->
+
+<div id="shop-goodie-{{ $goodie->id }}" class="card m-3" style="height:750px">
+  <input class="shop-goodie" type="hidden" data-goodie='["{{ $goodie->id }}","{{ $goodie->name }}","{{ $goodie->price }}","{{ $goodie->category->category }}"]'>
+  <div class="shop-img">
+      <img class="w-100" src="{{ $goodie->image }}" alt="{{ $goodie->name }}">
+  </div>
+  <div class="card-body d-flex flex-column">
+      <h2 class="card-title">{{ $goodie->name }}</h2>
+      <p class="card-text description">{{ $goodie->description }}</p>
+      <hr class="my-4 ml-0 mr-0">
+
+      <div class="row mt-2">
+          <div class="col"><p>Prix : {{ $goodie->price }} €</p></div>
+          <div class="col text-right"><p>Stock : {{ $goodie->stock }}</p></div>
+        </div>
+      <button type="button" class="btn btn-primary mt-auto" data-toggle="modal" data-target="#modalGoodie{{ $goodie->id }}">ACHETER ACHETER</button>
   </div>
 </div>

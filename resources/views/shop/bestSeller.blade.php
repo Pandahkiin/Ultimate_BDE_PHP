@@ -1,3 +1,4 @@
+<!--
 <div class="card border-primary px-3 pt-3">
   <div class="row">
     <div class="col-md-6">
@@ -42,4 +43,18 @@
       </div>
     </div>
   </div>
+</div>
+-->
+<div class="jumbotron h-100 d-flex flex-column">
+  <h1 class="display-4">{{ $bestSeller->name }}</h1>
+  <p class="lead">{{ $bestSeller->description }}</p>
+  <hr class="my-4 ml-0 mr-0">
+  <div class="shop-img">
+    <img class="w-100" src="{{ $bestSeller->image }}" alt="{{ $bestSeller->name }}">
+  </div>
+  <div class="row mt-2">
+    <div class="col"><p>Prix : {{ $bestSeller->price }} €</p></div>
+    <div class="col text-right"><p>Stock : {{ $bestSeller->stock }}</p></div>
+  </div>
+  <button type="button" class="btn btn-lg btn-block btn-primary mt-auto" data-toggle="modal" data-target="#modalbestSeller{{ $bestSeller->id }}">BUY IT</button>
 </div>

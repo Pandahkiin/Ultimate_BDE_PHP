@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Site\Goodie;
 use App\Models\Site\Order;
+
 use App\Models\Site\Categorie;
 
 class ShopController extends Controller
@@ -16,7 +17,7 @@ class ShopController extends Controller
      */
     public function index()
     {   $order = Order::all();
-        $goodies = Goodie::paginate(10);
+        $goodies = Goodie::all();
         $bestSellers = Goodie::all()->sortByDesc('total_orders')->take(3);
 
         $categories = Categorie::all();

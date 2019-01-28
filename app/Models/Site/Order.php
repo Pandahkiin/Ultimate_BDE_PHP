@@ -16,8 +16,4 @@ class Order extends Model
     public function user(){
         return $this->hasOne('App\Models\User', 'id', 'id_Users');
     }
-
-    public function fion(){
-        return $this->belongsTo('App\Models\Site\Contain', 'id_Orders');
-    }
 }

@@ -60,7 +60,7 @@ main {
 }
 
 .carousel-control-next, .carousel-control-prev {
-    top: 200px;
+    top: 50px;
     height: 15%;
 }
 

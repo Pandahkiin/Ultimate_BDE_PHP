@@ -39,9 +39,11 @@
                                 </div>
                                 @foreach (App\Models\Site\Picture::getEventPictures($pastEvent->id) as $picture)
                                     <div class="carousel-item">
+                                        @if(Auth::check() && Auth::user()->role->name === 'Personnel CESI')
                                         <button type="button" class="btn btn-outline-danger m-1 report-button" onclick="reportPicture({{$picture->id}})" title="Signaler l'image">
                                             <i class="fas fa-exclamation-triangle"></i>
                                         </button>
+                                        @endif
                                         <img class="d-block w-100" src="{{$picture->link}}">
                                         @auth
                                         <div class="my-2">

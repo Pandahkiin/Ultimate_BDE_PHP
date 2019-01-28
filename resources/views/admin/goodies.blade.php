@@ -28,8 +28,8 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="add-goodie-description">Déscription (1500 caractères)</label>
-                    <textarea class="form-control" rows="3" maxlength="1500" name="description" id="add-goodie-description" required></textarea>
+                    <label for="add-goodie-description">Déscription (255 caractères)</label>
+                    <textarea class="form-control" rows="3" maxlength="255" name="description" id="add-goodie-description" required></textarea>
                     <label class="form-text text-danger"></label>
                 </div>
                 <div class="form-group">

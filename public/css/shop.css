@@ -14,14 +14,16 @@
     height: 20rem;
   }
 
-.bestSellImg {
-    height: auto;
-    width: 100%;
+.jumbotron {
+    max-height: 70vh;
+}
+.shop-img {
+    overflow: hidden;
+    height: 100%;
 }
 
 .categories {
     background-color: lightgrey;
-    overflow : auto;
 }
 
 #shopRow {
