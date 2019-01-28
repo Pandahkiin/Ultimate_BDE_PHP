@@ -1,7 +1,7 @@
 <div class="card mt-2">
     <div class="card-body row d-flex flex-column mx-1">
         <h5 class="card-title">{{ $pastEvent->name }}</h5>
-        @if(Auth::user()->role->name === 'Personnel CESI')
+        @if(Auth::check() && Auth::user()->role->name === 'Personnel CESI')
         <button type="button" class="btn btn-outline-danger m-1 report-button" onclick="reportEvent({{$pastEvent->id}})" title="Signaler l'événement">
             <i class="fas fa-exclamation-triangle"></i>
         </button>
@@ -14,7 +14,7 @@
             @if(Auth::check() && App\Models\Site\Register::isUserRegister(Auth::id()))
                 <button type="button" class="btn btn-outline-primary" onclick="setUploadPictureModal(false,'{{$pastEvent->id}}')"  data-toggle="modal" data-target="#upload-picture">Poster une image</button>
             @endif
-            @if(Auth::user()->role->name === 'Personnel CESI')
+            @if(Auth::check() && Auth::user()->role->name === 'Personnel CESI')
             <button type="button" onclick="getEventPictures({{$pastEvent->id}})" class="btn btn-outline-dark">Télécharger les images</button>
             @endif
         </div>
