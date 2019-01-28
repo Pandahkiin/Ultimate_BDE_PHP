@@ -49,7 +49,7 @@
                 <div class="row">
                     <h4 class="col m-0">{{$event->name}}</h4>
                     <cite class="col text-right px-5">Par {{$event->author->firstname.' '.$event->author->lastname}}</cite>
-                    @if(Auth::user()->role->name === 'Personnel CESI')
+                    @if(Auth::check() && Auth::user()->role->name === 'Personnel CESI')
                         <button type="button" class="btn btn-outline-danger m-1 report-button" onclick="reportSuggestion({{$event->id}})" title="Signaler la suggestion">
                             <i class="fas fa-exclamation-triangle"></i>
                         </button>
@@ -62,11 +62,13 @@
                 </blockquote>
                 <div class="float-right">
                     <label class="text-secondary mx-2">{{$event->votedBy->count()}} vote(s)</label>
+                    @auth
                     @if(App\Models\User::haveVoteFor($event->id))
                         <button type="button" class="btn btn-outline-danger" onclick="unlikeSuggestion({{$event->id}}, this)"><i class="fas fa-heart-broken"></i></button>
                     @else
                         <button type="button" class="btn btn-outline-success" onclick="likeSuggestion({{$event->id}}, this)"><i class="far fa-heart"></i></button>
                     @endif
+                    @endauth
                 </div>
             </div>
         </div>
