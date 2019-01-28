@@ -20,7 +20,7 @@ class HomeController extends Controller
     public function index()
     {
         $bestSellers = Goodie::all()->sortByDesc('total_orders')->take(3);
-        $topEvent = Event::whereDate('date', '>', date("Y-m-d"))->where('id_Approbations',4)->first();
+        $topEvent = Event::whereDate('date', '>', date("Y-m-d"))->where('id_Approbations', 4)->first();
 
         if(\Auth::check() && !\Session::get('APItoken')) {
             $client = new GuzzleHttp\Client();
