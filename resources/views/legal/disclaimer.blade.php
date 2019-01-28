@@ -7,8 +7,7 @@
 
     <p>Propriétaire : BDE Exia Strasbourg<br>
     Responsable publication : BDE Exia Strasbourg<br>
-    Le responsable publication est une personne physique ou une personne morale.<br>
-    Hébergeur :</p>
+    Le responsable publication est une personne physique ou une personne morale.</p>
 
     <h2>2. CONDITIONS GÉNÉRALES D’UTILISATION DU SITE ET DES SERVICES PROPOSÉS.</h2>
     <p>L’utilisation du site bde.exia-st.fr implique l’acceptation pleine et entière des conditions générales d’utilisation ci-après décrites. Ces conditions d’utilisation sont susceptibles d’être modifiées ou complétées à tout moment, les utilisateurs du site bde.exia-st.fr sont donc invités à les consulter de manière régulière.</p>

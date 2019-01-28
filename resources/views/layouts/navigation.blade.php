@@ -33,7 +33,7 @@
           @if(Auth::user()->role->name === 'Membre BDE')
             <a class="mr-3 navbarFont" href="{{ route('Admin') }}"><i class="fas fa-user-cog mx-1"></i> Administration</a>
           @endif
-          <h5 class="mr-3 my-auto">Bonjour {{ Auth::user()->lastname }}</h5>
+          <h5 class="mr-3 my-auto">Bonjour {{ Auth::user()->firstname }}</h5>
           <a class="navbarFont" href="{{ url('/logout') }}">Se déconnecter</a>
         @else
           <a href="{{ route('login') }}" class="navbarFont mr-3">Se connecter</a>

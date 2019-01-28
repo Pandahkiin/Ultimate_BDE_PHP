@@ -56,6 +56,8 @@
                 </div>
             @endforeach
         </div>
-        <a type="button" class="d-block btn btn-primary mx-5 py-2" href={{ route('Boutique') }}><h4     class="my-auto">Visiter la boutique</h4></a>
+        <div class="d-inline-block w-100 mb-4">
+            <a type="button" class="btn btn-primary btn-lg btn-block py-2" href={{ route('Boutique') }}><h4     class="my-auto">Visiter la boutique</h4></a>
+        </div>
     </div>
 @endsection
