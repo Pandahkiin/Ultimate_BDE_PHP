@@ -49,7 +49,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="card-img-bottom">
-                                <img class="bestSellImg w-100 h-100" src="{{ $bestSeller->image }}" alt="{{     $bestSeller->name }}">
+                                <img class="bestSellImg" src="{{ $bestSeller->image }}" alt="{{ $bestSeller->name }}">
                             </div>
                         </div>
                     </div>
