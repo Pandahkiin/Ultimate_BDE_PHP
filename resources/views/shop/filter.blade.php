@@ -1,4 +1,4 @@
-<aside class="categories col-2">
+<aside class="categories col-md-2 col-sm-12">
     <div class="mx-3">
         <form class="mt-2">
             <div class="form-group">

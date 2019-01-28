@@ -19,7 +19,7 @@ function reportComment(id_User, id_Picture) {
 }
 
 function reportPicture(pictureID) {
-    apiAJAXSend('/reportComment',{}, null,'JSON', 'PATCH');
+    apiAJAXSend('/pictures/'+pictureID, {},null, 'PATCH');
 }
 
 function getEventPictures(eventID) {

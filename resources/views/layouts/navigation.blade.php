@@ -23,7 +23,7 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="shopDropdown">
           <a class="dropdown-item" href="{{ route('Boutique') }}">Produits</a>
-          <a class="dropdown-item" href="{{ route('Boutique') }}">Panier</a>
+          <a class="dropdown-item" href="{{ route('Panier') }}">Panier</a>
         </div>
       </li>
     </ul>
@@ -31,6 +31,7 @@
     <ul class="navbar-nav ml-auto">
         @auth
           <h5 class="mr-3 my-auto">Bonjour {{ Auth::user()->firstname }}</h5>
+          <a href="{{ route('Panier')}}" class="navbarFont mr-2"><i class="fas fa-cart-arrow-down"></i> Panier</button>
           @if(Auth::user()->role->name === 'Membre BDE')
             <a class="mr-3 navbarFont" href="{{ route('Admin') }}"><i class="fas fa-user-cog mx-1"></i> Administration</a>
           @endif

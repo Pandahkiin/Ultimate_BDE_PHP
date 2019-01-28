@@ -18,6 +18,6 @@ class Contain extends Model
     }
 
     public function goodie(){
-        return $this->hasMany('App\Models\Goodie', 'id', 'id_Goodies');
+        return $this->hasOne('App\Models\Site\Goodie', 'id', 'id_Goodies');
     }
 }

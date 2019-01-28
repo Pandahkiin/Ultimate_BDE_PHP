@@ -23,3 +23,11 @@ function shopFilter() {
             $('#shop-goodie-'+element[0]).addClass('d-none');
     });
 }
+
+function addToCart(goodieID, quantity) {
+    sendPostAjax('/addToCart', JSON.stringify({
+        id_goodie: goodieID,
+        quantity: quantity,
+        _token: CSRF_TOKEN
+    }), null,'JSON', 'POST');
+}

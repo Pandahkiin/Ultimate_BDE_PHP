@@ -52,6 +52,11 @@
           <div class="col"><p>Prix : {{ $goodie->price }} €</p></div>
           <div class="col text-right"><p>Stock : {{ $goodie->stock }}</p></div>
         </div>
-      <button type="button" class="btn btn-primary mt-auto" data-toggle="modal" data-target="#modalGoodie{{ $goodie->id }}">ACHETER ACHETER</button>
+      @auth
+      <div class="d-flex mt-auto">
+        <button type="button" class="btn btn-primary mr-2" onclick="addToCart({{ $goodie->id }}, $(this).next().val())"><i class="fas fa-cart-plus"></i></button>
+        <input type="number" class="form-control input-number" value="1" min="1" max="{{ $goodie->stock }}" size="5">
+      </div>
+      @endAuth
   </div>
 </div>

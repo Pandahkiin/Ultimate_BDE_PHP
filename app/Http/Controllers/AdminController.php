@@ -22,7 +22,6 @@ class AdminController extends Controller
 {
     /**
      * Create a new controller instance.
-     *
      * @return void
      */
     public function __construct()
@@ -79,33 +78,47 @@ class AdminController extends Controller
     }
 
     public function editComment(Request $request) {
-        $id_picture = $request->id_Picture;
-        $id_user = $request->id_User;
-        $content = $request->content;
-        $datetime = (new \DateTime())->format('Y-m-d');
-
-        $comment = Comment::where([
-            ['id_Pictures', $id_picture],
-            ['id_Users', $id_user],
-        ])->update(['content' => $content, 'date' => $datetime]);
-
-        return response()->json([
-            'status' => 'success',
-            'message' => 'Modification du commentaire réussi !',
-        ]);
+        try {
+            $id_picture = $request->id_Picture;
+            $id_user = $request->id_User;
+            $content = $request->content;
+            $datetime = (new \DateTime())->format('Y-m-d');
+    
+            $comment = Comment::where([
+                ['id_Pictures', $id_picture],
+                ['id_Users', $id_user],
+            ])->update(['content' => $content, 'date' => $datetime]);
+    
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Modification du commentaire réussi !',
+            ]);
+        } catch(\Exception $e) {
+            return response()->json([
+                'status' => 'danger',
+                'message' => 'Impossible de modifier ce commentaire',
+            ]);
+        }
     }
     public function reportComment(Request $request) {
-        $id_picture = $request->id_Picture;
-        $id_user = $request->id_User;
-    
-        $comment = Comment::where([
-            ['id_Pictures', $id_picture],
-            ['id_Users', $id_user],
-        ])->update(['date' => '1970-01-01']);
-    
-        return response()->json([
-            'status' => 'success',
-            'message' => 'Signalement du commentaire réussi !',
-        ]);
+        try {
+            $id_picture = $request->id_Picture;
+            $id_user = $request->id_User;
+        
+            $comment = Comment::where([
+                ['id_Pictures', $id_picture],
+                ['id_Users', $id_user],
+            ])->update(['date' => '1970-01-01']);
+            
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Signalement du commentaire réussi !',
+            ]);
+        } catch(\Exception $e) {
+            return response()->json([
+                'status' => 'danger',
+                'message' => 'Impossible de modifier ce commentaire',
+            ]);
+        }
     }
 }

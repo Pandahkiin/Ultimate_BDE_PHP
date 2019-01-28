@@ -22,6 +22,7 @@ Route::get('/home', 'HomeController@index')->name('Acceuil');
 Route::get('/evenements', 'EventsController@index')->name('Evenements');
 Route::get('/boutique', 'ShopController@index')->name('Boutique');
 Route::get('/suggestions', 'SuggestionsController@index')->name('Boite à idées');
+Route::get('/panier', 'CartController@index')->name('Panier');
 
 /* Admin routes */
 Route::group(['middleware' => 'App\Http\Middleware\BDEMiddleware'], function() {
@@ -38,6 +39,7 @@ Route::group(['middleware' => 'App\Http\Middleware\CESIEmployeeMiddleWare'], fun
 /* Ajax interaction routes */
 Route::post('/uploadPicture','PictureController@upload');
 Route::post('/sendComment','PictureController@createComment');
+Route::post('/addToCart', 'CartController@addToCart');
 /*Shopping cart routes*/
 Route::get('/form', 'CartController@index');
 Route::post('/add', 'CartController@add');

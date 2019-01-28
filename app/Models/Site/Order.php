@@ -16,4 +16,23 @@ class Order extends Model
     public function user(){
         return $this->hasOne('App\Models\User', 'id', 'id_Users');
     }
+
+    public function contain() {
+        return $this->hasMany('App\Models\Site\Contain','id_Orders' ,'id');
+    }
+
+    /**
+     * Total cost of one order
+     * @return int
+     */
+    public static function totalOrderCost($orderID) {
+        $order = Order::find($orderID)->contain;
+
+        $total = 0;
+        foreach($order as $contain) {
+            $total += $contain->quantity*$contain->goodie->price;
+        }
+
+        return $total;
+    }
 }
