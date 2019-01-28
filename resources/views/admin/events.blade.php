@@ -1,5 +1,3 @@
-@include('admin.editEvent')
-
 <div class="card">
     <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#adminAddEvent" aria-expanded="false" aria-controls="adminAddEvent">
         Ajouter un événement
@@ -43,6 +41,12 @@
                             <option value="{{ $repetition->id }}"> {{ $repetition->repetition }} </option>
                         @endforeach
                     </select>
+                </div>
+                <div class="form-group">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="form-control custom-control-input" id="add-event-topEvent" name="topEvent">
+                        <label class="custom-control-label" for="add-event-topEvent">Événement du mois</label>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="add-event-price">Participation des participant</label>

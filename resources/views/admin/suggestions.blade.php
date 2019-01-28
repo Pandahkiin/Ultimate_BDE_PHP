@@ -25,6 +25,9 @@
                         @if($suggestion->id_Approbations == 11)
                         <p class="text-danger">Cette suggestion à été signalé</p>
                         @else
+                        <button type="button" onclick="acceptSuggestion({{$suggestion->id}})" class="btn btn-outline-success m-1" title="Accepter la suggestion" data-toggle="modal" data-target="#editEvent">
+                            <i class="fas fa-check"></i>
+                        </button>
                         <button type="button" onclick="editModalSuggestion({{$suggestion->id}})" class="btn btn-outline-info m-1" data-toggle="modal" data-target="#editSuggestion">
                             <i class="fas fa-pen"></i>
                         </button>

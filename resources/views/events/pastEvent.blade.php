@@ -6,12 +6,12 @@
             <i class="fas fa-exclamation-triangle"></i>
         </button>
         @endif
-        <h6 class="card-subtitle mb-2 text-muted">{{ $event->date }}</h6>
+        <h6 class="card-subtitle mb-2 text-muted">{{ $pastEvent->date }}</h6>
         <p class="card-text">{{ $pastEvent->description }}</p>
 
         <div class="mt-auto">
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalPastEvent{{ $pastEvent->id }}">En savoir plus</button>
-            @if(Auth::check() && App\Models\Site\Register::isUserRegister(Auth::id()))
+            @if(Auth::check() && App\Models\Site\Register::isUserRegister($pastEvent->id))
                 <button type="button" class="btn btn-outline-primary" onclick="setUploadPictureModal(false,'{{$pastEvent->id}}')"  data-toggle="modal" data-target="#upload-picture">Poster une image</button>
             @endif
             @if(Auth::check() && Auth::user()->role->name === 'Personnel CESI')
@@ -39,6 +39,9 @@
                                 </div>
                                 @foreach (App\Models\Site\Picture::getEventPictures($pastEvent->id) as $picture)
                                     <div class="carousel-item">
+                                        <button type="button" class="btn btn-outline-danger m-1 report-button" onclick="reportPicture({{$picture->id}})" title="Signaler l'image">
+                                            <i class="fas fa-exclamation-triangle"></i>
+                                        </button>
                                         <img class="d-block w-100" src="{{$picture->link}}">
                                         @auth
                                         <div class="my-2">

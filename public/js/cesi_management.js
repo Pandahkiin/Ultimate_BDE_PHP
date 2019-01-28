@@ -18,6 +18,10 @@ function reportComment(id_User, id_Picture) {
     }), null,'JSON', 'POST');
 }
 
+function reportPicture(pictureID) {
+    apiAJAXSend('/reportComment',{}, null,'JSON', 'PATCH');
+}
+
 function getEventPictures(eventID) {
     window.location="/getPictures?_token="+CSRF_TOKEN+"&eventID="+eventID;
 }

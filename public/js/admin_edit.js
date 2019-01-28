@@ -54,6 +54,18 @@ function editModalComment(commentID) {
     commentID
     $('#editComment-function').attr("onclick","editComment("+parseInt(commentID.charAt(0))+","+parseInt(commentID.charAt(1))+")");
 }
+
+function acceptSuggestion(suggestionID) {
+    var row =$("#table-suggestion-row-"+suggestionID+" td");
+    var data = [];
+    row.toArray().forEach(function(element) {
+        data.push($(element).text());
+    });
+
+    $("#edit-event-name").val(data[0]);
+    $("#edit-event-description").val(data[1]);
+    $('#editEvent-function').attr("onclick","editEvent("+suggestionID+")");
+}
 /* Send UPDATE to database */
 function editComment(id_User, id_Picture) {
     var formData = serializeForm("#edit-comment");

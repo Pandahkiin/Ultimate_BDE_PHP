@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Site\Goodie;
 use App\Models\Site\Order;
+use App\Models\Site\Categorie;
 
 class ShopController extends Controller
 {
@@ -17,7 +18,9 @@ class ShopController extends Controller
     {   $order = Order::all();
         $goodies = Goodie::paginate(10);
         $bestSellers = Goodie::all()->sortByDesc('total_orders')->take(3);
-        return view('shop.main', compact('goodies', 'bestSellers','truc'));
+
+        $categories = Categorie::all();
+        return view('shop.main', compact('goodies', 'bestSellers','categories'));
         //return var_dump($bestSeller);
        
     }

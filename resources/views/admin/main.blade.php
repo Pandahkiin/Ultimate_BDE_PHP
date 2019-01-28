@@ -28,6 +28,8 @@
     </div>
 </div>
 
+@include('admin.editEvent')
+
 <div id="adminAccordion">
     <div class="card">
         <div class="card-header" id="headingGoodies">
@@ -93,13 +95,48 @@
         <div class="card-header" id="headingAdminImage">
             <h5 class="mb-0">
                 <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseAdminImage" aria-expanded="true" aria-controls="collapseAdminImage">
-                    Ajouter une image
+                    Administrer image
                 </button>
             </h5>
         </div>
         <div id="collapseAdminImage" class="collapse" aria-labelledby="headingAdminImage" data-parent="#adminAccordion">
             <div class="card-body">
                 @include('admin.image')
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header" id="headingAdminCatagory">
+            <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseAdminCatagory" aria-expanded="true" aria-controls="collapseAdminCatagory">
+                    Administrer catégories
+                </button>
+            </h5>
+        </div>
+        <div id="collapseAdminCatagory" class="collapse" aria-labelledby="headingAdminCatagory" data-parent="#adminAccordion">
+            <div class="card-body">
+                <div class="form-group">
+                    <label>Ajouter</label>
+                    <div class="row">
+                        <div class="col-8"><input type="text" class="form-control" id="add-category-name"></div>
+                        <div class="col-4"><button type="button" class="btn btn-success form-control" data-toggle="modal" onclick="addCategory()">Ajouter catégorie</button></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Supprimer</label>
+                    <div class="row">
+                        <div class="col-8">
+                            <select class="form-control" id="delete-category-id_category" name="id_category">
+                                @foreach ($categories as $categorie)
+                                    <option value="{{ $categorie->id }}"> {{ $categorie->category }} </option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-4"><button type="button" class="btn btn-danger form-control" data-toggle="modal" onclick="deleteCategory()">Supprimer catégorie</button></div>
+                    </div>
+
+                </div>
             </div>
         </div>
     </div>

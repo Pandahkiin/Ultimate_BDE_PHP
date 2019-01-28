@@ -12,6 +12,7 @@ use App\Models\Site\Categorie;
 use App\Models\Site\Register;
 use App\Models\Site\Goodie;
 use App\Models\Site\Comment;
+use App\Models\Site\Picture;
 use App\Models\Campus;
 
 use Storage;
@@ -36,17 +37,18 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $events = Event::where('id_Approbations', 2)->orWhere('id_Approbations', 12)->get();
+        $events = Event::where('id_Approbations', 2)->orWhere('id_Approbations', 12)->orWhere('id_Approbations', 4)->get();
         $suggestions = Event::where('id_Approbations', 1)->orWhere('id_Approbations',11)->get();
         $goodies = Goodie::all();
         $comments = Comment::all();
+        $pictures = Picture::all();
 
         /* Fill select box */
         $repetitions = Repetition::all();
         $categories = Categorie::all();
         $campuses = Campus::all();
 
-        return view('admin.main', compact('repetitions','categories','events', 'goodies', 'suggestions', 'campuses', 'comments'));
+        return view('admin.main', compact('repetitions','categories','events', 'goodies', 'suggestions', 'campuses', 'comments', 'pictures'));
     }
 
     public function getRegisterList(Request $request) {

@@ -8,7 +8,7 @@ var dataTableGoodie = $('#goodie-list-dataTable').DataTable({
 });
 var dataTableEvent = $('#event-list-dataTable').DataTable({
     columnDefs: [
-        {"targets": [9,10],
+        {"targets": [10],
         "searchable": false},
         {"targets": [9,10],
         "orderable": false}
@@ -32,6 +32,15 @@ var dataTableComment = $('#comment-list-dataTable').DataTable({
     ]
 });
 
+var dataTablePicture = $('#pictures-list-dataTable').DataTable({
+    columnDefs: [
+        {"targets": 3,
+        "searchable": false},
+        {"targets": 3,
+        "orderable": false}
+    ]
+});
+
 /**
  * Get data from the form, verify and send it with ajax
  */
@@ -40,6 +49,8 @@ function sendNewEvent() {
     formData.id_campus = connected_user.id_campus;
     formData.id_user = connected_user.id;
     formData.approved = 'approved';
+
+    console.log(formData);
 
     var verification = [
         ['name','Pas de caractères spéciaux.','^[_A-z0-9]*((-|\\s)*[_A-z0-9])*$'],
@@ -65,7 +76,7 @@ function sendNewGoodie() {
     var verification = [
         ['name','Pas de caractères spéciaux.','^[_A-z0-9]*((-|\\s)*[_A-z0-9])*$'],
         ['description','required',''],
-        ['image','Url invalide','https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)'],
+        ['image','required',''],
         ['price',' Le prix doit être un nombre.','[+-]?([0-9]*[.])?[0-9]+'],
         ['stock',' Le stock doit être un entier.','[0-9]*']
     ];
@@ -105,5 +116,27 @@ function deleteSuggestion(suggestionID) {
 function deleteGoodie(goodieID) {
     apiAJAXDelete('/goodies/'+goodieID, function() {
         dataTableGoodie.row($('#table-goodie-row-'+goodieID)).remove().draw();
+    });
+}
+
+function deletePicture(pictureID) {
+    apiAJAXDelete('/pictures/'+pictureID, function() {
+        dataTablePicture.row($('#table-picture-row-'+pictureID)).remove().draw();
+    });
+}
+
+/* Manage category */
+function addCategory() {
+    var content = $('#add-category-name').val();
+
+    apiAJAXSend('/categories', {category: content}, function() {
+        location.reload();
+    },'POST');
+}
+
+function deleteCategory() {
+    var categoryID = $('#delete-category-id_category').val();
+    apiAJAXDelete('/categories/'+categoryID, function() {
+        location.reload();
     });
 }

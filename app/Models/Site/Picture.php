@@ -26,6 +26,6 @@ class Picture extends Model
      * @return Collection
      */
     public static function getEventPictures($eventID) {
-        return Picture::where('id_Events', $eventID)->get();
+        return Picture::where('id_Events', $eventID)->where('link','NOT LIKE', '%reported')->get();
     }
 }
