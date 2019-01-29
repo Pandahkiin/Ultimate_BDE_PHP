@@ -66,7 +66,7 @@
                     <th>Description</th>
                     <th>Image</th>
                     <th>Date</th>
-                    <th>Prix de participation)</th>
+                    <th>Prix de participation</th>
                     <th>Nombre de participants</th>
                     <th>Auteur</th>
                     <th>Campus</th>

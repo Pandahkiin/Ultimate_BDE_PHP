@@ -3,7 +3,7 @@
         <div class="w-100 bg-light">
             <h2 class="card-title text-center w-100">{{ $event->name }}</h2>
             @if(Auth::check() && Auth::user()->role->name === 'Personnel CESI')
-            <button type="button" class="btn btn-outline-danger m-1 report-button" onclick="reportEvent({{$event->id}})" title="Signaler l'événemebnt">
+            <button type="button" class="btn btn-outline-danger m-1 report-button" onclick="reportEvent({{$event->id}})" title="Signaler l'événement">
                 <i class="fas fa-exclamation-triangle"></i>
             </button>
             @endif
