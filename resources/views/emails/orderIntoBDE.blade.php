@@ -1,4 +1,4 @@
-<h3>L'étudiant {{$name}} à passé la commande {{$orderID}}</h3>
+<h3>L'étudiant {{$name}} a passé la commande {{$orderID}}</h3>
 <h4>E-mail : {{$email}}</h4>
 
 <table>
