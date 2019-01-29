@@ -42,7 +42,7 @@
                 </div>
                 <div class="form-group">
                     <label for="add-goodie-price">Prix du goodie</label>
-                    <input type="text" class="form-control" name="price" id="add-goodie-price" aria-describedby="addon-euro" required>
+                    <input type="text" class="form-control" name="price" id="add-goodie-price" required>
                     <label class="form-text text-danger"></label>
                 </div>
                 <div class="form-group">

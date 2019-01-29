@@ -1,7 +1,5 @@
 <h3>Bonjour {{$name}}, </h3>
-
 <p>Votre commande n°{{$orderID}} a bien été prise en compte.</p>
-
 <p> Récapitulatif :</p>
 
 <table>

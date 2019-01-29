@@ -50,7 +50,7 @@
                 </div>
                 <div class="form-group">
                     <label for="add-event-price">Prix de participation</label>
-                    <input type="text" class="form-control" name="price" id="add-event-price" aria-describedby="addon-euro" value="0.0">
+                    <input type="text" class="form-control" name="price" id="add-event-price" value="0.0">
                     <label class="form-text text-danger"></label>
                 </div>
                 <button type="button" class="btn btn-primary mt-3" onclick="sendNewEvent()">Créer l'événement !</button>
@@ -93,7 +93,7 @@
                         @if($event->id_Approbations == 12)
                         <p class="text-danger">Cet événement a été signalé</p>
                         @else
-                        <button onclick="getRegisterList({{$event->id}}, 'CSV')" class="btn btn-outline-dark m-1" title="Télécharger au format CSV" download>CSV</button>
+                        <button onclick="getRegisterList({{$event->id}}, 'CSV')" class="btn btn-outline-dark m-1" title="Télécharger au format CSV">CSV</button>
                         <button onclick="getRegisterList({{$event->id}}, 'PDF')" class="btn btn-outline-dark m-1" title="Télécharger au format PDF">PDF</button>
                         @endif
                     </td>

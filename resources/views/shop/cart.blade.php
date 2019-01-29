@@ -1,6 +1,9 @@
 @extends('layouts.template')
 
 @section('content')
+@push('head')
+<script src="{{ asset('js/shop.js') }}" defer></script>
+@endpush
 
 @if($user_cart->count() > 0)
 <table class="table">
@@ -30,6 +33,6 @@
 </table>
 <button type="button" class="btn btn-primary float-right" onclick="sendOrder({{$user_cart->first()->id}})">Envoyer la commande</button>
 @else
-<h3 class="my-5 w-100 text-center">Panier vide, n'hésitez pas à visiter la boutique !</h3>
+<h3 class="my-5 mr-2 w-100 text-center">Panier vide, n'hésitez pas à visiter la boutique !</h3>
 @endif
 @endsection

@@ -75,7 +75,7 @@ class CartController extends Controller
         } catch(\Exception $e) {
             return response()->json([
                 'status' => 'danger',
-                'message' => 'Impossible d\'ajouter le goodie au pannier',
+                'message' => $e->getMessage()//'Impossible d\'ajouter le goodie au panier',
             ]);
         }
     }
@@ -92,7 +92,12 @@ class CartController extends Controller
 
             $to_name = $user->firstname;
             $to_email = $user->email;
-            $data = array('name'=> $user->lastname, 'orderID' => $orderID);
+            $data = array(
+                'name'=> $user->firstname.' '.$user->lastname,
+                'orderID' => $orderID,
+                'email' => $user->email,
+                'user_cart' => Contain::where('id_Orders', $orderID)->get()
+            );
             
             Mail::send('emails.orderNotify', $data, function($message) use ($to_name, $to_email) {
                 $message->to($to_email, $to_name)
