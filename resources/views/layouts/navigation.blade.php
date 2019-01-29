@@ -15,7 +15,7 @@
           <i class="far fa-calendar mx-1"></i> Événements</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link mx-1" href="{{ route('Boite à idées') }}"><i class="far fa-lightbulb mx-1"></i> Boite à idées</a>
+        <a class="nav-link mx-1" href="{{ route('Boite à idées') }}"><i class="far fa-lightbulb mx-1"></i> Boîte à idées</a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle mx-1" href="{{ route('Boutique') }}" id="shopDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

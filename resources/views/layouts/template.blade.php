@@ -40,7 +40,7 @@
     </script>
 </head>
 <body>
-    <div id="alert" class="alert alert-hidden" onclick="$(this).addClass('alert-hidden')">Alert</div>
+    <div id="alert" class="alert alert-hidden" onclick="$(this).addClass('alert-hidden')">Alerte</div>
     <div class="modal fade" id="upload-picture" tabindex="-1" role="dialog" aria-labelledby="upload-picture-title" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -56,7 +56,7 @@
                         <input type="hidden" name="_token" value="{{ csrf_token()}}">
                         <input type="hidden" name="id_user" value="{{ Auth::id()}}">
                         <input id="upload-picture-form-id_event" type="hidden" name="id_event" value="">
-                        <label>File input</label>
+                        <label>Fichier</label>
                         <input type="file" name="image" class="form-control-file">
                     </div>
                 </form>
