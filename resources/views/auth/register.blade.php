@@ -90,7 +90,7 @@
                           <div class="form-check col-md-6 offset-md-4">
                             <input class="form-check-input {{ $errors->has('policy') ? ' is-invalid' : '' }}" type="checkbox" name="policy" required>
                             <label class="form-check-label">
-                                J'ai lu et j'accepte la <a href="{{route('politique')}}">politique de confidentialité</a> et les <a href="{{route('mentions')}}">mentions légales</a>
+                                J'ai lu et j'accepte la <a href="{{route('Politique')}}">politique de confidentialité</a> et les <a href="{{route('Mentions')}}">mentions légales</a>
                             </label>
                             @if ($errors->has('password')) 
                                 <span class="invalid-feedback" role="alert">
