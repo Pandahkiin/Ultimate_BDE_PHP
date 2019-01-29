@@ -5,7 +5,7 @@
     @endforeach
 </datalist>
 
-<aside class="categories col-md-2 col-sm-12 p-0">
+<aside class="categories col-md-2 col-sm-12 p-0 pl-2">
     <div class="mx-3">
 
         <div class="form-group mt-3">

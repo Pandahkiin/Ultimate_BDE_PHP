@@ -29,6 +29,7 @@ Route::group(['middleware' => 'App\Http\Middleware\BDEMiddleware'], function() {
     Route::get('/administration', 'AdminController@index')->name('Admin');
     Route::get('/getRegisterList','AdminController@getRegisterList');
     Route::post('/editComment','AdminController@editComment');
+    Route::delete('/users/{id_user}/pictures/{id_picture}','AdminController@deleteComment');
 });
 
 Route::group(['middleware' => 'App\Http\Middleware\CESIEmployeeMiddleWare'], function() {
@@ -40,6 +41,7 @@ Route::group(['middleware' => 'App\Http\Middleware\CESIEmployeeMiddleWare'], fun
 Route::post('/uploadPicture','PictureController@upload');
 Route::post('/sendComment','PictureController@createComment');
 Route::post('/addToCart', 'CartController@addToCart');
+Route::delete('/users/{id_user}/orders/{id_order}/goodies/{id_goodie}', 'CartController@deleteFromCart');
 Route::post('/sendOrder', 'CartController@sendOrderMail');
 
 /*Shopping cart routes*/

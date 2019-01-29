@@ -91,7 +91,7 @@ function sendPostAjax(url, data, callbackSuccess, contentType) {
         cache: false,
         contentType: contentType,
         processData: false,
-        timeout: 1000000,
+        timeout: 10000,
         error: function(jqXHR, textStatus, errorThrown) {
             if(textStatus==="timeout") {
                 alertPopUp('warning', 'Délai d\'attente dépassé ...');
@@ -114,3 +114,37 @@ function sendPostAjax(url, data, callbackSuccess, contentType) {
         }
     );
 }
+
+/**
+ * DELTE request to the laravel server 
+ */
+
+ function sendDELETEAjax(url, callbackSuccess) {
+    $.ajax({
+        url: url,
+        headers: {
+            'X-CSRF-TOKEN': CSRF_TOKEN
+        },
+        type: 'DELETE',
+        error: function(jqXHR, textStatus, errorThrown) {
+            if(textStatus==="timeout") {
+                alertPopUp('warning', 'Délai d\'attente dépassé ...');
+            }
+            else {
+                response = JSON.parse(jqXHR.responseText);
+                alertPopUp(response.status, response.message);
+            }
+        }
+    }).done(
+        function(response) {
+            alertPopUp(response.status, response.message);
+            if(callbackSuccess)
+                callbackSuccess()
+        }
+    ).fail(
+        function(jqXHR) {
+            response = JSON.parse(jqXHR.responseText);
+            alertPopUp(response.status, response.message);
+        }
+    );
+ }

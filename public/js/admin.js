@@ -102,7 +102,7 @@ function deleteModal(typeID , rowName, rowID) {
     $('#delete-modal-function').attr("onclick",typeID+"("+rowID+")");
 }
 
-/* Send DELETE to database */
+/** Send DELETE to database **/
 function deleteEvent(eventID) {
     apiAJAXDelete('/events/'+eventID, function() {
         dataTableEvent.row($('#table-event-row-'+eventID)).remove().draw();
@@ -113,16 +113,30 @@ function deleteSuggestion(suggestionID) {
         dataTableSuggestion.row($('#table-suggestion-row-'+suggestionID)).remove().draw();
     });
 }
+
 function deleteGoodie(goodieID) {
     apiAJAXDelete('/goodies/'+goodieID, function() {
         dataTableGoodie.row($('#table-goodie-row-'+goodieID)).remove().draw();
     });
 }
-
 function deletePicture(pictureID) {
     apiAJAXDelete('/pictures/'+pictureID, function() {
         dataTablePicture.row($('#table-picture-row-'+pictureID)).remove().draw();
     });
+}
+
+/**
+ * Deleting comment use the laravel server
+ * @param {string} id_comment concat from id_user and id_picture
+ */
+function deleteComment(id_comment) {
+    var commentID = id_comment.toString();
+    sendDELETEAjax(
+        '/users/'+parseInt(commentID.charAt(0))+'/pictures/'+parseInt(commentID.charAt(1)),
+        function() {
+            dataTableComment.row($('#table-comment-row-'+commentID)).remove().draw();
+        }
+    );
 }
 
 /* Manage category */

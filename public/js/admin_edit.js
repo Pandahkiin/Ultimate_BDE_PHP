@@ -51,7 +51,6 @@ function editModalComment(commentID) {
     });
     $("#edit-comment-content").val(data[0]);
 
-    commentID
     $('#editComment-function').attr("onclick","editComment("+parseInt(commentID.charAt(0))+","+parseInt(commentID.charAt(1))+")");
 }
 

@@ -115,3 +115,12 @@ function sendComment(pictureID) {
         },
         'JSON');
 }
+
+function deleteCartItem(id_order, id_goodie) {
+    sendDELETEAjax(
+        '/users/'+connected_user.id+'/orders/'+id_order+'/goodies/'+id_goodie,
+        function() {
+            location.reload();
+        }
+    );
+}

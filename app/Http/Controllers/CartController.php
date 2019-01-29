@@ -26,7 +26,6 @@ class CartController extends Controller
 
     /**
      * Show the application dashboard.
-     *
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
@@ -75,11 +74,35 @@ class CartController extends Controller
         } catch(\Exception $e) {
             return response()->json([
                 'status' => 'danger',
-                'message' => $e->getMessage()//'Impossible d\'ajouter le goodie au panier',
+                'message' => 'Impossible d\'ajouter le goodie au panier',
+            ]);
+        }
+    }
+    public function deleteFromCart($id_user, $id_order, $id_goodie) {
+        try {
+            if($id_user == Auth::id()) {
+                $contain = Contain::where('id_Orders', $id_order)->where('id_Goodies', $id_goodie)->delete();
+                return response()->json([
+                    'status' => 'success',
+                    'message' => 'Goodie supprimer du panier !',
+                ]);   
+            }
+            else {
+                throw new \Exception('User id wrong.');
+            }
+        } catch(\Exception $e) {
+            return response()->json([
+                'status' => 'danger',
+                'message' => 'Impossible de supprimer le goodie du panier',
             ]);
         }
     }
 
+    /**
+     * Get an order validation request
+     * Send a mail to the request author
+     * Send a mail to BDE to prepare order
+     */
     public function sendOrderMail(Request $request){
         try {
             $orderID = $request->id_order;

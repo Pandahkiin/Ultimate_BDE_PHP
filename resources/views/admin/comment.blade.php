@@ -29,7 +29,7 @@
                         <button type="button" onclick="editModalComment('{{$comment->id_Users.$comment->id_Pictures}}')" class="btn btn-outline-info m-1" data-toggle="modal" data-target="#editComment">
                             <i class="fas fa-pen"></i>
                         </button>
-                        <button type="button" onclick="deleteModal('deleteComment','{{$comment->name}}','{{$comment->id_Users.$comment->id_Pictures}}')" class="btn btn-outline-danger m-1" data-toggle="modal" data-target="#delete-modal">
+                        <button type="button" onclick="deleteModal('deleteComment','le commentaire de {{ $comment->author->firstname.' '.$comment->author->lastname }}','{{$comment->id_Users.$comment->id_Pictures}}')" class="btn btn-outline-danger m-1" data-toggle="modal" data-target="#delete-modal">
                             <i class="fas fa-trash-alt"></i>
                         </button>
                     </td>

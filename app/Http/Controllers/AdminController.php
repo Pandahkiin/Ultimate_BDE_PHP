@@ -31,7 +31,6 @@ class AdminController extends Controller
 
     /**
      * Show the application dashboard.
-     *
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
@@ -49,7 +48,6 @@ class AdminController extends Controller
             "pictures" => Picture::where('link', 'LIKE', '%reported')->count()
         ];
 
-        /* Fill select box */
         $repetitions = Repetition::all();
         $categories = Categorie::all();
         $campuses = Campus::all();
@@ -58,7 +56,7 @@ class AdminController extends Controller
     }
 
     /**
-     * Total reported elements
+     * Total number of reported elements
      */
     public static function totalReported() {
         $countReportedEvents = Event::where('id_Approbations', 12)->count();
@@ -69,6 +67,10 @@ class AdminController extends Controller
         return $countReportedEvents + $countReportedSuggestion + $countReportedComments + $countReportedPictures;
     }
 
+    /**
+     * Get the list of registered users on a event
+     * @return file with format CSV or PDF (specified in the GET request)
+     */
     public function getRegisterList(Request $request) {
         $eventID = $request->eventID;
         $fileFormat = $request->fileFormat;
@@ -96,6 +98,10 @@ class AdminController extends Controller
         }
     }
 
+    /**
+     * Edit a comment
+     * Take values to edits from POST JSON request
+     */
     public function editComment(Request $request) {
         try {
             $id_picture = $request->id_Picture;
@@ -119,6 +125,34 @@ class AdminController extends Controller
             ]);
         }
     }
+
+    /**
+     * Delete a comment
+     * Get unique id (id_Pictures, id_Users) from DELETE url
+     */
+    public function deleteComment($id_user, $id_picture) {
+        try {  
+            $comment = Comment::where([
+                ['id_Pictures', $id_picture],
+                ['id_Users', $id_user],
+            ])->delete();
+    
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Suppréssion du commentaire réussi !',
+            ]);
+        } catch(\Exception $e) {
+            return response()->json([
+                'status' => 'danger',
+                'message' => 'Impossible de supprimer ce commentaire',
+            ]);
+        }
+    }
+
+    /**
+     * Report a comment
+     * Get unique id (id_Pictures, id_Users) from POST JSON
+     */
     public function reportComment(Request $request) {
         try {
             $id_picture = $request->id_Picture;
