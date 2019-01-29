@@ -30,10 +30,20 @@
 
     <ul class="navbar-nav ml-auto">
         @auth
-          <h5 class="mr-3 my-auto">Bonjour {{ Auth::user()->firstname }}</h5>
-          <a href="{{ route('Panier')}}" class="navbarFont mr-2"><i class="fas fa-cart-arrow-down"></i> Panier</button>
+          <h5 class="mr-4 my-auto">Bonjour {{ Auth::user()->firstname }}</h5>
+          <a href="{{ route('Panier')}}" class="navbarFont mr-3">
+            @if(App\Models\Site\Order::numberOfGoodies())
+            <span class="notifiy-bubule bg-danger" style="bottom:10px;transform:translateX(-15px);">{{App\Models\Site\Order::numberOfGoodies()}}</span>
+            @endif
+            <i class="fas fa-cart-arrow-down"></i> Panier
+          </a>
           @if(Auth::user()->role->name === 'Membre BDE')
-            <a class="mr-3 navbarFont" href="{{ route('Admin') }}"><i class="fas fa-user-cog mx-1"></i> Administration</a>
+          <a class="mr-3 navbarFont" href="{{ route('Admin') }}">
+            @if(App\Http\Controllers\AdminController::totalReported())
+            <span class="notifiy-bubule bg-danger" style="bottom:10px;right: 280px;">{{App\Http\Controllers\AdminController::totalReported()}}</span>
+            @endif
+            <i class="fas fa-user-cog mx-1"></i> Administration
+          </a>
           @endif
           <a class="navbarFont" href="{{ url('/logout') }}">Se déconnecter</a>
         @else

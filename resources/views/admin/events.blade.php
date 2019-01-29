@@ -86,7 +86,7 @@
                     <td>
                         {{App\Models\Site\Register::totalUsersRegistered($event->id)}}
                     </td>
-                    <td>{{ $event->author->firstname.' '.$event->author->lastname }}</td>
+                    <td>{{ $event->author->email }}</td>
                     <td>{{ $event->campus->location }}</td>
                     <td>{{ $event->repetition->repetition }}</td>
                     <td>

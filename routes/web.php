@@ -40,6 +40,8 @@ Route::group(['middleware' => 'App\Http\Middleware\CESIEmployeeMiddleWare'], fun
 Route::post('/uploadPicture','PictureController@upload');
 Route::post('/sendComment','PictureController@createComment');
 Route::post('/addToCart', 'CartController@addToCart');
+Route::post('/sendOrder', 'CartController@sendOrderMail');
+
 /*Shopping cart routes*/
 Route::get('/form', 'CartController@index');
 Route::post('/add', 'CartController@add');

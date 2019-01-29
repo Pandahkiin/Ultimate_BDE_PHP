@@ -42,12 +42,31 @@ class AdminController extends Controller
         $comments = Comment::all();
         $pictures = Picture::all();
 
+        $countReport = [
+            "events" => Event::where('id_Approbations', 12)->count(),
+            "suggestion" => Event::where('id_Approbations', 11)->count(),
+            "comments" => Comment::where('date', '1970-01-01')->count(),
+            "pictures" => Picture::where('link', 'LIKE', '%reported')->count()
+        ];
+
         /* Fill select box */
         $repetitions = Repetition::all();
         $categories = Categorie::all();
         $campuses = Campus::all();
 
-        return view('admin.main', compact('repetitions','categories','events', 'goodies', 'suggestions', 'campuses', 'comments', 'pictures'));
+        return view('admin.main', compact('repetitions','categories','events', 'goodies', 'suggestions', 'campuses', 'comments', 'pictures', 'countReport'));
+    }
+
+    /**
+     * Total reported elements
+     */
+    public static function totalReported() {
+        $countReportedEvents = Event::where('id_Approbations', 12)->count();
+        $countReportedSuggestion = Event::where('id_Approbations', 11)->count();
+        $countReportedComments = Comment::where('date', '1970-01-01')->count();
+        $countReportedPictures = Picture::where('link', 'LIKE', '%reported')->count();
+
+        return $countReportedEvents + $countReportedSuggestion + $countReportedComments + $countReportedPictures;
     }
 
     public function getRegisterList(Request $request) {

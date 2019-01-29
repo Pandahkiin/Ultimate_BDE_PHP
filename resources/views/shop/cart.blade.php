@@ -29,6 +29,7 @@
                 </tr>
             </tfoot>
         </table>
+        <button type="button" class="btn btn-primary float-right" onclick="sendOrder({{$user_cart->first()->id}})">Envoyer la commande</button>
         @else
         <p>Panier vide, n'hésiter pas à visiter la boutique !</p>
         @endif

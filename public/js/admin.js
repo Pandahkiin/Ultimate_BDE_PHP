@@ -10,7 +10,7 @@ var dataTableEvent = $('#event-list-dataTable').DataTable({
     columnDefs: [
         {"targets": [10],
         "searchable": false},
-        {"targets": [9,10],
+        {"targets": [10],
         "orderable": false}
     ]
 });

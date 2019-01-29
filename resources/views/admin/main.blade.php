@@ -51,6 +51,9 @@
             <h5 class="mb-0">
                 <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapsePastEvent" aria-expanded="true" aria-controls="collapsePastEvent">
                     Administrer événements
+                    @if($countReport["events"])
+                    <span class="notifiy-bubule bg-danger" style="left:5px">{{$countReport["events"]}}</span>
+                    @endif
                 </button>
             </h5>
         </div>
@@ -66,6 +69,9 @@
             <h5 class="mb-0">
                 <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseAdminSuggestions" aria-expanded="true" aria-controls="collapseAdminSuggestions">
                     Administration de la boite à idée
+                    @if($countReport["suggestion"])
+                    <span class="notifiy-bubule bg-danger" style="left:5px">{{$countReport["suggestion"]}}</span>
+                    @endif
                 </button>
             </h5>
         </div>
@@ -81,6 +87,9 @@
             <h5 class="mb-0">
                 <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseAdminComment" aria-expanded="true" aria-controls="collapseAdminComment">
                     Administration des commentaires
+                    @if($countReport["comments"])
+                    <span class="notifiy-bubule bg-danger" style="left:5px">{{$countReport["comments"]}}</span>
+                    @endif
                 </button>
             </h5>
         </div>
@@ -96,6 +105,9 @@
             <h5 class="mb-0">
                 <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseAdminImage" aria-expanded="true" aria-controls="collapseAdminImage">
                     Administrer image
+                    @if($countReport["pictures"])
+                    <span class="notifiy-bubule bg-danger" style="left:5px">{{$countReport["pictures"]}}</span>
+                    @endif
                 </button>
             </h5>
         </div>

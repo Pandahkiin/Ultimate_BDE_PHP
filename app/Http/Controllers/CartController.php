@@ -9,6 +9,10 @@ use App\Models\Site\Contain;
 use App\Models\User;
 use Darryldecode\Cart\CartCondition;
 
+use App\Http\Requests\OrderNotifyRequest;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\OrderNotify;
+
 class CartController extends Controller
 {
     /**
@@ -31,6 +35,10 @@ class CartController extends Controller
         return view('shop.cart', compact('user_cart'));
     }
 
+    /**
+     * Add a goodie to a order, if there is no actual order create a new one
+     * @param Request HTTP request with the goodie ID and goodie quantity
+     */
     public function addToCart(Request $request) {
         try {
             $goodieID = $request->id_goodie;
@@ -68,6 +76,51 @@ class CartController extends Controller
             return response()->json([
                 'status' => 'danger',
                 'message' => 'Impossible d\'ajouter le goodie au pannier',
+            ]);
+        }
+    }
+
+    public function sendOrderMail(Request $request){
+        try {
+            $orderID = $request->id_order;
+
+            $user = Auth::user();
+            $order = Order::find($orderID)->first();
+            /*$order->update([
+                'is_paid' => 1
+            ]);*/
+
+            $to_name = $user->firstname;
+            $to_email = 'nicolas.degheselle@viacesi.fr';
+            $data = array('name'=>$user->lastname);
+            
+            Mail::send('emails.orderNotify', $data, function($message) use ($to_name, $to_email) {
+                $message->to($to_email, $to_name)
+                    ->subject('Validation de commmande ' . '$order->id');
+                $message->from('armada424777@gmail.com','BDE');
+            });
+/*
+            $dataBDE = array(
+                'name'=> $user->firstname.' '.$user->lastname,
+                'orderID' => $orderID,
+                'email' => $user->email,
+                'user_cart' => $order->contain
+            );
+            Mail::send('emails.orderNotify', $dataBDE, function($message) use ($to_name, $to_email) {
+                $message->to($to_email, $to_name)
+                    ->subject('Commande n°' . $order->id);
+                $message->from('armada424777@gmail.com','BDE');
+            });*/
+
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Commande envoyé !',
+            ]);
+
+        } catch(\Exception $e) {
+            return response()->json([
+                'status' => 'danger',
+                'message' => $e->getMessage() //'Impossible de valider la commande',
             ]);
         }
     }

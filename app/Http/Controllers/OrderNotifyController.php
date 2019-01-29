@@ -12,7 +12,7 @@ class OrderNotifyController extends Controller
 {
     public function sendOrderMail(){
         $user = Auth::user();
-        $order = Order::where('id_Users', '=', $user->id)->where('is_paid', '0');
+        $order = Order::find('id_Users', '=', $user->id)->where('is_paid', '0');
 
         $to_name = $user->firstname;
         $to_email = $user->email;

@@ -69,3 +69,12 @@ main {
     top: 0;
     right: 0;
 }
+
+.notifiy-bubule {
+    position : absolute;
+    border-radius: 50%;
+    color:white;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+}
