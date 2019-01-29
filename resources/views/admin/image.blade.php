@@ -3,9 +3,9 @@
         <table class="table table-striped" id="pictures-list-dataTable">
             <thead>
                 <tr>
-                    <th>Nom événement</th>
+                    <th>Nom de l'événement</th>
                     <th>Auteur</th>
-                    <th>lien</th>
+                    <th>Lien</th>
                     <th></th>
                 </tr>
             </thead>
@@ -16,7 +16,7 @@
                     <td>{{ $picture->postedBy->email }}</td>
                     <td>
                         @if(preg_match('/\w*reported\b/', $picture->link))
-                            <p class="text-danger">Cette image à été signalé</p>
+                            <p class="text-danger">Cette image a été signalée</p>
                         @else
                             {{ $picture->link }}
                         @endif

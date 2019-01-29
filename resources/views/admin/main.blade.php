@@ -18,10 +18,10 @@
                 </button>
             </div>
             <div class="modal-body">
-                <p>Etes vous vraiment sure de supprimer le goodie <b id="delete-modal-name" class="font-weight-bold"></b> ? Cette action est définitive.</p>
+                <p>Êtes-vous vraiment sûr.e de vouloir supprimer <b id="delete-modal-name" class="font-weight-bold"></b> ? Cette action est irréversible.</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
                 <button type="button" class="btn btn-danger" id="delete-modal-function" data-dismiss="modal">Confirmer</button>
             </div>
         </div>
@@ -35,7 +35,7 @@
         <div class="card-header" id="headingGoodies">
             <h5 class="mb-0">
                 <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseGoodies" aria-expanded="true" aria-controls="collapseGoodies">
-                    Administrer goodies
+                    Administrer des goodies
                 </button>
             </h5>
         </div>
@@ -50,7 +50,7 @@
         <div class="card-header" id="headingPastEvent">
             <h5 class="mb-0">
                 <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapsePastEvent" aria-expanded="true" aria-controls="collapsePastEvent">
-                    Administrer événements
+                    Administrer des événements
                     @if($countReport["events"])
                     <span class="notifiy-bubule bg-danger" style="left:5px">{{$countReport["events"]}}</span>
                     @endif
@@ -68,7 +68,7 @@
         <div class="card-header" id="headingAdminSuggestions">
             <h5 class="mb-0">
                 <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseAdminSuggestions" aria-expanded="true" aria-controls="collapseAdminSuggestions">
-                    Administration de la boite à idée
+                    Administration de la boîte à idées
                     @if($countReport["suggestion"])
                     <span class="notifiy-bubule bg-danger" style="left:5px">{{$countReport["suggestion"]}}</span>
                     @endif
@@ -104,7 +104,7 @@
         <div class="card-header" id="headingAdminImage">
             <h5 class="mb-0">
                 <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseAdminImage" aria-expanded="true" aria-controls="collapseAdminImage">
-                    Administrer image
+                    Administration des images
                     @if($countReport["pictures"])
                     <span class="notifiy-bubule bg-danger" style="left:5px">{{$countReport["pictures"]}}</span>
                     @endif
@@ -122,7 +122,7 @@
         <div class="card-header" id="headingAdminCatagory">
             <h5 class="mb-0">
                 <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseAdminCatagory" aria-expanded="true" aria-controls="collapseAdminCatagory">
-                    Administrer catégories
+                    Administration des catégories
                 </button>
             </h5>
         </div>

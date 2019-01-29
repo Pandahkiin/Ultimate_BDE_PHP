@@ -7,7 +7,7 @@
                 <tr>
                     <th>Contenu</th>
                     <th>Auteur</th>
-                    <th>Commente l'image</th>
+                    <th>Commentaire de l'image</th>
                     <th>Date</th>
                     <th></th>
                 </tr>
@@ -20,7 +20,7 @@
                     <td>{{ $comment->picture->link }}</td>
                     <td>
                         @if($comment->date == '1970-01-01')
-                        <p class="text-danger">Ce commentaire à été signalé</p>
+                        <p class="text-danger">Ce commentaire a été signalé</p>
                         @else
                         {{ $comment->date }}
                         @endif

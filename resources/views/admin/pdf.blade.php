@@ -1,4 +1,4 @@
-<h4>{{$eventName}} : liste des inscrits</h4>
+<h4>{{$eventName}} : Liste des inscrits</h4>
 <table style="width: 100%;" cellpadding=0 cellspacing=0>
   <thead>
     <tr>

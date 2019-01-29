@@ -28,7 +28,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="add-goodie-description">Déscription (255 caractères)</label>
+                    <label for="add-goodie-description">Description (255 caractères)</label>
                     <textarea class="form-control" rows="3" maxlength="255" name="description" id="add-goodie-description" required></textarea>
                     <label class="form-text text-danger"></label>
                 </div>
@@ -46,7 +46,7 @@
                     <label class="form-text text-danger"></label>
                 </div>
                 <div class="form-group">
-                    <label for="add-goodie-stock">Stock disponible</label>
+                    <label for="add-goodie-stock">Nombre en stock</label>
                     <input type="text" class="form-control" name="stock" id="add-goodie-stock" required>
                     <label class="form-text text-danger"></label>
                 </div>
@@ -64,7 +64,7 @@
                     <th>Description</th>
                     <th>Image</th>
                     <th>Stock</th>
-                    <th>Nombre commande</th>
+                    <th>Nombre de commandes</th>
                     <th>Catégorie</th>
                     <th>Campus</th>
                     <th></th>

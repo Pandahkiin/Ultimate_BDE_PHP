@@ -19,7 +19,7 @@
                     <td>
                         {{ $suggestion->name }}
                         @if($suggestion->id_Approbations == 11)
-                        <p class="text-danger">Cette suggestion à été signalé</p>
+                        <p class="text-danger">Cette suggestion a été signalée</p>
                         @endif
                     </td>
                     <td>{{ $suggestion->description }}</td>

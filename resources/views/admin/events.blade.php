@@ -30,7 +30,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="add-event-description">Déscription (1500 caractères)</label>
+                    <label for="add-event-description">Description (1500 caractères)</label>
                     <textarea class="form-control" rows="3" maxlength="1500" name="description" id="add-event-description" required></textarea>
                     <label class="form-text text-danger"></label>
                 </div>
@@ -49,7 +49,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="add-event-price">Participation des participant</label>
+                    <label for="add-event-price">Prix de participation</label>
                     <input type="text" class="form-control" name="price" id="add-event-price" aria-describedby="addon-euro" value="0.0">
                     <label class="form-text text-danger"></label>
                 </div>
@@ -66,12 +66,12 @@
                     <th>Description</th>
                     <th>Image</th>
                     <th>Date</th>
-                    <th>Prix (participant)</th>
-                    <th>Nombre participants</th>
+                    <th>Prix de participation)</th>
+                    <th>Nombre de participants</th>
                     <th>Auteur</th>
                     <th>Campus</th>
                     <th>Répétition</th>
-                    <th>Liste inscrits</th>
+                    <th>Liste des inscrits</th>
                     <th></th>
                 </tr>
             </thead>
@@ -91,7 +91,7 @@
                     <td>{{ $event->repetition->repetition }}</td>
                     <td>
                         @if($event->id_Approbations == 12)
-                        <p class="text-danger">Cette événement à été signalé</p>
+                        <p class="text-danger">Cet événement a été signalé</p>
                         @else
                         <button onclick="getRegisterList({{$event->id}}, 'CSV')" class="btn btn-outline-dark m-1" title="Télécharger au format CSV" download>CSV</button>
                         <button onclick="getRegisterList({{$event->id}}, 'PDF')" class="btn btn-outline-dark m-1" title="Télécharger au format PDF">PDF</button>
