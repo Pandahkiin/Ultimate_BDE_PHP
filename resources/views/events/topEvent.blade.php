@@ -2,7 +2,7 @@
     <div class="jumbotron mx-2 my-5 p-0">
         <div class="row">
             <div class="col-sm-12 col-xl-4 text-center">
-                <img src="{{ $topEvent->image }}" alt="{{ $topEvent->name }}" width="100%">
+                <img src="{{ $topEvent->image }}" alt="{{ $topEvent->name }}" style="width:100%">
             </div>
             <div class="col-sm-12 col-xl-8 p-5">
                 <div class="row">

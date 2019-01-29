@@ -1,5 +1,11 @@
 @extends('layouts.template')
 
+@push('head')
+    <link href="{{ asset('css/home.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/shop.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/events.css') }}" rel="stylesheet">
+@endpush
+
 @section('content')
     <div class="home-main">
         <h1 class="home-main-title py-5">Bienvenue au BDE du CESI</h1>
@@ -20,7 +26,7 @@
             </div>
         </div>
         <div class="d-inline-block w-100 mb-4">
-            <a type="button" class="btn btn-primary btn-lg btn-block py-2" href={{ route('Boutique') }}><h4     class="my-auto">Visiter la boutique</h4></a>
+            <a role="button" class="btn btn-primary btn-lg btn-block py-2" href={{ route('Boutique') }}>Visiter la boutique</a>
         </div>
     </div>
 @endsection

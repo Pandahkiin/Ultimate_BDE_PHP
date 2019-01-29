@@ -77,4 +77,6 @@ main {
     width: 25px;
     height: 25px;
     text-align: center;
+    transform: translateY(20px);
+    z-index: 1;
 }

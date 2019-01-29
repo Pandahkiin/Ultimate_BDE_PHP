@@ -19,37 +19,37 @@
 			<li class="nav-item">
 				<a class="nav-link mx-1" href="{{ route('Boutique') }}"><i class="fas fa-shopping-cart mx-1"></i> Boutique</a>
 			</li>
-			</ul>
-			<ul class="navbar-nav ml-auto">
-				@auth
-					<li><h5 class="mr-4">Bonjour {{ Auth::user()->firstname }}</h5></li>
-					<li>
-						<a href="{{ route('Panier')}}" class="navbarFont mr-3">
-							@if(App\Models\Site\Order::numberOfGoodies())
-								<span class="notifiy-bubule bg-danger" style="bottom:10px;transform:translateX(-15px);">{{App\Models\Site\Order::numberOfGoodies()}}</span>
+		</ul>
+		<ul class="navbar-nav ml-auto">
+			@auth
+				<li><h5 class="mr-3">Bonjour {{ Auth::user()->firstname }}</h5></li>
+				<li>
+					<a href="{{ route('Panier')}}" class="navbarFont mr-3">
+						@if(App\Models\Site\Order::numberOfGoodies())
+							<span class="notifiy-bubule bg-danger">{{App\Models\Site\Order::numberOfGoodies()}}</span>
+						@endif
+						<i class="fas fa-cart-arrow-down"></i> Panier
+					</a>
+				</li>
+				<li>
+					@if(Auth::user()->role->name === 'Membre BDE')
+						<a class="mr-3 navbarFont" href="{{ route('Admin') }}">
+							@if(App\Http\Controllers\AdminController::totalReported())
+								<span class="notifiy-bubule bg-danger">{{App\Http\Controllers\AdminController::totalReported()}}</span>
 							@endif
-							<i class="fas fa-cart-arrow-down"></i> Panier
+						<i class="fas fa-user-cog mx-1"></i> Administration
 						</a>
-					</li>
-					<li>
-						@if(Auth::user()->role->name === 'Membre BDE')
-							<a class="mr-3 navbarFont" href="{{ route('Admin') }}">
-								@if(App\Http\Controllers\AdminController::totalReported())
-									<span class="notifiy-bubule bg-danger" style="bottom:10px;right: 280px;">{{App\Http\Controllers\AdminController::totalReported()}}</span>
-								@endif
-							<i class="fas fa-user-cog mx-1"></i> Administration
-							</a>
-						@endif
-					</li>
-					<li><a class="navbarFont" href="{{ url('/logout') }}">Se déconnecter</a></li>
-				@else
-					<li><a href="{{ route('login') }}" class="navbarFont mr-3">Se connecter</a></li>
-					<li>
-						@if (Route::has('register'))
-							<a href="{{ route('register') }}" class="navbarFont">S'inscrire</a>
-						@endif
-					</li>
-				@endauth
-				</ul>
-			</div>
-		</nav>
+					@endif
+				</li>
+				<li><a class="navbarFont" href="{{ url('/logout') }}">Se déconnecter</a></li>
+			@else
+				<li><a href="{{ route('login') }}" class="navbarFont mr-3">Se connecter</a></li>
+				<li>
+					@if (Route::has('register'))
+						<a href="{{ route('register') }}" class="navbarFont">S'inscrire</a>
+					@endif
+				</li>
+			@endauth
+		</ul>
+	</div>
+</nav>

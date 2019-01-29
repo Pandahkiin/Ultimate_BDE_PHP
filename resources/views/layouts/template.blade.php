@@ -29,7 +29,6 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
     <link href="{{ asset('css/nav_foot.css') }}" rel="stylesheet">
-
     <link href="{{ asset('vendor/DataTables/datatables.min.css') }}" rel="stylesheet">
 
     <script>

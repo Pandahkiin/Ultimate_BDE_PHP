@@ -35,7 +35,7 @@
                         <div id="carouselEventPicture{{ $pastEvent->id }}" class="carousel slide w-100" data-interval="false" data-ride="carousel">
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
-                                    <img class="d-block w-100" src="{{ $pastEvent->image }}">
+                                    <img class="d-block w-100" src="{{ $pastEvent->image }}" alt="Image de présentation {{ $pastEvent->name }}">
                                 </div>
                                 @foreach (App\Models\Site\Picture::getEventPictures($pastEvent->id) as $picture)
                                     <div class="carousel-item">

@@ -3,7 +3,7 @@
     <i class="fas fa-exclamation-triangle"></i>
 </button>
 @endif
-<img class="d-block w-100" src="{{$picture->link}}">
+<img class="d-block w-100" src="{{$picture->link}}" alt="Image de {{$pastEvent->name}}">
 @auth
 <div class="my-2">
     <div class="row">

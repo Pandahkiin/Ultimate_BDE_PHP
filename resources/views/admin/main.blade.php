@@ -33,7 +33,7 @@
 <div id="adminAccordion">
     <div class="card">
         <div class="card-header" id="headingGoodies">
-            <h5 class="mb-0">
+            <h5 class="mb-0 ml-4">
                 <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseGoodies" aria-expanded="true" aria-controls="collapseGoodies">
                     Administration des goodies
                 </button>
@@ -48,11 +48,11 @@
 
     <div class="card">
         <div class="card-header" id="headingPastEvent">
-            <h5 class="mb-0">
+            <h5 class="mb-0 ml-4">
                 <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapsePastEvent" aria-expanded="true" aria-controls="collapsePastEvent">
                     Administration des événements
                     @if($countReport["events"])
-                    <span class="notifiy-bubule bg-danger" style="left:5px">{{$countReport["events"]}}</span>
+                    <span class="notifiy-bubule bg-danger" >{{$countReport["events"]}}</span>
                     @endif
                 </button>
             </h5>
@@ -66,11 +66,11 @@
     
     <div class="card">
         <div class="card-header" id="headingAdminSuggestions">
-            <h5 class="mb-0">
+            <h5 class="mb-0 ml-4">
                 <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseAdminSuggestions" aria-expanded="true" aria-controls="collapseAdminSuggestions">
                     Administration de la boîte à idées
                     @if($countReport["suggestion"])
-                    <span class="notifiy-bubule bg-danger" style="left:5px">{{$countReport["suggestion"]}}</span>
+                    <span class="notifiy-bubule bg-danger" >{{$countReport["suggestion"]}}</span>
                     @endif
                 </button>
             </h5>
@@ -84,11 +84,11 @@
 
     <div class="card">
         <div class="card-header" id="headingAdminComment">
-            <h5 class="mb-0">
+            <h5 class="mb-0 ml-4">
                 <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseAdminComment" aria-expanded="true" aria-controls="collapseAdminComment">
                     Administration des commentaires
                     @if($countReport["comments"])
-                    <span class="notifiy-bubule bg-danger" style="left:5px">{{$countReport["comments"]}}</span>
+                    <span class="notifiy-bubule bg-danger" >{{$countReport["comments"]}}</span>
                     @endif
                 </button>
             </h5>
@@ -102,11 +102,11 @@
 
     <div class="card">
         <div class="card-header" id="headingAdminImage">
-            <h5 class="mb-0">
+            <h5 class="mb-0 ml-4">
                 <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseAdminImage" aria-expanded="true" aria-controls="collapseAdminImage">
                     Administration des images
                     @if($countReport["pictures"])
-                    <span class="notifiy-bubule bg-danger" style="left:5px">{{$countReport["pictures"]}}</span>
+                    <span class="notifiy-bubule bg-danger" >{{$countReport["pictures"]}}</span>
                     @endif
                 </button>
             </h5>
@@ -120,7 +120,7 @@
 
     <div class="card">
         <div class="card-header" id="headingAdminCatagory">
-            <h5 class="mb-0">
+            <h5 class="mb-0 ml-4">
                 <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseAdminCatagory" aria-expanded="true" aria-controls="collapseAdminCatagory">
                     Administration des catégories
                 </button>
