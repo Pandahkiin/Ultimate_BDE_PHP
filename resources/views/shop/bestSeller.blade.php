@@ -56,8 +56,14 @@
     <div class="col"><p>Prix : {{ $bestSeller->price }} €</p></div>
     <div class="col text-right"><p>Stock : {{ $bestSeller->stock }}</p></div>
   </div>
-  <div class="d-flex mt-auto">
-      <button type="button" class="btn btn-primary mr-2" onclick="addToCart({{ $bestSeller->id }}, $(this).next().val())"><i class="fas fa-cart-plus"></i></button>
-      <input type="number" class="form-control input-number" value="1" min="1" max="{{ $bestSeller->stock }}" size="5">
+  @auth
+    <div class="row">
+      <div class="col-4">
+        <button type="button" class="btn btn-primary w-100" onclick="addToCart({{ $bestSeller->id }}, $(this).next().val())"><i class="fas fa-cart-plus"></i></button>
+      </div>
+      <div class="col-8">
+        <input type="number" class="form-control input-number" value="1" min="1" max="{{ $bestSeller->stock }}">
+      </div>
     </div>
+  @endauth
 </div>

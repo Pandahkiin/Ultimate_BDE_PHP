@@ -28,6 +28,6 @@
             </div>
             @endforeach
         </div>
-        <button type="button" class="btn btn-primary btn-lg btn-block mt-4" onclick="shopFilter()">Filtrer</button>
+        <button type="button" class="btn btn-primary btn-lg btn-block my-4" onclick="shopFilter()">Filtrer</button>
     </div>
 </aside>

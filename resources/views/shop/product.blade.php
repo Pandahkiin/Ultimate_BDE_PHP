@@ -53,10 +53,14 @@
           <div class="col text-right"><p>Stock : {{ $goodie->stock }}</p></div>
         </div>
       @auth
-      <div class="d-flex mt-auto">
-        <button type="button" class="btn btn-primary mr-2" onclick="addToCart({{ $goodie->id }}, $(this).next().val())"><i class="fas fa-cart-plus"></i></button>
-        <input type="number" class="form-control input-number" value="1" min="1" max="{{ $goodie->stock }}" size="5">
-      </div>
+        <div class="row">
+          <div class="col-4">
+            <button type="button" class="btn btn-primary w-100" onclick="addToCart({{ $bestSeller->id }}, $(this).next().val())"><i class="fas fa-cart-plus"></i></button>
+          </div>
+          <div class="col-8">
+            <input type="number" class="form-control input-number" value="1" min="1" max="{{ $bestSeller->stock }}">
+          </div>
+        </div>
       @endAuth
   </div>
 </div>
