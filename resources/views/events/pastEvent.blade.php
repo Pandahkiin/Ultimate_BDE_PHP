@@ -7,7 +7,7 @@
         </button>
         @endif
         <h6 class="card-subtitle mb-2 text-muted">{{ $pastEvent->date }}</h6>
-        <p class="card-text">{{ $pastEvent->description }}</p>
+        <p class="card-text pastEventDescription">{{ $pastEvent->description }}</p>
 
         <div class="mt-auto">
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalPastEvent{{ $pastEvent->id }}">En savoir plus</button>
@@ -22,7 +22,7 @@
 </div>
 
 <div class="modal fade" id="modalPastEvent{{ $pastEvent->id }}" tabindex="-1" role="dialog" aria-labelledby="modalPastEvent{{ $pastEvent->id }}Title" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                   <h5 class="modal-title" id="modalPastEvent{{ $pastEvent->id }}Title">{{ $pastEvent->name }}</h5>

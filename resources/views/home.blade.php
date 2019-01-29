@@ -27,7 +27,7 @@
                                 </div>
                             </div>
                         </div>
-                        <img class="mx-auto my-auto" src="{{ $topEvent->image }}" alt="{{ $topEvent->name }}">
+                        <img class="m-auto" src="{{ $topEvent->image }}" alt="{{ $topEvent->name }}">
                     </div>
                 </div>
             @endif
@@ -49,7 +49,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="card-img-bottom">
-                                <img class="bestSellImg" src="{{ $bestSeller->image }}" alt="{{ $bestSeller->name }}">
+                                <img class="bestSellImg m-auto d-block" src="{{ $bestSeller->image }}" alt="{{ $bestSeller->name }}">
                             </div>
                         </div>
                     </div>

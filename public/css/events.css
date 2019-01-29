@@ -1,9 +1,7 @@
 .eventDescription {
     overflow-x: hidden;
     overflow-y: auto;
-    min-width: 300px;
     min-height : 400px;
-    max-width: 300px;
     max-height : 400px;
 }
 
@@ -13,14 +11,13 @@
 }
 
 .topEventDescription {
-    min-width: 600px;
+    overflow: auto;
     min-height : 400px;
-    max-width: 600px;
     max-height : 400px;
 }
 
 .pastEventDescription {
-    overflow : hidden;
-    max-width: 300px;
+    overflow : auto;
     max-height: 50px;
+    min-height: 50px;
 }
