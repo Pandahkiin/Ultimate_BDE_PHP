@@ -10,14 +10,14 @@
 		<ul class="navbar-nav navbarFont">
 			<li class="nav-item">
 				<a class="nav-link mx-1" href="{{ route('Evenements') }}">
-					<i class="far fa-calendar mx-1"></i> Événements
+					<span class="far fa-calendar mx-1"></span> Événements
 				</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link mx-1" href="{{ route('Boite à idées') }}"><i class="far fa-lightbulb mx-1"></i> Boîte à idées</a>
+				<a class="nav-link mx-1" href="{{ route('Boite à idées') }}"><span class="far fa-lightbulb mx-1"></span> Boîte à idées</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link mx-1" href="{{ route('Boutique') }}"><i class="fas fa-shopping-cart mx-1"></i> Boutique</a>
+				<a class="nav-link mx-1" href="{{ route('Boutique') }}"><span class="fas fa-shopping-cart mx-1"></span> Boutique</a>
 			</li>
 		</ul>
 		<ul class="navbar-nav ml-auto">
@@ -28,7 +28,7 @@
 						@if(App\Models\Site\Order::numberOfGoodies())
 							<span class="notifiy-bubule bg-danger">{{App\Models\Site\Order::numberOfGoodies()}}</span>
 						@endif
-						<i class="fas fa-cart-arrow-down"></i> Panier
+						<span class="fas fa-cart-arrow-down"></span> Panier
 					</a>
 				</li>
 				<li>
@@ -37,7 +37,7 @@
 							@if(App\Http\Controllers\AdminController::totalReported())
 								<span class="notifiy-bubule bg-danger">{{App\Http\Controllers\AdminController::totalReported()}}</span>
 							@endif
-						<i class="fas fa-user-cog mx-1"></i> Administration
+						<span class="fas fa-user-cog mx-1"></span> Administration
 						</a>
 					@endif
 				</li>
