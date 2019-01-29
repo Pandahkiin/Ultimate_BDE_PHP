@@ -1,31 +1,39 @@
 @extends('layouts.template')
 
 @section('content')
-    <div class="w-100 row">
-        <div class="col-sm-12 col-md-8 px-1 m-0"> 
-            <h2 class="text-center my-2">Événements à venir</h2>
-            <div class="row">
-                @if($topEvent)
-                    <!-- Event of the month -->
-                    <div class="pl-5">
-                        @include('events.topEvent')
-                    </div>
-                @endif
-            </div>
-            <!-- Events planned -->
-            @foreach ($events->chunk(2) as $chunk)
-                <div class="row card-deck">
-                    @foreach($chunk as $event)
-                        @include('events.event')
-                    @endforeach 
-                </div>
-            @endforeach 
-        </div>
-        <div class="col-sm-12 col-md-4 px-1 pl-4">
-            <h2 class="text-center my-2">Événements passés</h2>
-            @foreach ($pastEvents as $pastEvent)
-                @include('events.pastEvent')
-            @endforeach
+
+<div class="container text-center my-4">
+    <a href="#event-in-run" class="text-dark lead">Événements en cours</a>
+    <a href="#event-past-run" class="text-dark lead ml-3">Événements passés</a>
+</div>
+
+@if($topEvent)
+    @include('events.topEvent')
+@endif
+
+<hr class="mx-4"/>
+<h2 class="text-center my-4 display-4" id="event-in-run">Événements en cours</h2>
+@foreach ($events->chunk(2) as $chunk)
+    <div class="container-fluid px-4">
+        <div class="card-deck">
+        @foreach($chunk as $event)
+            @include('events.event')
+        @endforeach
         </div>
     </div>
+@endforeach
+
+<hr class="mx-4"/>
+<h2 class="text-center my-4 display-4" id="event-past-run">Événements passés</h2>
+
+@foreach ($pastEvents->chunk(4) as $chunk)
+    <div class="container-fluid mb-5 px-4">
+        <div class="card-deck">
+        @foreach($chunk as $pastEvent)
+            @include('events.pastEvent')
+        @endforeach
+        </div>
+    </div>
+@endforeach
+
 @endsection
