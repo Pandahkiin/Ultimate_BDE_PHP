@@ -36,5 +36,7 @@ function sendOrder(orderID) {
     sendPostAjax('/sendOrder', JSON.stringify({
         id_order: orderID,
         _token: CSRF_TOKEN
-    }), null,'JSON', 'POST');
+    }), function() {
+        //location.reload();
+    },'JSON', 'POST');
 }

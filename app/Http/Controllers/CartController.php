@@ -85,32 +85,34 @@ class CartController extends Controller
             $orderID = $request->id_order;
 
             $user = Auth::user();
-            $order = Order::find($orderID)->first();
-            /*$order->update([
+            $order = Order::find($orderID);
+            $order->update([
                 'is_paid' => 1
-            ]);*/
+            ]);
 
             $to_name = $user->firstname;
-            $to_email = 'nicolas.degheselle@viacesi.fr';
-            $data = array('name'=>$user->lastname);
+            $to_email = $user->email;
+            $data = array('name'=> $user->lastname, 'orderID' => $orderID);
             
             Mail::send('emails.orderNotify', $data, function($message) use ($to_name, $to_email) {
                 $message->to($to_email, $to_name)
-                    ->subject('Validation de commmande ' . '$order->id');
+                        ->subject('Validation de commmande');
                 $message->from('armada424777@gmail.com','BDE');
             });
-/*
+
             $dataBDE = array(
                 'name'=> $user->firstname.' '.$user->lastname,
                 'orderID' => $orderID,
                 'email' => $user->email,
-                'user_cart' => $order->contain
+                'user_cart' => Contain::where('id_Orders', $orderID)->get()
             );
-            Mail::send('emails.orderNotify', $dataBDE, function($message) use ($to_name, $to_email) {
+
+            $to_email = 'armada424777@gmail.com';
+            Mail::send('emails.orderIntoBDE', $dataBDE, function($message) use ($to_name, $to_email) {
                 $message->to($to_email, $to_name)
-                    ->subject('Commande n°' . $order->id);
+                    ->subject('Commande d\'un étudiant');
                 $message->from('armada424777@gmail.com','BDE');
-            });*/
+            });
 
             return response()->json([
                 'status' => 'success',

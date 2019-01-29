@@ -54,7 +54,7 @@ function apiAJAXDelete(url, callbackSuccess) {
         type: 'DELETE',
         crossDomain: true,
         dataType: 'JSON',
-        timeout: 3000,
+        timeout: 5000,
         error: function(jqXHR, textStatus, errorThrown) {
             if(textStatus==="timeout") {
                 alertPopUp('warning', 'Délai d\'attente dépassé ...');
@@ -91,7 +91,7 @@ function sendPostAjax(url, data, callbackSuccess, contentType) {
         cache: false,
         contentType: contentType,
         processData: false,
-        timeout: 3000,
+        timeout: 1000000,
         error: function(jqXHR, textStatus, errorThrown) {
             if(textStatus==="timeout") {
                 alertPopUp('warning', 'Délai d\'attente dépassé ...');
