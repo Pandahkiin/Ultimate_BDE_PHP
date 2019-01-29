@@ -35,7 +35,7 @@
         <div class="card-header" id="headingGoodies">
             <h5 class="mb-0">
                 <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseGoodies" aria-expanded="true" aria-controls="collapseGoodies">
-                    Administrer des goodies
+                    Administration des goodies
                 </button>
             </h5>
         </div>
@@ -50,7 +50,7 @@
         <div class="card-header" id="headingPastEvent">
             <h5 class="mb-0">
                 <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapsePastEvent" aria-expanded="true" aria-controls="collapsePastEvent">
-                    Administrer des événements
+                    Administration des événements
                     @if($countReport["events"])
                     <span class="notifiy-bubule bg-danger" style="left:5px">{{$countReport["events"]}}</span>
                     @endif
