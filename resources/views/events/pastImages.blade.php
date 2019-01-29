@@ -19,7 +19,7 @@
         <div class="col">
             @if(App\Models\Site\Comment::haveUserComment($picture->id))
             <textarea class="form-control" id="picture-comment-{{$picture->id}}" rows="2" placeholder="Ajouter un commentaire"></textarea>
-            <button type="button" id="picture-comment-button-{{$picture->id}}" class="btn btn-primary float-right mt-1" onclick="sendComment({{$picture->id}})">Envoyé</button>
+            <button type="button" id="picture-comment-button-{{$picture->id}}" class="btn btn-primary float-right mt-1" onclick="sendComment({{$picture->id}})">Envoyer</button>
             @endif
         </div>
     </div>
