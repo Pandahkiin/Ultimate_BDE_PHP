@@ -37,6 +37,6 @@ function sendOrder(orderID) {
         id_order: orderID,
         _token: CSRF_TOKEN
     }), function() {
-        //location.reload();
+        location.reload();
     },'JSON', 'POST');
 }

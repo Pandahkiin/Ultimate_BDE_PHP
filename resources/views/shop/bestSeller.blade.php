@@ -45,16 +45,19 @@
   </div>
 </div>
 -->
-<div class="jumbotron h-100 d-flex flex-column">
+<div class="jumbotron h-100 d-flex flex-column p-4">
   <h1 class="display-4">{{ $bestSeller->name }}</h1>
-  <p class="lead">{{ $bestSeller->description }}</p>
-  <hr class="my-4 ml-0 mr-0">
   <div class="shop-img">
     <img class="w-100" src="{{ $bestSeller->image }}" alt="{{ $bestSeller->name }}">
   </div>
+  <hr class="my-4 ml-0 mr-0">
+  <p class="lead">{{ $bestSeller->description }}</p>
   <div class="row mt-2">
     <div class="col"><p>Prix : {{ $bestSeller->price }} €</p></div>
     <div class="col text-right"><p>Stock : {{ $bestSeller->stock }}</p></div>
   </div>
-  <button type="button" class="btn btn-lg btn-block btn-primary mt-auto" data-toggle="modal" data-target="#modalbestSeller{{ $bestSeller->id }}">BUY IT</button>
+  <div class="d-flex mt-auto">
+      <button type="button" class="btn btn-primary mr-2" onclick="addToCart({{ $bestSeller->id }}, $(this).next().val())"><i class="fas fa-cart-plus"></i></button>
+      <input type="number" class="form-control input-number" value="1" min="1" max="{{ $bestSeller->stock }}" size="5">
+    </div>
 </div>
