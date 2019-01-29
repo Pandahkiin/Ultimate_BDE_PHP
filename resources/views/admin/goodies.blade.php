@@ -21,8 +21,8 @@
                         <label class="form-text text-danger"></label>
                     </div>
                     <div class="col-6">
-                        <label for="add-event-image-upload">Charger une image sur le serveur</label>
-                        <button id="add-event-image-upload" onclick="setUploadPictureModal('add-goodie-image','')" type="button" class="btn btn-primary form-control" data-toggle="modal" data-target="#upload-picture">
+                        <label for="add-goodie-image-upload">Charger une image sur le serveur</label>
+                        <button id="add-goodie-image-upload" onclick="setUploadPictureModal('add-goodie-image','')" type="button" class="btn btn-primary form-control" data-toggle="modal" data-target="#upload-picture">
                             Charger une image
                         </button>
                     </div>
