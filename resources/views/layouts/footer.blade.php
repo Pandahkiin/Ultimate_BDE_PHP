@@ -1,3 +1,4 @@
+{{-- Footer containing legal informations and social media, present everywhere on the site --}}
 <footer id="footer">
 	<div class="mx-auto">
 		<div class="my-3 flex-center">

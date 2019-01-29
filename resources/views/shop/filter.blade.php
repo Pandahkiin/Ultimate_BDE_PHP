@@ -1,3 +1,4 @@
+{{-- Displays the categories filter division on the left --}}
 <datalist id="goodies-name-search">
     @foreach ($goodies as $goodie)
     <option value="{{$goodie->name}}">

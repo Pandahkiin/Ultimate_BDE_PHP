@@ -1,5 +1,6 @@
 @extends('layouts.template')
 
+{{-- Includes the CSS files --}}
 @push('head')
     <link href="{{ asset('css/home.css') }}" rel="stylesheet">
     <link href="{{ asset('css/shop.css') }}" rel="stylesheet">
@@ -9,6 +10,7 @@
 @section('content')
     <div class="home-main">
         <h1 class="home-main-title py-5">Bienvenue au BDE du CESI</h1>
+        {{-- Checks if there is a Top Event, then displays it --}}
         @if($topEvent)
             @include('events.topEvent')
         @endif
@@ -18,6 +20,7 @@
 
         <div class="container-fluid">
             <div class="row mb-3">
+                {{-- Searches among the products and prompts the 3 most sold ones --}}
                 @foreach ($bestSellers as $bestSeller)
                     <div class="col-sm-12 col-lg-6 col-xl-4 mt-3">
                     @include('shop.bestSeller')

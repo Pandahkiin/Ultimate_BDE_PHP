@@ -1,3 +1,4 @@
+{{-- Navigation bar, present everywhere on the website --}}
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
 	<a class="navbar-brand" href="{{ route('Acceuil') }}">
 		<img src="{{ asset('img/navlogo.png') }}" width="50" height="50" class="d-inline-block align-top" alt="Logo BDE">

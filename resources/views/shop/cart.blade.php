@@ -1,3 +1,4 @@
+{{-- Displays the cart page --}}
 @extends('layouts.template')
 
 @section('content')
@@ -5,6 +6,7 @@
 <script src="{{ asset('js/shop.js') }}" defer></script>
 @endpush
 
+{{-- The cart is shown as a table --}}
 @if($user_cart->count() > 0)
 <table class="table">
     <thead class="thead-light">
@@ -31,6 +33,7 @@
         </tr>
     </tfoot>
 </table>
+{{-- The confirmation button for the order, also checks if the cart is not empty --}}
 <button type="button" class="btn btn-primary float-right" onclick="sendOrder({{$user_cart->first()->id}})">Envoyer la commande</button>
 @else
 <h3 class="my-5 mr-2 w-100 text-center">Panier vide, n'hésitez pas à visiter la boutique !</h3>

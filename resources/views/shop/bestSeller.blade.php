@@ -1,3 +1,4 @@
+{{-- Template for the 3 most sold articles --}}
 <div class="jumbotron h-100 d-flex flex-column p-4">
     <h1 class="display-4">{{ $bestSeller->name }}</h1>
     <div class="shop-img">

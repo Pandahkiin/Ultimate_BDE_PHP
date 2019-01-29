@@ -7,7 +7,28 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    {{-- Meta tags for SEO --}}
+    <title>{{ config('Bureau Des Exars', 'Bureau Des Exars') }}</title>
+    <meta name="description" content="Le site du BDE du CESI, Ecole d'Ingénieurs. Evenements, boutique, suggestions"/>
+    <link rel="canonical" href="https://bde.cesi.fr/" />
+    <meta name="author" content="BDE CESI, CESI"/>
+    <meta name="keywords" content="BDE CESI, Bureau des Exars CESI, Bureau Des Eleves, CESI, BDE, Ecole d'Ingénieurs"/>
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="BDE CESI, Bureau des élèves, BDE CESI Paris Lyon Strasbourg Saint-Nazaire" />
+    <meta property="og:description" content="Le site du BDE du CESI, Ecole d'Ingénieurs. Evenements, boutique, suggestions" />
+    <meta property="og:url" content="https://bde.cesi.fr/" />
+    <meta property="og:site_name" content="Association du Bureau Des Eleves du CESI" />
+    <meta property="og:image" content="https://bde.cesi.fr/img/CESI_Corporate_Ecole_Ingenieurs.jpg" />
+    <meta property="og:image:secure_url" content="https://bde.cesi.fr/img/CESI_Corporate_Ecole_Ingenieurs.jpg" />
+    <meta property="og:image:width" content="1903" />
+    <meta property="og:image:height" content="1875" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:description" content="Le site du BDE du CESI, Ecole d'Ingénieurs. Evenements, boutique, suggestions" />
+    <meta name="twitter:title" content="BDE CESI, Bureau des élèves, BDE CESI Paris Lyon Strasbourg Saint-Nazaire" />
+    <meta name="twitter:site" content="@BdeExiaStrg" />
+    <meta name="twitter:image" content="https://pbs.twimg.com/profile_images/740904177350643712/AgsnAE3U_400x400.jpg" />
+    <meta name="twitter:creator" content="@BdeExiaStrg" />
 
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
