@@ -47,4 +47,7 @@ Route::get('/form', 'CartController@index');
 Route::post('/add', 'CartController@add');
 Route::get('/cart', 'CartController@cart');
 
-Route::get('/order', 'OrderNotifyController@index');
+/*Legal documentation routes*/
+Route::get('/mentions-legales', 'LegalController@disclaimer')->name('Mentions');
+Route::get('/politique-de-confidentialite', 'LegalController@policy')->name('Politique');
+Route::get('/conditions-de-vente', 'LegalController@sales')->name('Ventes');
