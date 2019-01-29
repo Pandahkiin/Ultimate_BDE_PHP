@@ -17,17 +17,10 @@
       <li class="nav-item">
         <a class="nav-link mx-1" href="{{ route('Boite à idées') }}"><i class="far fa-lightbulb mx-1"></i> Boîte à idées</a>
       </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle mx-1" href="{{ route('Boutique') }}" id="shopDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-shopping-cart mx-1"></i> Boutique
-        </a>
-        <div class="dropdown-menu" aria-labelledby="shopDropdown">
-          <a class="dropdown-item" href="{{ route('Boutique') }}">Produits</a>
-          <a class="dropdown-item" href="{{ route('Panier') }}">Panier</a>
-        </div>
+      <li class="nav-item">
+        <a class="nav-link mx-1" href="{{ route('Boutique') }}"><i class="fas fa-shopping-cart mx-1"></i> Boutique</a>
       </li>
     </ul>
-
     <ul class="navbar-nav ml-auto">
         @auth
           <h5 class="mr-4 my-auto">Bonjour {{ Auth::user()->firstname }}</h5>
