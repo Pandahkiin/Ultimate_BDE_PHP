@@ -1,3 +1,18 @@
+/**
+ * Prepare JQUERY autocomplete
+ */
+$(document).ready(function() {
+    var goodies = [];
+    $('.shop-goodie').each(function() {
+        goodies.push($(this).data('goodie'));
+    });
+
+    goodiesNames = goodies.map(function(value) { return value[1]; });
+    $('#shop-search').autocomplete({
+        source : goodiesNames
+    });
+});
+
 function shopFilter() {
     $('#shop-best-sellers').addClass('d-none');
     $('#shop-search-result').removeClass('d-none');
@@ -23,6 +38,15 @@ function shopFilter() {
             $('#shop-goodie-'+element[0]).addClass('d-none');
     });
 }
+
+$('#shop-search').change(function () {
+    var goodies = [];
+    $('.shop-goodie').each(function() {
+        goodies.push($(this).data('goodie'));
+    });
+
+    console.log(goodiesNames);
+});
 
 function addToCart(goodieID, quantity) {
     sendPostAjax('/addToCart', JSON.stringify({

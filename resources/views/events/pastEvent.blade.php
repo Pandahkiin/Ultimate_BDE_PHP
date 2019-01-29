@@ -32,7 +32,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="row w-100 mx-auto">
-                        <div id="carouselEventPicture" class="carousel slide w-100" data-interval="false" data-ride="carousel">
+                        <div id="carouselEventPicture{{ $pastEvent->id }}" class="carousel slide w-100" data-interval="false" data-ride="carousel">
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
                                     <img class="d-block w-100" src="{{ $pastEvent->image }}">
@@ -93,11 +93,11 @@
                                     </div>
                                 @endforeach
                             </div>
-                            <a class="carousel-control-prev" href="#carouselEventPicture" role="button" data-slide="prev">
+                            <a class="carousel-control-prev" href="#carouselEventPicture{{ $pastEvent->id }}" role="button" data-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                 <span class="sr-only">Précédent</span>
                             </a>
-                            <a class="carousel-control-next" href="#carouselEventPicture" role="button" data-slide="next">
+                            <a class="carousel-control-next" href="#carouselEventPicture{{ $pastEvent->id }}" role="button" data-slide="next">
                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                 <span class="sr-only">Suivant</span>
                             </a>

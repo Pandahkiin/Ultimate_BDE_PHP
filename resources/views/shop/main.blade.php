@@ -1,6 +1,9 @@
 @extends('layouts.template')
 
 @section('content')
+@push('head')
+<script src="{{ asset('js/shop.js') }}" defer></script>
+@endpush
 
 <div class="row h-100">
     @include('shop.filter')

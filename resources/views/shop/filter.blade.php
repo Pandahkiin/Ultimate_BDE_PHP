@@ -1,11 +1,16 @@
+<datalist id="goodies-name-search">
+    @foreach ($goodies as $goodie)
+    <option value="{{$goodie->name}}">
+    @endforeach
+</datalist>
+
 <aside class="categories col-md-2 col-sm-12">
     <div class="mx-3">
-        <form class="mt-2">
-            <div class="form-group">
-                <h5 class="text-center">Rechercher un article</h5>
-                <input type="search" class="form-control" id="exampleFormControlInput1" placeholder="Article">
-            </div>
-        </form>
+
+        <div class="form-group mt-3">
+            <h5 class="text-center">Rechercher un article</h5>
+            <input type="text" class="form-control" id="shop-search" placeholder="Article" list="goodies-name-search">
+        </div>
 
         <hr class="my-3">
 

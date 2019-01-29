@@ -1,7 +1,7 @@
 @extends('layouts.template')
 
 @section('content')
-<div class="container">
+<div class="container my-4">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -42,7 +42,7 @@
                         <div class="form-group row">
                             <label for="centre" class="col-md-4 col-form-label text-md-right">{{ __('Campus') }}</label>
                             <div class="col-md-6">
-                                <select class="form-control" name="campus">
+                                <select class="form-control" name="campus" required>
                                     @foreach ($campuses as $campus)
                                         <option value="{{ $campus->id }}"> {{ $campus->location }} </option>
                                     @endforeach
@@ -84,6 +84,20 @@
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                             </div>
+                        </div>
+
+                        <div class="form-group row">
+                          <div class="form-check col-md-6 offset-md-4">
+                            <input class="form-check-input {{ $errors->has('policy') ? ' is-invalid' : '' }}" type="checkbox" name="policy" required>
+                            <label class="form-check-label">
+                                J'ai lu et j'accepte la <a href="{{route('politique')}}">politique de confidentialité</a> et les <a href="{{route('mentions')}}">mentions légales</a>
+                            </label>
+                            @if ($errors->has('password')) 
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('policy') }}</strong>
+                                </span>
+                            @endif
+                          </div>
                         </div>
 
                         <div class="form-group row mb-0">

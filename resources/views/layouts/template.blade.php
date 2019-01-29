@@ -10,12 +10,11 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('vendor/jquery-3.3.1.min.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/DOMInteraction.js') }}" defer></script>
     <script src="{{ asset('js/interaction.js') }}" defer></script>
     <script src="{{ asset('js/ajax.js') }}" defer></script>
-    <script src="{{ asset('js/shop.js') }}" defer></script>
     <script src="{{ asset('js/cesi_management.js') }}" defer></script>
 
     <script src="{{ asset('vendor/DataTables/datatables.min.js') }}" defer></script>
