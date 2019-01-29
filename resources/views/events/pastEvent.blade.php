@@ -72,7 +72,7 @@
                                                       <div class="card-header">
                                                             {{ $comment->author->firstname.' '.$comment->author->lastname }}
                                                             @if(Auth::user()->role->name === 'Personnel CESI')
-                                                            <button type="button" class="btn btn-outline-danger m-1 report-button" onclick="reportComment({{$comment->id_Users}},{{$comment->id_Pictures}})" title="Signaler l'événement">
+                                                            <button type="button" class="btn btn-outline-danger m-1 report-button" onclick="reportComment({{$comment->id_Users}},{{$comment->id_Pictures}})" title="Signaler le commentaire">
                                                                 <i class="fas fa-exclamation-triangle"></i>
                                                             </button>
                                                             @endif
@@ -95,11 +95,11 @@
                             </div>
                             <a class="carousel-control-prev" href="#carouselEventPicture" role="button" data-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Previous</span>
+                                <span class="sr-only">Précédent</span>
                             </a>
                             <a class="carousel-control-next" href="#carouselEventPicture" role="button" data-slide="next">
                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Next</span>
+                                <span class="sr-only">Suivant</span>
                             </a>
                         </div>
                     </div>
