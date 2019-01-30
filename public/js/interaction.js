@@ -41,7 +41,7 @@ function likeSuggestion(eventID, element) {
     }, function() {
         $(element).removeClass('btn-outline-success').addClass('btn-outline-danger')
             .html('<i class="fas fa-heart-broken"></i>')
-            .attr("onclick","unregisterEvent("+eventID+",this)");
+            .attr("onclick","unlikeSuggestion("+eventID+",this)");
     },
     'POST');
 }
@@ -55,7 +55,7 @@ function unlikeSuggestion(eventID, element) {
     apiAJAXDelete('/votes/users/'+connected_user.id+'/events/'+eventID, function() {
         $(element).addClass('btn-outline-success').removeClass('btn-outline-danger')
             .html('<i class="far fa-heart"></i>')
-            .attr("onclick","registerEvent("+eventID+",this)");
+            .attr("onclick","likeSuggestion("+eventID+",this)");
     });
 }
 
@@ -71,7 +71,7 @@ function registerEvent(eventID, element) {
         id_event: eventID
     }, function() {
         $(element).addClass('btn-outline-primary').removeClass('btn-primary')
-            .text('Se desinscrire')
+            .text('Se désinscrire')
             .attr("onclick","unregisterEvent("+eventID+",this)");
     },
     'POST');
