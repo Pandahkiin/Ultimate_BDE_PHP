@@ -1,3 +1,5 @@
+{{-- Template for the images download --}}
+
 <div class="card">
     <div class="card card-body">
         <table class="table table-striped" id="pictures-list-dataTable">

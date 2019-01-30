@@ -1,3 +1,5 @@
+{{-- Template for the suggestions in admin part. The suggestion can be accepted, rejected, or edited --}}
+
 @include('admin.editSuggestion')
 
 <div class="card">

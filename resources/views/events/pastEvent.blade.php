@@ -1,6 +1,8 @@
+{{-- Template for a past event --}}
 <div class="card mt-2">
     <div class="card-body row d-flex flex-column mx-1">
         <h5 class="card-title">{{ $pastEvent->name }}</h5>
+        {{-- Strike for emplyees --}}
         @if(Auth::check() && Auth::user()->role->name === 'Personnel CESI')
         <button type="button" class="btn btn-outline-danger m-1 report-button" onclick="reportEvent({{$pastEvent->id}})" title="Signaler l'événement">
             <i class="fas fa-exclamation-triangle"></i>
@@ -11,9 +13,11 @@
 
         <div class="mt-auto">
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalPastEvent{{ $pastEvent->id }}">En savoir plus</button>
+            {{-- If the user was registered to the event, he can post images --}}
             @if(Auth::check() && App\Models\Site\Register::isUserRegister($pastEvent->id))
                 <button type="button" class="btn btn-outline-primary" onclick="setUploadPictureModal(false,'{{$pastEvent->id}}')"  data-toggle="modal" data-target="#upload-picture">Poster une image</button>
             @endif
+            {{-- Strike --}}
             @if(Auth::check() && Auth::user()->role->name === 'Personnel CESI')
             <button type="button" onclick="getEventPictures({{$pastEvent->id}})" class="btn btn-outline-dark">Télécharger les images</button>
             @endif
@@ -21,6 +25,7 @@
     </div>
 </div>
 
+{{-- Modal for the images and comments --}}
 <div class="modal fade" id="modalPastEvent{{ $pastEvent->id }}" tabindex="-1" role="dialog" aria-labelledby="modalPastEvent{{ $pastEvent->id }}Title" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">

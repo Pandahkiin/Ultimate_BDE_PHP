@@ -1,3 +1,5 @@
+{{-- Template for the goodie admin part --}}
+
 @include('admin.editGoodie')
 
 <div class="card">
