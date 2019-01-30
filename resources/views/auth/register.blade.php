@@ -1,3 +1,6 @@
+{{-- Template for the site registration page --}}
+
+{{-- Checks every field enterd a validate it with a regex. If invalid, the field turns red and locks the registration until valid value --}}
 @extends('layouts.template')
 
 @section('content')

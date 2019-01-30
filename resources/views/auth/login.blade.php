@@ -1,3 +1,5 @@
+{{-- Template for the login page --}}
+
 @extends('layouts.template')
 
 @section('content')

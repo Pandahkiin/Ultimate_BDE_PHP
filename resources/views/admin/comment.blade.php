@@ -1,3 +1,5 @@
+{{-- Template for the comment administration --}}
+
 @include('admin.editComment')
 
 <div class="card">

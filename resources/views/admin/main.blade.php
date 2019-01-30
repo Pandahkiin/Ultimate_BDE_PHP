@@ -1,3 +1,5 @@
+{{-- Template for the whole administration part --}}
+
 @extends('layouts.template')
 
 @section('content')

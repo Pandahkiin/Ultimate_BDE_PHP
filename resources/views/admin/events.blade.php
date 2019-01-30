@@ -1,3 +1,5 @@
+{{-- Template for the evvent admin part. --}}
+
 <div class="card">
     <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#adminAddEvent" aria-expanded="false" aria-controls="adminAddEvent">
         Ajouter un événement

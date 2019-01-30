@@ -1,3 +1,4 @@
+{{-- Template for the Event of the Month --}}
 <div class="container-fluid">
     <div class="jumbotron mx-2 my-5 p-0">
         <div class="row">
@@ -14,6 +15,7 @@
                 </div>
                 <hr class="my-4">
                 <p>{{ $topEvent->description }}</p>
+                {{-- Checks if the user is authentified. If so, he can register to an event --}}
                 @auth
                     @if(App\Models\Site\Register::isUserRegister($topEvent->id))
                         <button type="button" class="btn btn-outline-primary btn-lg" onclick="unregisterEvent({{$topEvent->id}}, this)">Se désinscrire</button>
