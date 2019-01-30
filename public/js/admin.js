@@ -1,3 +1,5 @@
+/**** Datatable library ****/
+/* Administration goodies table */
 var dataTableGoodie = $('#goodie-list-dataTable').DataTable({
     columnDefs: [
         {"targets": 8,
@@ -6,6 +8,7 @@ var dataTableGoodie = $('#goodie-list-dataTable').DataTable({
         "orderable": false}
     ]
 });
+/* Administration events table */
 var dataTableEvent = $('#event-list-dataTable').DataTable({
     columnDefs: [
         {"targets": [10],
@@ -14,6 +17,7 @@ var dataTableEvent = $('#event-list-dataTable').DataTable({
         "orderable": false}
     ]
 });
+/* Administration suggestions table */
 var dataTableSuggestion = $('#suggestion-list-dataTable').DataTable({
     columnDefs: [
         {"targets": 5,
@@ -22,7 +26,7 @@ var dataTableSuggestion = $('#suggestion-list-dataTable').DataTable({
         "orderable": false}
     ]
 });
-
+/* Administration comments table */
 var dataTableComment = $('#comment-list-dataTable').DataTable({
     columnDefs: [
         {"targets": 4,
@@ -31,7 +35,7 @@ var dataTableComment = $('#comment-list-dataTable').DataTable({
         "orderable": false}
     ]
 });
-
+/* Administration pictures table */
 var dataTablePicture = $('#pictures-list-dataTable').DataTable({
     columnDefs: [
         {"targets": 3,
@@ -49,8 +53,6 @@ function sendNewEvent() {
     formData.id_campus = connected_user.id_campus;
     formData.id_user = connected_user.id;
     formData.approved = 'approved';
-
-    console.log(formData);
 
     var verification = [
         ['name','Pas de caractères spéciaux.','^[_A-z0-9]*((-|\\s)*[_A-z0-9])*$'],
@@ -102,23 +104,41 @@ function deleteModal(typeID , rowName, rowID) {
     $('#delete-modal-function').attr("onclick",typeID+"("+rowID+")");
 }
 
-/** Send DELETE to database **/
+/**
+ * Send a DELETE by Ajax to delete a event
+ * Remove the datatable row on success
+ * @param {int} eventID 
+ */
 function deleteEvent(eventID) {
     apiAJAXDelete('/events/'+eventID, function() {
         dataTableEvent.row($('#table-event-row-'+eventID)).remove().draw();
     });
 }
+/**
+ * Send a DELETE by Ajax to delete a suggestion
+ * Remove the datatable row on success
+ * @param {int} suggestionID 
+ */
 function deleteSuggestion(suggestionID) {
     apiAJAXDelete('/events/'+suggestionID, function() {
         dataTableSuggestion.row($('#table-suggestion-row-'+suggestionID)).remove().draw();
     });
 }
-
+/**
+ * Send a DELETE by Ajax to delete a goodie
+ * Remove the datatable row on success
+ * @param {int} goodieID 
+ */
 function deleteGoodie(goodieID) {
     apiAJAXDelete('/goodies/'+goodieID, function() {
         dataTableGoodie.row($('#table-goodie-row-'+goodieID)).remove().draw();
     });
 }
+/**
+ * Send a DELETE by Ajax to delete a picture
+ * Remove the datatable row on success
+ * @param {int} pictureID 
+ */
 function deletePicture(pictureID) {
     apiAJAXDelete('/pictures/'+pictureID, function() {
         dataTablePicture.row($('#table-picture-row-'+pictureID)).remove().draw();
@@ -126,7 +146,9 @@ function deletePicture(pictureID) {
 }
 
 /**
- * Deleting comment use the laravel server
+ * Send a DELETE by Ajax to delete a comment
+ * /!\ the delete request is send to laravel server
+ * Remove the datatable row on success
  * @param {string} id_comment concat from id_user and id_picture
  */
 function deleteComment(id_comment) {
@@ -139,15 +161,20 @@ function deleteComment(id_comment) {
     );
 }
 
-/* Manage category */
+/**
+ * Add category from input
+ * Send POST to API
+ */
 function addCategory() {
     var content = $('#add-category-name').val();
-
     apiAJAXSend('/categories', {category: content}, function() {
         location.reload();
     },'POST');
 }
-
+/**
+ * Delete category from input
+ * Send DELETE to API
+ */
 function deleteCategory() {
     var categoryID = $('#delete-category-id_category').val();
     apiAJAXDelete('/categories/'+categoryID, function() {

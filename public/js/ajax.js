@@ -91,7 +91,7 @@ function sendPostAjax(url, data, callbackSuccess, contentType) {
         cache: false,
         contentType: contentType,
         processData: false,
-        timeout: 10000,
+        timeout: 100000,
         error: function(jqXHR, textStatus, errorThrown) {
             if(textStatus==="timeout") {
                 alertPopUp('warning', 'Délai d\'attente dépassé ...');

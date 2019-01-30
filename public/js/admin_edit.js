@@ -1,4 +1,7 @@
-/* Modal for edit purpose, get values from datatable and populate the form */
+/**
+ * Show the modal to edit event
+ * @param {int} eventID 
+ */
 function editModalEvent(eventID) {
     var row =$("#table-event-row-"+eventID+" td");
     var data = [];
@@ -14,6 +17,10 @@ function editModalEvent(eventID) {
 
     $('#editEvent-function').attr("onclick","editEvent("+eventID+")");
 }
+/**
+ * Show the modal to edit goodie
+ * @param {int} goodieID 
+ */
 function editModalGoodie(goodieID) {
     var row =$("#table-goodie-row-"+goodieID+" td");
     var data = [];
@@ -30,7 +37,10 @@ function editModalGoodie(goodieID) {
 
     $('#editGoodie-function').attr("onclick","editGoodie("+goodieID+")");
 }
-
+/**
+ * Show the modal to edit suggestion
+ * @param {int} suggestionID 
+ */
 function editModalSuggestion(suggestionID) {
     var row =$("#table-suggestion-row-"+suggestionID+" td");
     var data = [];
@@ -42,7 +52,10 @@ function editModalSuggestion(suggestionID) {
 
     $('#editSuggestion-function').attr("onclick","editSuggestion("+suggestionID+")");
 }
-
+/**
+ * Show the modal to edit comment
+ * @param {int} commentID 
+ */
 function editModalComment(commentID) {
     var row =$("#table-comment-row-"+commentID+" td");
     var data = [];
@@ -53,7 +66,10 @@ function editModalComment(commentID) {
 
     $('#editComment-function').attr("onclick","editComment("+parseInt(commentID.charAt(0))+","+parseInt(commentID.charAt(1))+")");
 }
-
+/**
+ * Show the modal to validate a suggestion
+ * @param {int} suggestion 
+ */
 function acceptSuggestion(suggestionID) {
     var row =$("#table-suggestion-row-"+suggestionID+" td");
     var data = [];
@@ -65,7 +81,12 @@ function acceptSuggestion(suggestionID) {
     $("#edit-event-description").val(data[1]);
     $('#editEvent-function').attr("onclick","editEvent("+suggestionID+")");
 }
-/* Send UPDATE to database */
+/**
+ * Edit a comment
+ * /!\ Send POST to laravel server
+ * @param {int} id_User 
+ * @param {int} id_Picture 
+ */
 function editComment(id_User, id_Picture) {
     var formData = serializeForm("#edit-comment");
     formData.id_User = id_User;
@@ -75,7 +96,11 @@ function editComment(id_User, id_Picture) {
     $('#editComment').modal('toggle');
     sendPostAjax('/editComment', JSON.stringify(formData), null,'JSON', 'POST');
 }
-
+/**
+ * Edit a event
+ * Send PUT to API
+ * @param {int} eventID 
+ */
 function editEvent(eventID) {
     var formData = serializeForm("#edit-event");
     formData.id_approbation = 2;
@@ -94,6 +119,11 @@ function editEvent(eventID) {
         },'PUT');
     }
 }
+/**
+ * Edit a goodie
+ * Send PUT to API
+ * @param {int} goodieID 
+ */
 function editGoodie(goodieID) {
     var formData = serializeForm("#edit-goodie");
 
@@ -112,6 +142,11 @@ function editGoodie(goodieID) {
         },'PUT');
     }
 }
+/**
+ * Edit a suggestion
+ * Send PUT to API
+ * @param {int} suggestionID 
+ */
 function editSuggestion(suggestionID) {
     var formData = serializeForm("#edit-suggestion");
     formData.id_approbation = 1;
